@@ -4,7 +4,7 @@ Contact: vincent.gardeux@epfl.ch
 
 Document Status: _Drafting_
 
-Version: 7.1.0_scfair
+Version: 7.1.0+scfair1.0
 
 Current schema: **core**
 
