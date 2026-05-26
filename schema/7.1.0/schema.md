@@ -1706,6 +1706,7 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Added [`ensembl_release`](#ensembl_release) to inform on the Ensembl release used for gene annotation, since scFAIR allows all available species in Ensembl
   * Added [`ensembl_database`](#ensembl_database) to inform on the Ensembl database used for gene annotation, since scFAIR allows all available species in Ensembl
   * Added [`ensembl_assembly`](#ensembl_assembly) to inform on the Ensembl assembly used for gene annotation, since scFAIR allows all available species in Ensembl
+  * Added [`analysis_pipeline`](#analysis_pipeline) entry to store the analysis and annotation pipeline, as a JSON. The JSON schema itself is described in ['schema_analysis_json.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_analysis_json.md)
   * Removed `is_pre_analysis` as it is specific for CELLxGENE collection handling
   * Moved <code>genetic_perturbations</code>, <code>genetic_perturbations[<i>id</i>]</code>, <code>genetic_perturbations[<i>id</i>]['role']</code>, <code>genetic_perturbations[<i>id</i>]['protospacer_sequence']</code>, <code>genetic_perturbations[<i>id</i>]['protospacer_adjacent_motif']</code>, <code>genetic_perturbations[<i>id</i>]['derived_genomic_regions']</code>, <code>genetic_perturbations[<i>id</i>]['derived_features']</code>, and <code>genetic_perturbations[<i>id</i>]['derived_features'][<i>feature_id</i>]</code> to perturb-specific schema ['schema_perturb.md'](https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema_perturb.md#genetic_perturbations)
   * Moved <code>spatial</code>, <code>spatial[<i>library_id</i>]</code>, <code>spatial[<i>library_id</i>]['is_single']</code>, <code>spatial[<i>library_id</i>]['images']</code>, <code>spatial[<i>library_id</i>]['images']['fullres']</code>, <code>spatial[<i>library_id</i>]['images']['hires']</code>, <code>spatial[<i>library_id</i>]['scalefactors']</code>, <code>spatial[<i>library_id</i>]['scalefactors']['spot_diameter_fullres']</code>, and <code>spatial[<i>library_id</i>]['scalefactors']['tissue_hires_scalef']</code> to spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema_spatial.md#spatial)
@@ -1713,6 +1714,7 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Modified `organism_ontology_term_id` to allow any species
   * Modified `citation` so that it contains only the DOI. Made this field Optional.
 * Move scTAC-seq assets to atac-specific schema ['schema_atac.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_atac.md#scatac-seq-assets)
+* Created the analysis-specific schema ['schema_analysis_json.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_analysis_json.md) in JSON, for storing the analysis and annotation pipeline. The JSON entry itself is stored in uns/[`analysis_pipeline`](#analysis_pipeline)
 
 ## Appendix B. Relevant ontologies
 
