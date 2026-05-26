@@ -20,6 +20,7 @@ All changes from the CZI CELLxGENE schema are documented in the scFAIR schema [C
 
 The scFAIR schema is split into multiple part, to differentiate the metadata specific to certain modalities:
 - This **core** schema ['schema.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md) is the main schema for all types of single-cell data (scRNA-seq, scATAC-seq, perturbation, spatial, ...). It describes the core metadata between all modalities.
+- The **analysis_json** schema ['schema_analysis_json.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_analysis_json.md) describes the analysis pipeline, including software and versionning (cellranger, seurat, scanpy, ...), methods and parameters (umap, louvain, ...), and eventual Docker images
 - The **spatial** schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_spatial.md) describes the additional metadata that are specific to spatial datasets (Visium)
 - The **perturb** schema ['schema_perturb.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_perturb.md) describes the additional metadata that are specific to perturbation datasets (CRISPR screens, perturb-seq, ...)
 - The **atac** schema ['schema_atac.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_atac.md) describes the additional metadata that are specific to scATAC datasets (scATAC-seq, multiomics)
@@ -1521,6 +1522,24 @@ Curators MUST annotate the following keys and values in `uns`:
 
 ​Curators MAY also annotate the following optional keys and values in `uns`. If the key is present, then its value MUST NOT be empty.
 ​
+### analysis_pipeline
+
+<table><tbody>
+    <tr>
+      <th>Key</th>
+      <td>analysis_pipeline</td>
+    </tr>
+    <tr>
+      <th>Annotator</th>
+      <td>Curator MAY annotate.</td>
+    </tr>
+    <tr>
+      <th>Value</th>
+        <td><code>str</code>. A JSON entry describing the analysis pipeline used to preprocess (sequencing, alignment, counting) and perform the downstream analysis (filtering, normalization, dimension reduction, integration, clustering, annotation of the clusters) of the dataset. The JSON file should follow the standard defined in  The goal of this field is to better understand how the results were obtained and also to enhance reproducibility.</td>
+    </tr>
+</tbody></table>
+<br/>
+
 ### batch_condition
 
 <table><tbody>
