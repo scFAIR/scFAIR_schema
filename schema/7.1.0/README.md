@@ -58,6 +58,7 @@
   * [`title`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#title) [`str`] - Main title of the study.
   * *[`shema_reference`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#shema_reference)* [`str`] - This schema: <code>"https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema.md"</code>.
   * *[`shema_version`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#shema_version)* [`str`] - This schema version: <code>"7.1.0_scfair"</code>.
+  * *&lt;Optional&gt;*[`analysis_pipeline`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#analysis_pipeline) [`str`] - A JSON entry based on the <code>['analysis schema'](https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema_analysis_json.md)</code> describing the analyis and annotation pipeline.
   * *&lt;Optional&gt;*[`batch_condition`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#batch_condition) [`str`] - One of the cell metadata keys in <code>obs</code> defining the <i>batches</i> (for integration).
   * *&lt;Optional&gt;*<i>[`citation`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#citation)</i> [`str`] - DOI of the study associated with the dataset.
   * *&lt;Optional&gt;*[`{column}_colors`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#column_colors) [`numpy.ndarray`] - Array of hex or color names for categorical metadata in `obs`.
