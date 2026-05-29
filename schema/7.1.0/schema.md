@@ -210,8 +210,14 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code></td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td><code>str</code>. The index of the pandas.DataFrame MUST contain unique identifiers for observations (unique cell names).</td>
+      <td>
+        The index of the pandas.DataFrame MUST contain unique identifiers for observations (e.g. unique cell names).
+      </td>
     </tr>
 </tbody></table>
 
@@ -227,70 +233,74 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be an EFO term and either:<br/><br/>
-          <ul><li>
-            the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0002772"><code>"EFO:0002772"</code></a> for <i>assay by molecule</i> excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> while allowing its descendants
-          </li>
-          <li>
-            the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010183"><code>"EFO:0010183"</code></a>  for <i>single cell library construction</i> excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> while allowing its descendants
-          </li></ul>
-        If <code>assay_ontology_term_id</code> is either a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i> then all observations MUST contain the same value.<br/><br/>
-        If <code>assay_ontology_term_id</code> is either <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010891"><code>"EFO:0010891"</code></a> for <i>scATAC-seq</i> or its descendants, there are additional requirements for separate fragments file assets documented in <a href="#scatac-seq-assets">scATAC-seq assets</a>.<br/><br/>
-        An assay based on 10X Genomics products SHOULD be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0008995"><code>"EFO:0008995"</code></a> for <i>10x technology</i>. An assay based on <i>SMART (Switching Mechanism at the 5' end of the RNA Template) or SMARTer technology</i> SHOULD either be <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010184"><code>"EFO:0010184"</code></a> for <i>Smart-like</i> or preferably its most accurate descendant.<br/><br/>
-       <br/>Recommended values for specific assays:
-          <br/><br/>
+        <td>
+          This MUST be an EFO term and either:
+          <ul>
+            <li>the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0002772"><code>"EFO:0002772"</code></a> for <i>assay by molecule</i> excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> while allowing its descendants</li>
+            <li>the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010183"><code>"EFO:0010183"</code></a>  for <i>single cell library construction</i> excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> while allowing its descendants</li>
+          </ul>
+          If <code>assay_ontology_term_id</code> is either a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i> then all observations MUST contain the same value.<br/><br/>
+          If <code>assay_ontology_term_id</code> is either <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010891"><code>"EFO:0010891"</code></a> for <i>scATAC-seq</i> or its descendants, there are additional requirements for separate fragments file assets documented in <a href="#scatac-seq-assets">scATAC-seq assets</a>.<br/><br/>
+          An assay based on 10X Genomics products SHOULD be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0008995"><code>"EFO:0008995"</code></a> for <i>10x technology</i>.<br/><br/>
+          An assay based on <i>SMART (Switching Mechanism at the 5' end of the RNA Template) or SMARTer technology</i> SHOULD either be <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010184"><code>"EFO:0010184"</code></a> for <i>Smart-like</i> or preferably its most accurate descendant.<br/><br/>
+          Recommended values for specific assays:
           <table>
-          <thead>
-          <tr>
-          <th>For</th>
-          <th>Use</th>
-          </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><i>10x 3' v2</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0009899"><code>"EFO:0009899"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>10x 3' v3</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0009922"><code>"EFO:0009922"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>10x 3' v4</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022604"><code>"EFO:0022604"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>10x 5' v1</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0011025"><code>"EFO:0011025"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>10x 5' v2</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0009900"><code>"EFO:0009900"</code></a></td>
-            </tr>            <tr>
-              <td><i>10x 5' v3</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022605"><code>"EFO:0022605"</code></a></td>
-            </tr>            </tr>            <tr>
-              <td><i>10x multiome</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030059"><code>"EFO:0030059"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>Smart-seq2</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0008931"><code>"EFO:0008931"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>Visium Spatial Gene Expression V1</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022857"><code>"EFO:0022857"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>Visium CytAssist Spatial Gene Expression, 6.5mm</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022859"><code>"EFO:0022859"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>Visium CytAssist Spatial Gene Expression, 11mm</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022860"><code>"EFO:0022860"</code></a></td>
-            </tr>
-          </tbody></table>
+            <thead>
+              <tr>
+                <th>For</th>
+                <th>Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i>10x 3' v2</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0009899"><code>"EFO:0009899"</code></a></td>
+              </tr>
+              <tr>
+                <td><i>10x 3' v3</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0009922"><code>"EFO:0009922"</code></a></td>
+              </tr>
+              <tr>
+                <td><i>10x 3' v4</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022604"><code>"EFO:0022604"</code></a></td>
+              </tr>
+              <tr>
+                <td><i>10x 5' v1</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0011025"><code>"EFO:0011025"</code></a></td>
+              </tr>
+              <tr>
+                <td><i>10x 5' v2</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0009900"><code>"EFO:0009900"</code></a></td>
+              </tr>            <tr>
+                <td><i>10x 5' v3</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022605"><code>"EFO:0022605"</code></a></td>
+              </tr>            </tr>            <tr>
+                <td><i>10x multiome</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030059"><code>"EFO:0030059"</code></a></td>
+              </tr>
+              <tr>
+                <td><i>Smart-seq2</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0008931"><code>"EFO:0008931"</code></a></td>
+              </tr>
+              <tr>
+                <td><i>Visium Spatial Gene Expression V1</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022857"><code>"EFO:0022857"</code></a></td>
+              </tr>
+              <tr>
+                <td><i>Visium CytAssist Spatial Gene Expression, 6.5mm</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022859"><code>"EFO:0022859"</code></a></td>
+              </tr>
+              <tr>
+                <td><i>Visium CytAssist Spatial Gene Expression, 11mm</i></td>
+                <td><a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0022860"><code>"EFO:0022860"</code></a></td>
+              </tr>
+            </tbody>
+          </table>
         </td>
     </tr>
 </tbody></table>
@@ -307,8 +317,14 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be the human-readable name assigned to the value of <code>assay_ontology_term_id</code>.</td>
+      <td>
+          This MUST be the human-readable name assigned to the value of <code>assay_ontology_term_id</code>.
+      </td>
     </tr>
 </tbody></table>
 
@@ -324,15 +340,20 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be one of:
-          <ul>
-            <li><code>"cell line"</code></li>
-            <li><code>"organoid"</code></li>
-            <li><code>"primary cell culture"</code></li>
-            <li><code>"tissue"</code></li>
+      <td>
+        This MUST be one of:
+        <ul>
+          <li><code>"cell line"</code></li>
+          <li><code>"organoid"</code></li>
+          <li><code>"primary cell culture"</code></li>
+          <li><code>"tissue"</code></li>
          </ul>
-        </td>
+      </td>
     </tr>
 </tbody></table>
 
@@ -348,9 +369,19 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
       <td>
-        categorical with <code>str</code> categories.<br/><br/>If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be a Cellosaurus term.<br/><br/>If <code>tissue_type</code> is <code>"primary cell culture"</code>, this MUST follow the requirements for <code>cell_type_ontology_term_id</code>.<br/><br/>If <code>tissue_type</code> is <code>"organoid"</code>, this MUST NOT be <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000922"><code>UBERON:0000922</code></a> for <i>embryo</i>. If the organoid is an embryoid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0014374"><code>UBERON:0014374</code></a> for <i>embryoid body</i>. If the organoid is a gastruloid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0004734"><code>UBERON:0004734</code></a> for <i>gastrula</i>.<br/><br/>Otherwise, if <code>tissue_type</code> is <code>"organoid"</code> or <code>"tissue"</code> then MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/classes?obo_id=FBBT%3A10000000"><code>FBbt:10000000</code></a> for <i>anatomical entity</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000468"><code>UBERON:0000468</code></a> for <i>multicellular organism</i> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/wbphenotype/classes?obo_id=WBbt%3A0007833"><code>WBbt:0007833</code></a> for <i>organism</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a> for <i>Caenorhabditis elegans</i>) and its descendants , and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=CL%3A0000000"><code>CL:0000000</code></a> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0009000"><code>ZFA:0009000</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>) and its descendants, and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0001093"><code>ZFA:0001093</code></a> for <i>unspecified</i> and <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/classes?obo_id=XAO%3A0003003"><code>XAO:0003003</code></a> for <i>unspecified</i>. A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.
+        If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be a Cellosaurus term.<br/><br/>
+        If <code>tissue_type</code> is <code>"primary cell culture"</code>, this MUST follow the requirements for <code>cell_type_ontology_term_id</code>.<br/><br/>
+        If <code>tissue_type</code> is <code>"organoid"</code>, this MUST NOT be <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000922"><code>UBERON:0000922</code></a> for <i>embryo</i>.<br/><br/>
+        If the organoid is an embryoid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0014374"><code>UBERON:0014374</code></a> for <i>embryoid body</i>.<br/><br/>
+        If the organoid is a gastruloid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0004734"><code>UBERON:0004734</code></a> for <i>gastrula</i>.<br/><br/>
+        Otherwise, if <code>tissue_type</code> is <code>"organoid"</code> or <code>"tissue"</code> then MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/classes?obo_id=FBBT%3A10000000"><code>FBbt:10000000</code></a> for <i>anatomical entity</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000468"><code>UBERON:0000468</code></a> for <i>multicellular organism</i> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/wbphenotype/classes?obo_id=WBbt%3A0007833"><code>WBbt:0007833</code></a> for <i>organism</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a> for <i>Caenorhabditis elegans</i>) and its descendants , and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=CL%3A0000000"><code>CL:0000000</code></a> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0009000"><code>ZFA:0009000</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>) and its descendants, and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0001093"><code>ZFA:0001093</code></a> for <i>unspecified</i> and <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/classes?obo_id=XAO%3A0003003"><code>XAO:0003003</code></a> for <i>unspecified</i>.<br/><br/>
+       <b>Note:</b>A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.
       </td>
   </tr>
 </tbody></table>
@@ -367,8 +398,14 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be the human-readable name assigned to the value of <code>tissue_ontology_term_id</code>.</td>
+      <td>
+        This MUST be the human-readable name assigned to the value of <code>tissue_ontology_term_id</code>.
+      </td>
     </tr>
 </tbody></table>
 <br/>
@@ -385,9 +422,13 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     <td>REQUIRED</td>
   </tr>
   <tr>
+    <th>Type</th>
+    <td>categorical with <code>str</code> categories.</td>
+  </tr>
+  <tr>
     <th>Value</th>
     <td>
-      categorical with <code>str</code> categories.<br/><br/>This MUST be <code>"unknown"</code> when:
+      This MUST be <code>"unknown"</code> when:
       <ul>
         <li>
           no appropriate term can be found (e.g. the cell type is unknown)
@@ -396,17 +437,14 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
           <code>assay_ontology_term_id</code> is a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i>,<br/><code>uns['spatial']['is_single']</code> is <code>True</code>,<br/>and the corresponding value of <code>in_tissue</code> is <code>0</code>
         </li>
       </ul>
-        <br/>If <code>tissue_type</code> is <code>"cell line"</code>, this MAY be <code>"na"</code>, but then all observations where <code>tissue_type</code> is <code>"cell line"</code> MUST be <code>"na"</code>.<br/><br/>The following CL terms MUST NOT be used:
-        <ul><li>
-          <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000255"><code>"CL:0000255"</code></a> for <i>eukaryotic cell</i>
-        </li>
-        <li>
-          <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000257"><code>"CL:0000257"</code></a> for <i>Eumycetozoan cell</i>
-        </li>
-        <li>
-            <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000548"><code>"CL:0000548"</code></a> for <i>animal cell</i>
-         </li></ul><br/>
-      Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000000"><code>CL:0000000</code></a> for <i>cell</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/terms?obo_id=FBbt:00007002"><code>FBbt:00007002</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/terms?obo_id=NCBITaxon:7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/wbbt/classes?obo_id=WBbt%3A0006803"><code>WBbt:0006803</code></a> for <i>Nucleus</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a>for <i>Caenorhabditis elegans</i>, and its descendants. A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral CL term SHOULD be used.<br/><br/>
+      If <code>tissue_type</code> is <code>"cell line"</code>, this MAY be <code>"na"</code>, but then all observations where <code>tissue_type</code> is <code>"cell line"</code> MUST be <code>"na"</code>.<br/><br/>The following CL terms MUST NOT be used:
+      <ul>
+        <li><a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000255"><code>"CL:0000255"</code></a> for <i>eukaryotic cell</i></li>
+        <li><a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000257"><code>"CL:0000257"</code></a> for <i>Eumycetozoan cell</i></li>
+        <li><a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000548"><code>"CL:0000548"</code></a> for <i>animal cell</i></li>
+      </ul>
+      Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000000"><code>CL:0000000</code></a> for <i>cell</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/terms?obo_id=FBbt:00007002"><code>FBbt:00007002</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/terms?obo_id=NCBITaxon:7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/wbbt/classes?obo_id=WBbt%3A0006803"><code>WBbt:0006803</code></a> for <i>Nucleus</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a>for <i>Caenorhabditis elegans</i>, and its descendants.<br/><br/>
+       <b>Note:</b>A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral CL term SHOULD be used.
     </td>
   </tr>
 </tbody></table>
@@ -423,8 +461,15 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED if <code>cell_type_ontology_term_id</code> is present; otherwise this key MUST NOT be present.</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories.<br/><br/>This MUST be <code>"na"</code> if the value of  <code>cell_type_ontology_term_id</code> is <code>"na"</code>.<br/><br/>This MUST be <code>"unknown"</code> if the value of  <code>cell_type_ontology_term_id</code> is <code>"unknown"</code>.<br/><br/>Otherwise, this MUST be the human-readable name assigned to the value of <code>cell_type_ontology_term_id</code>.
+        <td>
+          This MUST be <code>"na"</code> if the value of  <code>cell_type_ontology_term_id</code> is <code>"na"</code>.<br/><br/>
+          This MUST be <code>"unknown"</code> if the value of  <code>cell_type_ontology_term_id</code> is <code>"unknown"</code>.<br/><br/>
+          Otherwise, this MUST be the human-readable name assigned to the value of <code>cell_type_ontology_term_id</code>.
         </td>
     </tr>
 </tbody></table>
@@ -441,9 +486,15 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
       <td>
-        categorical with <code>str</code> categories.<br/><br/>If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/terms?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/hsapdv/terms?obo_id=HsapDv%3A0000001"><code>HsapDv:0000001</code></a> for <i>life cycle</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a> for <i>Homo sapiens</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000071"><code>UBERON:0000071</code></a> for <i>death stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/terms?obo_id=XAO:0000437"><code>XAO:0000437</code></a> for <i>death</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a> for <i>Xenopus <genus></i>), and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFS%3A0000000"><code>ZFS:0000000</code></a> for <i>Unknown</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>. A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.
+        If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>
+        Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/terms?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/hsapdv/terms?obo_id=HsapDv%3A0000001"><code>HsapDv:0000001</code></a> for <i>life cycle</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a> for <i>Homo sapiens</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000071"><code>UBERON:0000071</code></a> for <i>death stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/terms?obo_id=XAO:0000437"><code>XAO:0000437</code></a> for <i>death</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a> for <i>Xenopus <genus></i>), and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFS%3A0000000"><code>ZFS:0000000</code></a> for <i>Unknown</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>.<br/><br/>
+          <b>Note:</b>A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.
       </td>
   </tr>
 </tbody></table>
@@ -460,9 +511,15 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories.<br/><br/>This MUST be <code>"na"</code> if the value of <code>development_stage_ontology_term_id</code> is <code>"na"</code>.<br/><br/>This MUST be <code>"unknown"</code> if the value of <code>development_stage_ontology_term_id</code> is <code>"unknown"</code>.<br/><br/>Otherwise, this MUST be the human-readable name assigned to the value of <code>development_stage_ontology_term_id</code>.
-        </td>
+      <td>
+        This MUST be <code>"na"</code> if the value of <code>development_stage_ontology_term_id</code> is <code>"na"</code>.<br/><br/>This MUST be <code>"unknown"</code> if the value of <code>development_stage_ontology_term_id</code> is <code>"unknown"</code>.<br/><br/>
+        Otherwise, this MUST be the human-readable name assigned to the value of <code>development_stage_ontology_term_id</code>.
+      </td>
     </tr>
 </tbody></table>
 
@@ -478,13 +535,21 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories.<br/><br/>If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>"NCBITaxon:6239"</code></a> for <i>Caenorhabditis elegans</i>, this MUST be <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000384"><code>"PATO:0000384"</code></a> for <i>male</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0001340"><code>"PATO:0001340"</code></a> for <i>hermaphrodite</i>; otherwise, this MUST be one of:<br/><br/>
-        <ul>
-        <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000383"><code>"PATO:0000383"</code></a> for  <i>female</i></li>
-        <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000384"><code>"PATO:0000384"</code></a> for  <i>male</i></li>
-        <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0001340"><code>"PATO:0001340"</code></a> for  <i>hermaphrodite</i></li>
-        </ul>
+        <td>
+          If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>
+          If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>
+          If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>"NCBITaxon:6239"</code></a> for <i>Caenorhabditis elegans</i>, this MUST be <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000384"><code>"PATO:0000384"</code></a> for <i>male</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0001340"><code>"PATO:0001340"</code></a> for <i>hermaphrodite</i><br/><br/>
+          Otherwise, this MUST be one of:
+          <ul>
+            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000383"><code>"PATO:0000383"</code></a> for  <i>female</i></li>
+            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000384"><code>"PATO:0000384"</code></a> for  <i>male</i></li>
+            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0001340"><code>"PATO:0001340"</code></a> for  <i>hermaphrodite</i></li>
+          </ul>
         </td>
     </tr>
 </tbody></table>
@@ -501,8 +566,14 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories.<br/><br/>This MUST be <code>"na"</code> if the value of  <code>sex_ontology_term_id</code> is <code>"na"</code>.<br/><br/>This MUST be <code>"unknown"</code> if the value of  <code>sex_ontology_term_id</code> is <code>"unknown"</code>.<br/><br/>Otherwise, this MUST be the human-readable name assigned to the value of <code>sex_ontology_term_id</code>.
+        <td>
+          This MUST be <code>"na"</code> if the value of  <code>sex_ontology_term_id</code> is <code>"na"</code>.<br/><br/>This MUST be <code>"unknown"</code> if the value of  <code>sex_ontology_term_id</code> is <code>"unknown"</code>.<br/><br/>
+          Otherwise, this MUST be the human-readable name assigned to the value of <code>sex_ontology_term_id</code>.
         </td>
     </tr>
 </tbody></table>
@@ -519,20 +590,23 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
       <td>
-        categorical with <code>str</code> categories.<br/><br/>If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code><br/><br/>If <code>organism_ontolology_term_id</code> is NOT
-        <code>"NCBITaxon:9606"</code> for <i>Homo sapiens</i>, this MUST be <code>"na"</code>.<br/><br/>Otherwise, if
-        <code>organism_ontolology_term_id</code> is
-        <code>"NCBITaxon:9606"</code> for <i>Homo sapiens</i>, this MUST be <code>"unknown"</code> if unavailable; otherwise, this MUST meet the following requirements:<br /><br />
+        If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code><br/><br/>
+        If <code>organism_ontolology_term_id</code> is NOT <code>"NCBITaxon:9606"</code> for <i>Homo sapiens</i>, this MUST be <code>"na"</code>.<br/><br/>
+        Otherwise, if <code>organism_ontolology_term_id</code> is <code>"NCBITaxon:9606"</code> for <i>Homo sapiens</i>, this MUST be <code>"unknown"</code> if unavailable; otherwise, this MUST meet the following requirements:
         <ul>
           <li>
             The value MUST be formatted as one or more AfPO or HANCESTRO terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms.
           </li>
           <li>
-            Each AfPO or HANCESTRO term MUST be a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/hancestro/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FHANCESTRO_0601"><code>"HANCESTRO:0601"</code></a> for <i>ethnicity category</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/hancestro/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FHANCESTRO_0602"><code>"HANCESTRO:0602"</code></a> for <i>geography-based population category</i>.<br/><br/>
+            Each AfPO or HANCESTRO term MUST be a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/hancestro/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FHANCESTRO_0601"><code>"HANCESTRO:0601"</code></a> for <i>ethnicity category</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/hancestro/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FHANCESTRO_0602"><code>"HANCESTRO:0602"</code></a> for <i>geography-based population category</i>.
           </li>
-            For example, if the terms are <code>"HANCESTRO:0590</code> and <code>HANCESTRO:0580"</code> then the value of <code>self_reported_ethnicity_ontology_term_id</code> MUST be <code>"HANCESTRO:0580 || HANCESTRO:0590"</code>.<br/><br/>
+            For example, if the terms are <code>"HANCESTRO:0590</code> and <code>HANCESTRO:0580"</code> then the value of <code>self_reported_ethnicity_ontology_term_id</code> MUST be <code>"HANCESTRO:0580 || HANCESTRO:0590"</code>.
         </ul>
       </td>
     </tr>
@@ -550,8 +624,16 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be <code>"na"</code> if the value of <code>self_reported_ethnicity_ontology_term_id</code> is <code>"na"</code>. This MUST be <code>"unknown"</code> if the value of <code>self_reported_ethnicity_ontology_term_id</code> is <code>"unknown"</code>. Otherwise, this MUST be one or more human-readable names for the terms in <code>self_reported_ethnicity_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/> For example, if the value of <code>self_reported_ethnicity_ontology_term_id</code> is <code>"HANCESTRO:0005 || HANCESTRO:0014"</code> then the value of <code>self_reported_ethnicity</code> MUST be <code>"European || Hispanic or Latin American"</code>.
+        <td>
+          This MUST be <code>"na"</code> if the value of <code>self_reported_ethnicity_ontology_term_id</code> is <code>"na"</code>.<br/><br/>
+          This MUST be <code>"unknown"</code> if the value of <code>self_reported_ethnicity_ontology_term_id</code> is <code>"unknown"</code>.<br/><br/>
+          Otherwise, this MUST be one or more human-readable names for the terms in <code>self_reported_ethnicity_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>
+          For example, if the value of <code>self_reported_ethnicity_ontology_term_id</code> is <code>"HANCESTRO:0005 || HANCESTRO:0014"</code> then the value of <code>self_reported_ethnicity</code> MUST be <code>"European || Hispanic or Latin American"</code>.
         </td>
     </tr>
 </tbody></table>
@@ -568,17 +650,22 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be one of:<br/><br/>
-        <ul>
-          <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000461"><code>"PATO:0000461"</code></a> for <i>normal</i> or <i>healthy</i>.</li>
-          <li>one or more MONDO terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, if the terms are <code>"MONDO:1030008"</code>, <code>"MONDO:0800349"</code>, <code>"MONDO:0004604"</code>, and <code>"MONDO:0043004"</code> then the value MUST be <code>"MONDO:0004604 || MONDO:0043004 || MONDO:0800349 || MONDO:1030008"</code>.</li>
-       </ul>
-       MONDO terms MUST be either:
-       <ul>
-          <li>a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/mondo/classes?obo_id=MONDO%3A0000001"><code>"MONDO:0000001"</code></a> for <i>disease</i></li>
-          <li><a href="https://www.ebi.ac.uk/ols4/ontologies/mondo/classes?obo_id=MONDO%3A0021178"><code>"MONDO:0021178"</code></a> for <i>injury</i> or <b>preferably</b> its most accurate descendant</li>
-       </ul>
+        <td>
+          This MUST be one of:
+          <ul>
+            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000461"><code>"PATO:0000461"</code></a> for <i>normal</i> or <i>healthy</i>.</li>
+            <li>one or more MONDO terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, if the terms are <code>"MONDO:1030008"</code>, <code>"MONDO:0800349"</code>, <code>"MONDO:0004604"</code>, and <code>"MONDO:0043004"</code> then the value MUST be <code>"MONDO:0004604 || MONDO:0043004 || MONDO:0800349 || MONDO:1030008"</code>.</li>
+          </ul>
+          MONDO terms MUST be either:
+          <ul>
+            <li>a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/mondo/classes?obo_id=MONDO%3A0000001"><code>"MONDO:0000001"</code></a> for <i>disease</i></li>
+            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/mondo/classes?obo_id=MONDO%3A0021178"><code>"MONDO:0021178"</code></a> for <i>injury</i> or <b>preferably</b> its most accurate descendant</li>
+          </ul>
         </td>
     </tr>
 </tbody></table>
@@ -595,9 +682,14 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be one or more human-readable names for the terms in <code>disease_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>
-        For example, if the value of <code>disease_ontology_term_id</code> is <code>"MONDO:0004604 || MONDO:0043004 || MONDO:0800349 || MONDO:1030008"</code> then the value MUST be <code>"Hodgkin's lymphoma, lymphocytic-histiocytic predominance || Weil's disease || atrial fibrillation, familial, 16 || mitral valve insufficiency"</code>.
+        <td>
+          This MUST be one or more human-readable names for the terms in <code>disease_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>
+          For example, if the value of <code>disease_ontology_term_id</code> is <code>"MONDO:0004604 || MONDO:0043004 || MONDO:0800349 || MONDO:1030008"</code> then the value MUST be <code>"Hodgkin's lymphoma, lymphocytic-histiocytic predominance || Weil's disease || atrial fibrillation, familial, 16 || mitral valve insufficiency"</code>.
         </td>
     </tr>
 </tbody></table>
@@ -614,154 +706,83 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
       <td>
-        categorical with <code>str</code> categories. The value MUST be either be <code>"na"</code> or one or more experimental condition term identifiers in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of identifiers.<br/><br/>For example, if the terms are <code>"uniprot:P05112"</code>, <code>"anti-uniprot:Q99467"</code>, <code>"EFO:0002757"</code>, <code>"CHEBI:16412"</code>, <code>"EFO:0001702"</code>, and <code>"CHEBI:41774"</code> then the value MUST be <code>"CHEBI:16412 || CHEBI:41774 || EFO:0001702 || EFO:0002757 || anti-uniprot:Q99467 || uniprot:P05112"</code>.<br/><br/>The value MUST be <code>"na"</code> when there is no experimental condition for this observation. If all observations are <code>"na"</code>, then this field MUST NOT be present.<br/><br/>If the experimental condition is a protein perturbation, then the value MUST include one or more UniProt terms such as <code>"uniprot:P08575"</code> for proteins or a UniProt term prefixed with <code>"anti-"</code> such as <code>"anti-uniprot:P08575"</code> for antibodies.
-       <br/><br/>
-        If the experimental condition is a chemical perturbation, then the value MUST include one or more descendants of <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24431?lang=en"><code>"CHEBI:24431"</code></a> for <i>chemical entity</i>.<br/><br/>The following CHEBI terms MUST NOT be used:
+        The value MUST be either be <code>"na"</code> or one or more experimental condition term identifiers in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of identifiers.<br/><br/>
+        For example, if the terms are <code>"uniprot:P05112"</code>, <code>"anti-uniprot:Q99467"</code>, <code>"EFO:0002757"</code>, <code>"CHEBI:16412"</code>, <code>"EFO:0001702"</code>, and <code>"CHEBI:41774"</code> then the value MUST be <code>"CHEBI:16412 || CHEBI:41774 || EFO:0001702 || EFO:0002757 || anti-uniprot:Q99467 || uniprot:P05112"</code>.<br/><br/>
+        The value MUST be <code>"na"</code> when there is no experimental condition for this observation. If all observations are <code>"na"</code>, then this field MUST NOT be present.<br/><br/>
+        If the experimental condition is a protein perturbation, then the value MUST include one or more UniProt terms such as <code>"uniprot:P08575"</code> for proteins or a UniProt term prefixed with <code>"anti-"</code> such as <code>"anti-uniprot:P08575"</code> for antibodies.<br/><br/>
+        If the experimental condition is a chemical perturbation, then the value MUST include one or more descendants of <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24431?lang=en"><code>"CHEBI:24431"</code></a> for <i>chemical entity</i>.<br/><br/>
+        The following CHEBI terms MUST NOT be used:
         <ul>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_23367?lang=en"
-              ><code>"CHEBI:23367"</code></a
-            >
-            for <i>molecular entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_23367?lang=en"><code>"CHEBI:23367"</code></a> for <i>molecular entity</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24431?lang=en"
-              ><code>"CHEBI:24431"</code></a
-            >
-            for <i>chemical entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24431?lang=en"><code>"CHEBI:24431"</code></a> for <i>chemical entity</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24835?lang=en"
-              ><code>"CHEBI:24835"</code></a
-            >
-            for <i>inorganic molecular entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24835?lang=en"><code>"CHEBI:24835"</code></a> for <i>inorganic molecular entity</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24867?lang=en"
-              ><code>"CHEBI:24867"</code></a
-            >
-            for <i>monoatomic ion</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24867?lang=en"><code>"CHEBI:24867"</code></a> for <i>monoatomic ion</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24870?lang=en"
-              ><code>"CHEBI:24870"</code></a
-            >
-            for <i>ion</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_24870?lang=en"><code>"CHEBI:24870"</code></a> for <i>ion</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_25212?lang=en"
-              ><code>"CHEBI:25212"</code></a
-            >
-            for <i>metabolite</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_25212?lang=en"><code>"CHEBI:25212"</code></a> for <i>metabolite</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_25367?lang=en"
-              ><code>"CHEBI:25367"</code></a
-            >
-            for <i>molecule</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_25367?lang=en"><code>"CHEBI:25367"</code></a> for <i>molecule</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_25699?lang=en"
-              ><code>"CHEBI:25699"</code></a
-            >
-            for <i>organic ion</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_25699?lang=en"><code>"CHEBI:25699"</code></a> for <i>organic ion</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33238?lang=en"
-              ><code>"CHEBI:33238"</code></a
-            >
-            for <i>monoatomic entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33238?lang=en"><code>"CHEBI:33238"</code></a> for <i>monoatomic entity</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33259?lang=en"
-              ><code>"CHEBI:33259"</code></a
-            >
-            for <i>elemental molecular entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33259?lang=en"><code>"CHEBI:33259"</code></a> for <i>elemental molecular entity</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33497?lang=en"
-              ><code>"CHEBI:33497"</code></a
-            >
-            for <i>transition element molecular entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33497?lang=en"><code>"CHEBI:33497"</code></a> for <i>transition element molecular entity</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33595?lang=en"
-              ><code>"CHEBI:33595"</code></a
-            >
-            for <i>cyclic compound</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33595?lang=en"><code>"CHEBI:33595"</code></a> for <i>cyclic compound</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33674?lang=en"
-              ><code>"CHEBI:33674"</code></a
-            >
-            for <i>s-block molecular entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33674?lang=en"><code>"CHEBI:33674"</code></a> for <i>s-block molecular entity</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33675?lang=en"
-              ><code>"CHEBI:33675"</code></a
-            >
-            for <i>p-block molecular entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_33675?lang=en"><code>"CHEBI:33675"</code></a> for <i>p-block molecular entity</i>
           </li> 
            <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_36342?lang=en"
-              ><code>"CHEBI:36342"</code></a
-            >
-            for <i>subatomic particle</i> and its descendants
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_36342?lang=en"><code>"CHEBI:36342"</code></a> for <i>subatomic particle</i> and its descendants
           </li>         
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_36357?lang=en"
-              ><code>"CHEBI:36357"</code></a
-            >
-            for <i>polyatomic entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_36357?lang=en"><code>"CHEBI:36357"</code></a> for <i>polyatomic entity</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_36358?lang=en"
-              ><code>"CHEBI:36358"</code></a
-            >
-            for <i>polyatomic ion</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_36358?lang=en"><code>"CHEBI:36358"</code></a> for <i>polyatomic ion</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_36914?lang=en"
-              ><code>"CHEBI:36914"</code></a
-            >
-            for <i>inorganic ion</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_36914?lang=en"><code>"CHEBI:36914"</code></a> for <i>inorganic ion</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_37577?lang=en"
-              ><code>"CHEBI:37577"</code></a
-            >
-            for <i>heteroatomic molecular entity</i>
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_37577?lang=en"><code>"CHEBI:37577"</code></a> for <i>heteroatomic molecular entity</i>
           </li>
           <li>
-            <a
-              href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_50906?lang=en"
-              ><code>"CHEBI:50906"</code></a and its descendants
-            >
-            for <i>role</i> and its descendants
+            <a href="https://www.ebi.ac.uk/ols4/ontologies/chebi/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FCHEBI_50906?lang=en"><code>"CHEBI:50906"</code></a and its descendants> for <i>role</i> and its descendants
           </li>
         </ul>
-          <br/>If the experimental condition is a diet perturbation, then the value MUST include either <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0002755"><code>"EFO:0002755"</code></a> for <i>diet</i> or its most accurate descendant.<br/><br/>If the experimental condition is a temperature perturbation, then the value MUST include <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0001702"><code>"EFO:0001702"</code></a> for <i>temperature</i>.<br/><br/>No other values MUST be present for experimental conditions. 
+        If the experimental condition is a diet perturbation, then the value MUST include either <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0002755"><code>"EFO:0002755"</code></a> for <i>diet</i> or its most accurate descendant.<br/><br/>
+        If the experimental condition is a temperature perturbation, then the value MUST include <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0001702"><code>"EFO:0001702"</code></a> for <i>temperature</i>.<br/><br/>
+        No other values MUST be present for experimental conditions. 
       </td>
     </tr>
 </tbody></table>
@@ -778,10 +799,14 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED if <code>obs['experimental_condition_ontology_term_id']</code> is present; otherwise this key MUST NOT be present.</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories.<br/><br/>
           This MUST be <code>"na"</code> if the value of <code>experimental_condition_ontology_term_id</code> is <code>"na"</code>.<br/><br/>
-          Otherwise, this MUST be one or more human-readable names for the terms in <code>experimental_condition_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>If an antibody value is present, then the human-readable name is prefixed with <code>"anti-"</code> such as <code>"anti-PTPRC_HUMAN"</code>.<br/><br/>For example, if the value of <code>experimental_condition_ontology_term_id</code> is <code>"CHEBI:16412 || CHEBI:41774 || EFO:0001702 || EFO:0002757 || anti-uniprot:Q99467 || uniprot:P05112"</code> then the value of <code>experimental_condition</code> MUST be <code>"lipopolysaccharide || tamoxifen || temperature || high fat diet || anti-CD180_HUMAN || IL4_HUMAN"</code>.
+          Otherwise, this MUST be one or more human-readable names for the terms in <code>experimental_condition_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>
+          If an antibody value is present, then the human-readable name is prefixed with <code>"anti-"</code> such as <code>"anti-PTPRC_HUMAN"</code>.<br/><br/>For example, if the value of <code>experimental_condition_ontology_term_id</code> is <code>"CHEBI:16412 || CHEBI:41774 || EFO:0001702 || EFO:0002757 || anti-uniprot:Q99467 || uniprot:P05112"</code> then the value of <code>experimental_condition</code> MUST be <code>"lipopolysaccharide || tamoxifen || temperature || high fat diet || anti-CD180_HUMAN || IL4_HUMAN"</code>.
         </td>
     </tr>
 </tbody></table>
@@ -798,20 +823,31 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED if <code>obs['experimental_condition_ontology_term_id']</code> or <code>obs['genetic_perturbation_id']</code> is present; otherwise this key MUST NOT be present.</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories.<br/><br/>         The value MUST be <code>"no perturbations"</code> when:
-        <ul>
-          <li>only one of <code>obs['experimental_condition_ontology_term_id']</code> or <code>obs['genetic_perturbation_id']</code> is present and its value is <code>"na"</code></li>
-          <li>both <code>obs['experimental_condition_ontology_term_id']</code> and <code>obs['genetic_perturbation_id']</code> are present and their values are <code>"na"</code></li>
-       </ul>
-       Otherwise, the value MUST be the <b>set</b> of perturbation types present in the observation, limited to the following types:
-        <ul>
-          <li> <code>"chemical"</code></li>
-          <li> <code>"diet"</code></li>
-          <li> <code>"genetic"</code></li>
-          <li> <code>"protein"</code></li>
-          <li> <code>"temperature"</code></li>
-        </ul>and formatted in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of elements.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains a <code>"CHEBI:"</code> term identifier, then <code>"chemical"</code> MUST be added to the set of values.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains the <code>"EFO:0002755"</code> term identifier or its descendants, then <code>"diet"</code> MUST be added to the set of values.<br/><br/>If <code>genetic_perturbation_term_id</code> is present and its value is not <code>"na"</code>, then <code>"genetic"</code> MUST be added to the set of values.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains a <code>"uniprot:"</code> term identifier, then <code>"protein"</code> MUST be added to the set of values.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains the <code>"EFO:0001702"</code> term identifier, then <code>"temperature"</code> MUST be added to the set of values.
+        <td>
+          The value MUST be <code>"no perturbations"</code> when:
+          <ul>
+            <li>only one of <code>obs['experimental_condition_ontology_term_id']</code> or <code>obs['genetic_perturbation_id']</code> is present and its value is <code>"na"</code></li>
+            <li>both <code>obs['experimental_condition_ontology_term_id']</code> and <code>obs['genetic_perturbation_id']</code> are present and their values are <code>"na"</code></li>
+          </ul>
+          Otherwise, the value MUST be the <b>set</b> of perturbation types present in the observation, limited to the following types:
+            <ul>
+              <li> <code>"chemical"</code></li>
+              <li> <code>"diet"</code></li>
+              <li> <code>"genetic"</code></li>
+              <li> <code>"protein"</code></li>
+              <li> <code>"temperature"</code></li>
+            </ul>
+          and formatted in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of elements.<br/><br/>
+          If <code>experimental_condition_ontology_term_id</code> contains a <code>"CHEBI:"</code> term identifier, then <code>"chemical"</code> MUST be added to the set of values.<br/><br/>
+          If <code>experimental_condition_ontology_term_id</code> contains the <code>"EFO:0002755"</code> term identifier or its descendants, then <code>"diet"</code> MUST be added to the set of values.<br/><br/>
+          If <code>genetic_perturbation_term_id</code> is present and its value is not <code>"na"</code>, then <code>"genetic"</code> MUST be added to the set of values.<br/><br/>
+          If <code>experimental_condition_ontology_term_id</code> contains a <code>"uniprot:"</code> term identifier, then <code>"protein"</code> MUST be added to the set of values.<br/><br/>
+          If <code>experimental_condition_ontology_term_id</code> contains the <code>"EFO:0001702"</code> term identifier, then <code>"temperature"</code> MUST be added to the set of values.
       </td>
     </tr>
 </tbody></table>
@@ -828,9 +864,16 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories.<br/><br/>If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>; otherwise, this MUST NOT be <code>"na"</code>, but MUST be free-text that identifies a unique individual that data were derived from. It is STRONGLY RECOMMENDED that this identifier be designed so that it is unique to all datasets, specifically datasets from a same collection (sharing the same DOI).
-          It is STRONGLY RECOMMENDED that <code>"pooled"</code> be used  for observations from a sample of multiple individuals that were not confidently assigned to a single individual through demultiplexing.<br/><br/>It is STRONGLY RECOMMENDED that <code>"unknown"</code> ONLY be used for observations in a dataset when it is not known which observations are from the same individual.
+        <td>
+          If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>; otherwise, this MUST NOT be <code>"na"</code>, but MUST be free-text that identifies a unique individual that data were derived from.<br/><br/>
+          It is STRONGLY RECOMMENDED that this identifier be designed so that it is unique to all datasets, specifically datasets from a same collection (sharing the same DOI).<br/><br/>
+          It is STRONGLY RECOMMENDED that <code>"pooled"</code> be used  for observations from a sample of multiple individuals that were not confidently assigned to a single individual through demultiplexing.<br/><br/>
+          It is STRONGLY RECOMMENDED that <code>"unknown"</code> ONLY be used for observations in a dataset when it is not known which observations are from the same individual.
         </td>
     </tr>
 </tbody></table>
@@ -847,8 +890,15 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>bool</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td><code>bool</code>. This MUST be <code>False</code> if <code>uns['spatial']['is_single']</code> is <code>False</code>. This MUST be <code>True</code> if this is the canonical instance of this cellular observation and <code>False</code> if not. This is commonly <code>False</code> for meta-analyses reusing data or for secondary views of data.
+        <td>
+          This MUST be <code>False</code> if <code>uns['spatial']['is_single']</code> is <code>False</code>.<br/><br/>
+          This MUST be <code>True</code> if this is the canonical instance of this cellular observation and <code>False</code> if not.<br/><br/>
+          This is commonly <code>False</code> for meta-analyses reusing data or for secondary views of data.
         </td>
     </tr>
 </tbody></table>
@@ -865,10 +915,14 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be <code>"cell"</code>, <code>"nucleus"</code>, or <code>"na"</code>.<br/>
-        <br/>This MUST be the correct type for the corresponding assay:
-          <br/><br/>
+        <td>
+          This MUST be <code>"cell"</code>, <code>"nucleus"</code>, or <code>"na"</code>.<br/><br/>
+          This MUST be the correct type for the corresponding assay:
           <table>
           <thead>
           <tr>
@@ -931,8 +985,8 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
           </tr>
           <tr>
            <td><i>methylation profiling by high throughput sequencing</i> [<a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0002761"><code>EFO:0002761</code></a>] and its descendants</td>
-          <td><code>"nucleus"</code></td>
-         </tr>
+           <td><code>"nucleus"</code></td>
+          </tr>
           <tr>
               <td><i>microwell-seq</i> [<a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030002"><code>EFO:0030002</code></a>]</td>
               <td><code>"cell"</code></td>
@@ -982,7 +1036,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
               <td><code>"cell"</code> or <code>"nucleus"</code></td>
            </tr> 
           </tbody></table>
-          <br/>If the assay does not appear in this table, the most appropriate value MUST be selected and <a href="mailto:scFAIR@chanzuckerberg.com">the curation team informed</a> during submission so that the assay can be added to the table.
+          If the assay does not appear in this table, the most appropriate value MUST be selected.
         </td>
     </tr>
 </tbody></table>
@@ -1000,31 +1054,38 @@ The value for each `str` key MUST be a  `numpy.ndarray` of shape `(n_obs, m)`, w
       <ul>
         <li>{suffix} MUST be at least one character in length.</li>
         <li>The first character of {suffix} MUST be a letter of the alphabet and the remaining characters MUST be alphanumeric characters, <code>'_'</code>, <code>'-'</code>, or <code>'.'</code> (This is equivalent to the regular expression pattern <code>"^[a-zA-Z][a-zA-Z0-9_.-]*$"</code>.)</li>
-         <li>{suffix} MUST NOT be <code>"spatial"</code>.
-      </ul><br/>
-      {suffix} is presented as text to users in the <b>Embedding Choice</b> selector in scFAIR Explorer so it is STRONGLY RECOMMENDED that it be descriptive.<br/><br/>See also <code>default_embedding</code> in <code>uns</code>.</td>
+        <li>{suffix} MUST NOT be <code>"spatial"</code>.
+      </ul>
+      <b>Note:</b> See also <code><a href="https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#default_embedding">default_embedding</a></code> in <code><a href="https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#uns">uns</a></code>.</td>
     </tr>
     <tr>
       <th>Requirement</th>
-         <td>REQUIRED if <code>assay_ontology_term_id</code> is neither a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> nor <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i>.<br/><br/>
-             OPTIONAL if <code>assay_ontology_term_id</code> is either a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i>.</td>
+         <td>
+           REQUIRED if <code>assay_ontology_term_id</code> is neither a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> nor <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i>.<br/><br/>
+           OPTIONAL if <code>assay_ontology_term_id</code> is either a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i>.
+         </td>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <td><code>numpy.ndarray</code>.</td>
     </tr>
     <tr>
       <th>Value</th>
-        <td><code>numpy.ndarray</code> with the following requirements<br/><br/>
+        <td> 
+          If present, this must endorse the following requirements:
           <ul>
-          <li>MUST have the same number of rows as <code>X</code> and MUST include at least two columns</li>
-          <li>MUST be a <a href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.kind.html"><code>numpy.dtype.kind</code></a> of <code>"f"</code>, <code>"i"</code>, or "<code>u"</code></li>
-          <li>MUST NOT contain any <a href="https://numpy.org/devdocs/reference/constants.html#numpy.inf">positive infinity (<code>numpy.inf</code>)</a> or <a href="https://numpy.org/devdocs/reference/constants.html#numpy.NINF">negative infinity (<code>numpy.NINF</code>)</a> values </li>
-          <li>MUST NOT contain all <a href="https://numpy.org/devdocs/reference/constants.html#numpy.nan">Not a Number (<code>numpy.nan</code>) </a>
-values</li></ul>
+            <li>MUST have the same number of rows as <code>X</code> and MUST include at least two columns</li>
+            <li>MUST be a <a href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.kind.html"><code>numpy.dtype.kind</code></a> of <code>"f"</code>, <code>"i"</code>, or "<code>u"</code></li>
+            <li>MUST NOT contain any <a href="https://numpy.org/devdocs/reference/constants.html#numpy.inf">positive infinity (<code>numpy.inf</code>)</a> or <a href="https://numpy.org/devdocs/reference/constants.html#numpy.NINF">negative infinity (<code>numpy.NINF</code>)</a> values</li>
+            <li>MUST NOT contain all <a href="https://numpy.org/devdocs/reference/constants.html#numpy.nan">Not a Number (<code>numpy.nan</code>)</a> values</li>
+          </ul>
         </td>
     </tr>
 </tbody></table>
 
 ## `obsp`
 
-The size of the ndarray stored for a key in `obsp` MUST NOT be zero.
+If present, the size of the ndarray stored for a key in `obsp` MUST NOT be zero.
 
 ## `var` and `raw.var` (Gene Metadata)
 
@@ -1042,17 +1103,17 @@ The size of the ndarray stored for a key in `obsp` MUST NOT be zero.
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
         <td>
-          <code>str</code>. The index of the <code>pandas.DataFrame</code> MUST contain unique identifiers for features (e.g. gene names). If present, the index of <code>raw.var</code> MUST be identical to the index of <code>var</code>.
-          <br/><br/>
-          Here, we accept both genes and ERCC spike-ins. In short, ENSEMBL identifiers are required for genes and <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4978944/">External RNA Controls Consortium (ERCC)</a> identifiers for <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fcms_086340.pdf&title=VXNlciBHdWlkZTogRVJDQyBSTkEgU3Bpa2UtSW4gQ29udHJvbCBNaXhlcyAoRW5nbGlzaCAp">RNA Spike-In Control Mixes</a> to ensure that all datasets measure the same features and can therefore be integrated.
-          <br/><br/>
-          If the feature is a gene then the value MUST be the <code>gene_id</code> attribute from the corresponding <code>organism_ontology_term_id</code>. scFAIR allows gene annotations from any species, and any release present in the Ensembl database. In particular, we accept terms from <a href="https://www.ensembl.org/index.html"><code>"Ensembl"</code></a>, <a href="https://bacteria.ensembl.org/index.html"><code>"Ensembl Bacteria"</code></a>, <a href="https://fungi.ensembl.org/index.html"><code>"Ensembl Fungi"</code></a>, <a href="https://plants.ensembl.org/index.html"><code>"Ensembl Plants"</code></a>, <a href="https://protists.ensembl.org/index.html"><code>"Ensembl Protists"</code></a>, <a href="https://metazoa.ensembl.org/index.html"><code>"Ensembl Metazoa"</code></a>, and <a href="https://covid-19.ensembl.org/"><code>"Ensembl COVID-19"</code></a>.<br/>
-          The Ensembl database and assembly used for gene annotation should also be specified in <a href="#uns-dataset-metadata"><code>uns</code></a> entries <a href="#ensembl_release"><code>ensembl_release</code></a>, <a href="#ensembl_database"><code>ensembl_database</code></a>, and <a href="#ensembl_assembly"><code>ensembl_assembly</code></a>.
-          <br/><br/>
-          <b>Note</b>: Version numbers MUST be removed from the <code>gene_id</code> if it is prefixed with <code>"ENS"</code> for <i>Ensembl stable identifier</i>. See <a href="https://ensembl.org/Help/Faq?id=488">I have an Ensembl ID, what can I tell about it from the ID?</a> For example, if the <code>gene_id</code> is <code>“ENSG00000186092.7”</code>, then the value MUST be <code>“ENSG00000186092”</code>.
-          <br/><br/>
+          The index of the <code>pandas.DataFrame</code> MUST contain unique identifiers for features (e.g. gene names). If present, the index of <code>raw.var</code> MUST be identical to the index of <code>var</code>.<br/><br/>
+          Here, we accept both genes and ERCC spike-ins. In short, ENSEMBL identifiers are required for genes and <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4978944/">External RNA Controls Consortium (ERCC)</a> identifiers for <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fcms_086340.pdf&title=VXNlciBHdWlkZTogRVJDQyBSTkEgU3Bpa2UtSW4gQ29udHJvbCBNaXhlcyAoRW5nbGlzaCAp">RNA Spike-In Control Mixes</a> to ensure that all datasets measure the same features and can therefore be integrated.<br/><br/>
+          If the feature is a gene then the value MUST be the <code>gene_id</code> attribute from the corresponding <code>organism_ontology_term_id</code>. scFAIR allows gene annotations from any species, and any release present in the Ensembl database. In particular, we accept terms from <a href="https://www.ensembl.org/index.html"><code>"Ensembl"</code></a>, <a href="https://bacteria.ensembl.org/index.html"><code>"Ensembl Bacteria"</code></a>, <a href="https://fungi.ensembl.org/index.html"><code>"Ensembl Fungi"</code></a>, <a href="https://plants.ensembl.org/index.html"><code>"Ensembl Plants"</code></a>, <a href="https://protists.ensembl.org/index.html"><code>"Ensembl Protists"</code></a>, <a href="https://metazoa.ensembl.org/index.html"><code>"Ensembl Metazoa"</code></a>, and <a href="https://covid-19.ensembl.org/"><code>"Ensembl COVID-19"</code></a>.<br/><br/>
+          The Ensembl database and assembly used for gene annotation should also be specified in <a href="#uns-dataset-metadata"><code>uns</code></a> entries <a href="#ensembl_release"><code>ensembl_release</code></a>, <a href="#ensembl_database"><code>ensembl_database</code></a>, and <a href="#ensembl_assembly"><code>ensembl_assembly</code></a>.<br/><br/>
+          <b>Note:</b> Version numbers MUST be removed from the <code>gene_id</code> if it is prefixed with <code>"ENS"</code> for <i>Ensembl stable identifier</i>. See <a href="https://ensembl.org/Help/Faq?id=488">I have an Ensembl ID, what can I tell about it from the ID?</a> For example, if the <code>gene_id</code> is <code>“ENSG00000186092.7”</code>, then the value MUST be <code>“ENSG00000186092”</code>.<br/><br/>
           If the feature is a <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fcms_086340.pdf&title=VXNlciBHdWlkZTogRVJDQyBSTkEgU3Bpa2UtSW4gQ29udHJvbCBNaXhlcyAoRW5nbGlzaCAp">RNA Spike-In Control Mix</a> then the value MUST be an ERCC Spike-In identifier (e.g. <code>"ERCC-0003"</code>) from <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/cms_095047.txt">cms_095047.txt</a>.
         </td>
     </tr>
@@ -1072,9 +1133,13 @@ This column is REQUIRED only in the `var` dataframe. This column MUST NOT be pre
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>bool</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
         <td>
-          <code>bool</code>. When a raw matrix is not present, the value for all features MUST be <code>False</code>.<br/><br/>
+          When a raw matrix is not present, the value for all features MUST be <code>False</code>.<br/><br/>
           When both a raw and normalized matrix are present, this MUST be <code>True</code> if the feature was filtered out in the normalized matrix (<code>X</code>) but is present in the raw matrix (<code>raw.X</code>). The value for all cells of the given feature in the normalized matrix MUST be <code>0</code>. If a feature contains all zeroes in the normalized matrix, then either the corresponding feature in the raw matrix MUST be all zeroes or the value MUST be <code>True</code>.
         <td>
     </tr>
@@ -1092,6 +1157,10 @@ This column is REQUIRED in the `var` dataframe and if present, also in the `raw.
     <tr>
       <th>Requirement</th>
       <td>REQUIRED</td>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1113,9 +1182,13 @@ This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>uint</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
         <td>
-        <code>uint</code> number of base-pairs (bps). The value is the median of the lengths of isoforms, reusing the median calculation from <a href="https://doi.org/10.1093/bioinformatics/btac561">GTFtools: a software package for analyzing various features of gene models.</a>
+        Number of base-pairs (bps) usually used for some normalizations such as RPKM. The value should be calculated as the median of the lengths of isoforms, reusing the median calculation from <a href="https://doi.org/10.1093/bioinformatics/btac561">GTFtools: a software package for analyzing various features of gene models.</a>
       </td>
     </tr>
 </tbody></table>
@@ -1134,8 +1207,15 @@ This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td><code>str</code>. If the <code>feature_biotype</code> is <code>"spike-in"</code> then this MUST be the ERCC Spike-In identifier appended with <code>" (spike-in control)"</code>.<br/><br/>If the <code>feature_biotype</code> is <code>"gene"</code> and a <code>gene_name</code> attribute is assigned to the <code>var.index</code> feature identifier in its corresponding gene reference, this MUST be the value of the <code>gene_name</code>. If a <code>gene_name</code> attribute is not assigned, then this MUST default to the <code>var.index</code> feature identifier. 
+        <td>
+          If the <code>feature_biotype</code> is <code>"spike-in"</code> then this MUST be the ERCC Spike-In identifier appended with <code>" (spike-in control)"</code>.<br/><br/>
+          If the <code>feature_biotype</code> is <code>"gene"</code> and a <code>gene_name</code> attribute is assigned to the <code>var.index</code> feature identifier in its corresponding gene reference, this MUST be the value of the <code>gene_name</code>.<br/><br/>
+          If a <code>gene_name</code> attribute is not assigned, then this MUST default to the <code>var.index</code> feature identifier. 
         </td>
     </tr>
 </tbody></table>
@@ -1154,33 +1234,37 @@ This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td><code>str</code>. This MUST be the reference organism for a feature:
-          <br/><br/>
-          <table>
-          <thead>
-          <tr>
-          <th>Reference Organism</th>
-          <th>MUST Use</th>
-          </tr>
+        <td>
+          This MUST be the reference organism for a feature:
+          <table><thead>
+            <tr>
+              <th>Reference Organism</th>
+              <th>MUST Use</th>
+            </tr>
           </thead>
           <tbody>
-         <tr>
-            <td><i>Caenorhabditis elegans</i></td>
-            <td>
-              <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>"NCBITaxon:6293"</code></a>
-            </td>
-          </tr>
-         <tr>
-            <td><i>Callithrix jacchus</i></td>
-            <td>
-              <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9483"><code>"NCBITaxon:9483"</code></a>
-            </td>
-          </tr>
+           <tr>
+              <td><i>Caenorhabditis elegans</i></td>
+              <td>
+                <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>"NCBITaxon:6293"</code></a>
+              </td>
+            </tr>
+            <tr>
+              <td><i>Callithrix jacchus</i></td>
+              <td>
+                <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9483"><code>"NCBITaxon:9483"</code></a>
+              </td>
+            </tr>
           <tr>
             <td><i>Danio rerio</i></td>
             <td>
-              <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>"NCBITaxon:7955"</code></a></td>
+              <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>"NCBITaxon:7955"</code></a>
+            </td>
           </tr>
           <tr>
             <td><i>Drosophila melanogaster</i></td>
@@ -1193,59 +1277,59 @@ This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` 
             <td>
               <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9595"><code>"NCBITaxon:9595"</code></a>
             </td>
-           </tr>
-            <tr>
-              <td><i>Homo sapiens</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>"NCBITaxon:9606"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>Macaca fascicularis</i></td>
-              <td>
-                <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9541"><code>"NCBITaxon:9541"</code></a>
-              </td>
-            </tr>
-           <tr>
+          </tr>
+          <tr>
+            <td><i>Homo sapiens</i></td>
+            <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>"NCBITaxon:9606"</code></a></td>
+          </tr>
+          <tr>
+            <td><i>Macaca fascicularis</i></td>
+            <td>
+              <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9541"><code>"NCBITaxon:9541"</code></a>
+            </td>
+          </tr>
+          <tr>
             <td><i>Macaca mulatta</i></td>
             <td>
               <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9544"><code>"NCBITaxon:9544"</code></a>
             </td>
-            </tr>
-            <tr>
-              <td><i>Microcebus murinus</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A30608"><code>"NCBITaxon:30608"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>Mus musculus</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10090"><code>"NCBITaxon:10090"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>Oryctolagus cuniculus</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9986"><code>"NCBITaxon:9986"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>Pan troglodytes</i></td>
-              <td>
-                <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9598"><code>"NCBITaxon:9598"</code></a>
-             </td>
-            </tr>
-            <tr>
-              <td><i>Rattus norvegicus</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10116"><code>"NCBITaxon:10116"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>SARS-CoV-2</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A2697049"><code>"NCBITaxon:2697049"</code></a></td>
-            </tr>
-            <tr>
-              <td><i>Sus scrofa</i></td>
-              <td>
-               <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9823"><code>"NCBITaxon:9823"</code></a>
+          </tr>
+          <tr>
+            <td><i>Microcebus murinus</i></td>
+            <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A30608"><code>"NCBITaxon:30608"</code></a></td>
+          </tr>
+          <tr>
+            <td><i>Mus musculus</i></td>
+            <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10090"><code>"NCBITaxon:10090"</code></a></td>
+          </tr>
+          <tr>
+            <td><i>Oryctolagus cuniculus</i></td>
+            <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9986"><code>"NCBITaxon:9986"</code></a></td>
+          </tr>
+          <tr>
+            <td><i>Pan troglodytes</i></td>
+            <td>
+              <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9598"><code>"NCBITaxon:9598"</code></a>
             </td>
           </tr>
-            <tr>
-              <td><i>ERCC Spike-Ins</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A32630"><code>"NCBITaxon:32630"</code></a></td>
-            </tr>
+          <tr>
+            <td><i>Rattus norvegicus</i></td>
+            <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10116"><code>"NCBITaxon:10116"</code></a></td>
+          </tr>
+          <tr>
+            <td><i>SARS-CoV-2</i></td>
+            <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A2697049"><code>"NCBITaxon:2697049"</code></a></td>
+          </tr>
+          <tr>
+            <td><i>Sus scrofa</i></td>
+            <td>
+              <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9823"><code>"NCBITaxon:9823"</code></a>
+            </td>
+          </tr>
+          <tr>
+            <td><i>ERCC Spike-Ins</i></td>
+            <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A32630"><code>"NCBITaxon:32630"</code></a></td>
+          </tr>
           </tbody></table>
         </td>
     </tr>
@@ -1265,8 +1349,15 @@ This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td><code>str</code>. If the <code>feature_biotype</code> is <code>"gene"</code> then this MUST be the gene type assigned to the feature identifier in <code>var.index</code>. If the <code>feature_biotype</code> is <code>"spike-in"</code> then this MUST be <code>"synthetic"</code>.<br/><br/>See <a href="https://useast.ensembl.org/info/genome/genebuild/biotypes.html ">Ensembl</a> references.
+        <td>
+          If the <code>feature_biotype</code> is <code>"gene"</code> then this MUST be the gene type assigned to the feature identifier in <code>var.index</code>.<br/><br/>
+          If the <code>feature_biotype</code> is <code>"spike-in"</code> then this MUST be <code>"synthetic"</code>.<br/><br/>
+          See <a href="https://useast.ensembl.org/info/genome/genebuild/biotypes.html ">Ensembl</a> references.
         </td>
     </tr>
 </tbody></table>
@@ -1285,9 +1376,16 @@ This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` 
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td><code>str</code>. If the <code>feature_biotype</code> is <code>"gene"</code> then this MUST be the chromosome location corresponding to the feature identifier in <code>var.index</code>. If the <code>feature_biotype</code> is <code>"spike-in"</code> then this MUST be <code>"na"</code>.<br/><br/>
-          Each chromosome name MUST be a <a href="https://www.ncbi.nlm.nih.gov/genbank/fastaformat/">sequence identifier</a> from the FASTA reference for the <code>organism_ontology_term_id</code>. It MUST be encoded based on ENSEMBL identifiers, and eventually needs to be updated to:
+        <td>
+          If the <code>feature_biotype</code> is <code>"gene"</code> then this MUST be the chromosome location corresponding to the feature identifier in <code>var.index</code>.<br/><br/>
+          If the <code>feature_biotype</code> is <code>"spike-in"</code> then this MUST be <code>"na"</code>.<br/><br/>
+          Each chromosome name MUST be a <a href="https://www.ncbi.nlm.nih.gov/genbank/fastaformat/">sequence identifier</a> from the FASTA reference for the <code>organism_ontology_term_id</code>.<br/><br/>
+          It MUST be encoded based on ENSEMBL identifiers, and eventually needs to be updated to:
           <ul>
             <li>Remove their <code>"chr"</code> prefix, if present</li>
             <li>Rename the mitochondrial designator from <code>"M"</code> (**or any other identifier**) to <code>"MT"</code></li>
@@ -1319,9 +1417,13 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>int</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
         <td>
-          <code>int</code>. The key MUST be the <b>Ensembl</b> release number of the assembly used for gene annotation, e.g. <code>115</code> for <a href="https://ftp.ensembl.org/pub/release-115/">Ensembl r.115</a>.
+          The key MUST be the <b>Ensembl</b> release number of the assembly used for gene annotation, e.g. <code>115</code> for <a href="https://ftp.ensembl.org/pub/release-115/">Ensembl r.115</a>.
         </td>
     </tr>
 </tbody></table>
@@ -1338,9 +1440,14 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
         <td>
-          <code>str</code>. The key MUST be the <b>Ensembl</b> database name of the assembly used for gene annotation. One of the following terms MUST be used: 
+          The key MUST be the <b>Ensembl</b> database name of the assembly used for gene annotation.<br/><br/>
+          One of the following terms MUST be used: 
           <table>
             <tr><td><a href="https://www.ensembl.org/"><code>"Ensembl"</code></a></td></tr>
             <tr><td><a href="https://bacteria.ensembl.org/"><code>"EnsemblBacteria"</code></a></td></tr>
@@ -1366,9 +1473,13 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>OPTIONAL</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
         <td>
-          <code>str</code>. The key MUST be the <b>Ensembl</b> assembly name of the assembly used for gene annotation, e.g. <code>"GRCh38.p14"</code> for Homo Sapiens release 115. You can relate for e.g. to this <a href="https://www.ensembl.org/info/website/archives/assembly.html">correspondance table</a> for the main Ensembl database.
+          The key MUST be the <b>Ensembl</b> assembly name of the assembly used for gene annotation, e.g. <code>"GRCh38.p14"</code> for Homo Sapiens release 115. You can relate for e.g. to this <a href="https://www.ensembl.org/info/website/archives/assembly.html">correspondance table</a> for the main Ensembl database.
         </td>
     </tr>
 </tbody></table>
@@ -1385,8 +1496,13 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td><code>str</code>. Should be the `"NCBITaxon"` ontology term corresponding to the main organism of the study, e.g. `"NCBITaxon:7227"` for *Drosophila Melanogaster*, `"NCBITaxon:9606"` for *Homo Sapiens*, or `"NCBITaxon:10090"` for <i>Mus musculus<br/>and its descendants</i>.
+        <td>
+          Should be the `"NCBITaxon"` ontology term corresponding to the main organism of the study, e.g. `"NCBITaxon:7227"` for *Drosophila Melanogaster*, `"NCBITaxon:9606"` for *Homo Sapiens*, or `"NCBITaxon:10090"` for <i>Mus musculus<br/>and its descendants</i>.
         </td>
     </tr>
 </tbody></table>
@@ -1403,8 +1519,14 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be the human-readable name assigned to the value of <code>organism_ontology_term_id</code>.</td>
+        <td>
+          This MUST be the human-readable name assigned to the value of <code>organism_ontology_term_id</code>.
+        </td>
     </tr>
 </tbody></table>
 
@@ -1420,10 +1542,15 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>
-          <code>str</code>. This text describes and differentiates the dataset from other datasets. It is STRONGLY RECOMMENDED to make sure that each dataset <code>title</code> is unique and does not depend on other metadata such as a different <code>assay</code> to disambiguate it from other datasets.
-        </td>
+      <td>
+        This text describes and differentiates the dataset from other datasets.<br/><br/>
+        It is STRONGLY RECOMMENDED to make sure that each dataset <code>title</code> is unique and does not depend on other metadata such as a different <code>assay</code> to disambiguate it from other datasets.
+      </td>
     </tr>
 </tbody></table>
 
@@ -1439,8 +1566,14 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>This MUST be <code>"https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema.md"</code>.</td>
+      <td>
+        This MUST be <code>"https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema.md"</code>.
+      </td>
     </tr>
 </tbody></table>
 
@@ -1456,8 +1589,14 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>REQUIRED</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td>This MUST be <code>"7.1.0_scfair"</code>.</td>
+      <td>
+        This MUST be <code>"7.1.0_scfair"</code>.
+      </td>
     </tr>
 </tbody></table>
 
@@ -1477,8 +1616,16 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>OPTIONAL</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td><code>str</code>. A JSON entry describing the analysis pipeline used to preprocess (sequencing, alignment, counting) and perform the downstream analysis (filtering, normalization, dimension reduction, integration, clustering, annotation of the clusters) of the dataset. The JSON file should follow the standard defined in <a href="https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_analysis_json.md"><code>schema_analysis_json.md</code></a>. The goal of this field is to better understand how the results were obtained and also to enhance reproducibility.</td>
+        <td>
+          A JSON entry describing the analysis pipeline used to preprocess (sequencing, alignment, counting) and perform the downstream analysis (filtering, normalization, dimension reduction, integration, clustering, annotation of the clusters) of the dataset.<br/><br/>
+          The JSON file should follow the standard defined in <a href="https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_analysis_json.md"><code>schema_analysis_json.md</code></a>.<br/><br/>
+          The goal of this field is to better understand how the results were obtained and also to enhance reproducibility.
+        </td>
     </tr>
 </tbody></table>
 
@@ -1494,9 +1641,14 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>OPTIONAL</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>list[str]</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
         <td>
-          <code>list[str]</code>. <code>str</code> values MUST refer to cell metadata keys in <code>obs</code>. Together, these keys define the <i>batches</i> that a normalization or integration algorithm should be aware of. For example if <code>"patient"</code> and <code>"seqBatch"</code> are keys of vectors of cell metadata, either <code>["patient"]</code>, <code>["seqBatch"]</code>, or <code>["patient", "seqBatch"]</code> are valid values.
+          <code>str</code> values MUST refer to cell metadata keys in <code>obs</code>. Together, these keys define the <i>batches</i> that a normalization or integration algorithm should be aware of.<br/><br/>
+          For example if <code>"patient"</code> and <code>"seqBatch"</code> are keys of vectors of cell metadata, either <code>["patient"]</code>, <code>["seqBatch"]</code>, or <code>["patient", "seqBatch"]</code> are valid values.
         </td>
     </tr>
 </tbody></table>
@@ -1513,8 +1665,14 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>OPTIONAL</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
-        <td><code>str</code>. Publication DOI url associated with the dataset.</td>
+        <td>
+          Publication DOI url associated with the dataset.
+        </td>
     </tr>
 </tbody></table>
 
@@ -1524,7 +1682,8 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
   <tr>
     <th>Key</th>
       <td>
-        <code>{column}_colors</code> where {column} MUST be the name of a <code>category</code> data type column in <code>obs</code> that<br/> is annotated by the data submitter or curator. {column} can be for example <code>assay</code>, <code>assay_ontology_term_id</code>, <code>cell_type</code>, or any other categorical <code>obs</code>.
+        <code>{column}_colors</code> where {column} MUST be the name of a <code>category</code> data type column in <code>obs</code> that<br/> is annotated by the data submitter or curator.<br/><br/>
+        {column} can be for example <code>assay</code>, <code>assay_ontology_term_id</code>, <code>cell_type</code>, or any other categorical <code>obs</code>.
       </td>
   </tr>
   <tr>
@@ -1532,15 +1691,21 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
     <td>OPTIONAL</td>
   </tr>
   <tr>
+    <th>Type</th>
+    <td><code>numpy.ndarray</code>.</td>
+  </tr>
+  <tr>
     <th>Value</th>
       <td>
-        <code>numpy.ndarray</code>. This MUST be a 1-D array of shape <code>(, c)</code>, where <code>c</code> is greater than or equal to the<br/> number of categories in the {column} as calculated by:<br/><br/>
+        This MUST be a 1-D array of shape <code>(, c)</code>, where <code>c</code> is greater than or equal to the<br/> number of categories in the {column} as calculated by:<br/><br/>
            <samp>anndata.obs.{column}.cat.categories.size</samp><br/><br/>
-        The color code at the Nth position in the <code>ndarray</code> corresponds to the Nth category of <samp>anndata.obs.{column}.cat.categories</samp>.<br/><br/>For example, if <code>cell_type_ontology_term_id</code> includes two categories:<br/><br/>
+        The color code at the Nth position in the <code>ndarray</code> corresponds to the Nth category of <samp>anndata.obs.{column}.cat.categories</samp>.<br/><br/>
+        For example, if <code>cell_type_ontology_term_id</code> includes two categories:<br/><br/>
         <samp>anndata.obs.cell_type_ontology_term_id.cat.categories.values</samp><br/><br/>
-        <samp>array(['CL:0000057', 'CL:0000115'],
-      dtype='object')</samp><br/><br/>then <code>cell-type_ontology_term_id_colors</code> MUST contain two or more colors such as:<br/><br/>
-        <samp>['aqua' 'blueviolet']</samp><br/><br/>where <code>'aqua'</code> is the color assigned to <code>'CL:0000057'</code> and <code>'blueviolet'</code> is the color assigned to<br/> <code>'CL:0000115'</code>.<br/><br/>All elements in the <code>ndarray</code> MUST use the same color model, limited to:<br/><br/>
+        <samp>array(['CL:0000057', 'CL:0000115'], dtype='object')</samp><br/><br/>
+        then <code>cell-type_ontology_term_id_colors</code> MUST contain two or more colors such as:<br/><br/>
+        <samp>['aqua' 'blueviolet']</samp><br/><br/>where <code>'aqua'</code> is the color assigned to <code>'CL:0000057'</code> and <code>'blueviolet'</code> is the color assigned to<br/> <code>'CL:0000115'</code>.<br/><br/>
+        All elements in the <code>ndarray</code> MUST use the same color model, limited to:
           <table>
           <thead>
             <tr>
@@ -1550,22 +1715,19 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
           </thead><tbody>
             <tr>
               <td>
-              <a
-              href="https://www.w3.org/TR/css-color-4/#named-colors"
-              ><i>Named Colors </i>
-              </a>
-            </td>
-              <td><code>str</code>. MUST be a case-insensitive CSS4 color name with no spaces such as<br/> <code>"aliceblue"</code>
-            </td>
+                <a href="https://www.w3.org/TR/css-color-4/#named-colors"><i>Named Colors </i></a>
+              </td>
+              <td>
+                <code>str</code>. MUST be a case-insensitive CSS4 color name with no spaces such as<br/> <code>"aliceblue"</code>
+              </td>
             </tr>
             <tr>
              <td>
-              <a
-              href="https://www.w3.org/TR/css-color-4/#hex-notation"
-              ><i>Hex Triplet</i>
-              </a>
-            </td>
-              <td><code>str</code>. MUST start with <code>"#"</code> immediately followed by six case-insensitive hexadecimal<br/> characters as in <code>"#08c0ff"</code></td>
+              <a href="https://www.w3.org/TR/css-color-4/#hex-notation"><i>Hex Triplet</i></a>
+             </td>
+             <td>
+               <code>str</code>. MUST start with <code>"#"</code> immediately followed by six case-insensitive hexadecimal<br/> characters as in <code>"#08c0ff"</code>
+             </td>
             </tr>
           </tbody></table>
         </td>
@@ -1584,9 +1746,13 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>OPTIONAL</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
         <td>
-          <code>str</code>. The value MUST match a key to an embedding in <code>obsm</code> for the embedding to be displayed by default in any portal.
+          The value MUST match a key to an embedding in <code>obsm</code> for the embedding to be displayed by default in any portal.
         </td>
     </tr>
 </tbody></table>
@@ -1603,9 +1769,14 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
       <td>OPTIONAL</td>
     </tr>
     <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
       <th>Value</th>
         <td>
-          <code>str</code>. This field enables the data submitter or curator to specify the data distribution explicitly and not relying on portal automatic detection of the type of data (raw counts, or normalized). The value MUST be <code>"count"</code> (for data whose distributions are best approximated by counting distributions like Poisson, Binomial, or Negative Binomial) or <code>"normal"</code> (for data whose distributions are best approximated by the Gaussian distribution.)
+          This field enables the data submitter or curator to specify the data distribution explicitly and not relying on portal automatic detection of the type of data (raw counts, or normalized).<br/><br/>
+          The value MUST be <code>"count"</code> (for data whose distributions are best approximated by counting distributions like Poisson, Binomial, or Negative Binomial) or <code>"normal"</code> (for data whose distributions are best approximated by the Gaussian distribution.)
         </td>
     </tr>
 </tbody></table>
