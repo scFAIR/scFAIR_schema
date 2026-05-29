@@ -104,7 +104,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>A short, human-readable name for the pipeline. Example: <code>"ASAP Analysis Pipeline"</code>, <code>"Seurat Standard Workflow"</code> or <code>"Scanpy"</code>.<br/><br/></td>
+      <td>A short, human-readable name for the pipeline. Example: <code>"ASAP"</code>, <code>"Seurat"</code> or <code>"Scanpy"</code>.<br/><br/></td>
     </tr>
 </tbody></table>
 <br/>
@@ -118,7 +118,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Requirement</th>
-      <td>RECOMMENDED</td>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Type</th>
@@ -126,7 +126,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>The version of the pipeline that was run. SHOULD follow <a href="https://semver.org/">Semantic Versioning</a>. <code>null</code> if not versioned. Example: <code>"v5"</code>, <code>"1.3.2"</code>.<br/><br/></td>
+      <td>The version of the pipeline that was run (if existing). SHOULD follow <a href="https://semver.org/">Semantic Versioning</a>. Should be <code>null</code> if not versioned. Example: <code>"v5"</code>, <code>"1.3.2"</code>. Could be the version of the Seurat/Scanpy package used, the version of the online tool, or the version of the snakemake/nextflow pipeline.<br/><br/></td>
     </tr>
 </tbody></table>
 <br/>
@@ -140,11 +140,11 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Requirement</th>
-      <td>RECOMMENDED</td>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Type</th>
-      <td><code>string</code> or <code>null</code></td>
+      <td><code>string</code></td>
     </tr>
     <tr>
       <th>Value</th>
@@ -162,15 +162,15 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Requirement</th>
-      <td>RECOMMENDED</td>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Type</th>
-      <td><code>string</code> or <code>null</code></td>
+      <td><code>string</code></td>
     </tr>
     <tr>
       <th>Value</th>
-      <td>A URL pointing to the source code, documentation, or publication describing the pipeline. MUST be a valid URL if provided. Example: <code>"https://github.com/my-lab/asap-pipeline"</code>.<br/><br/></td>
+      <td>A URL pointing to the source code, documentation, or publication describing the pipeline. MUST be a valid URL if provided. Example: <code>"https://github.com/my-lab/my-pipeline"</code>.<br/><br/></td>
     </tr>
 </tbody></table>
 <br/>
@@ -184,11 +184,11 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Requirement</th>
-      <td>RECOMMENDED</td>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Type</th>
-      <td><code>string</code> or <code>null</code></td>
+      <td><code>string</code></td>
     </tr>
     <tr>
       <th>Value</th>
@@ -260,7 +260,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Type</th>
-      <td><code>string</code> or <code>null</code></td>
+      <td><code>string</code></td>
     </tr>
     <tr>
       <th>Value</th>
@@ -278,15 +278,74 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Requirement</th>
-      <td>RECOMMENDED</td>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Type</th>
-      <td><code>string</code> or <code>null</code></td>
+      <td><code>string</code></td>
     </tr>
     <tr>
       <th>Value</th>
-      <td>A controlled term describing the broad category of the analysis step. MUST be one of: <code>"Parsing"</code>, <code>"Quality Control"</code>, <code>"Doublet Detection"</code>, <code>"Normalization"</code>, <code>"Scaling"</code>, <code>"Feature Selection"</code>, <code>"Dimensionality Reduction"</code>, <code>"Embedding"</code>, <code>"Clustering"</code>, <code>"Differential Expression"</code>, <code>"Cell Type Annotation"</code>, <code>"Trajectory Analysis"</code>, <code>"RNA Velocity"</code>, <code>"Batch Correction"</code>, <code>"Integration"</code>, <code>"Cell Communication"</code>, <code>"Gene Regulatory Network"</code>, <code>"Peak Calling"</code>, <code>"Motif Analysis"</code>, <code>"Other"</code>.<br/><br/></td>
+      <td>A controlled term describing the broad category of the analysis step (inspired from <a href="https://www.sc-best-practices.org">sc-best-practices.org</a>). The vocabulary is organized into thematic groups below (groups are informational only; the value is a flat string). MUST be one of the following values, or <code>"Other"</code> if no term applies:<br/><br/>
+      <strong>Raw data processing</strong><br/>
+      <code>"Alignment"</code> — Read alignment / mapping to a reference genome (e.g. STAR, HISAT2, CellRanger).<br/>
+      <code>"Quantification"</code> — Generating a count matrix from aligned reads (e.g. STARsolo, featureCounts, salmon alevin). Often bundled with Alignment in all-in-one tools.<br/>
+      <code>"Parsing"</code> — Loading and parsing tool output files (e.g. CellRanger output directory, MTX/H5 files) into an in-memory data structure.<br/>
+      <code>"Report Generation"</code> — Generating automated QC or analysis reports (e.g. MultiQC, FastQC, CellRanger HTML report).<br/><br/>
+      <strong>Quality control and filtering</strong><br/>
+      <code>"Quality Control"</code> — Computing per-cell and per-gene QC metrics (e.g. number of genes, UMI counts, mitochondrial fraction).<br/>
+      <code>"Ambient RNA Removal"</code> — Removing ambient / background RNA contamination from droplet-based data (e.g. SoupX, CellBender, DecontX).<br/>
+      <code>"Doublet Detection"</code> — Detecting and/or removing doublet or multiplet cell captures (e.g. Scrublet, DoubletFinder, scDblFinder).<br/>
+      <code>"Cell Filtering"</code> — Filtering out low-quality, dying, or otherwise unwanted cells based on QC metrics or other criteria.<br/>
+      <code>"Gene Filtering"</code> — Filtering out lowly detected or uninformative genes (e.g. genes expressed in fewer than N cells).<br/><br/>
+      <strong>Normalization and imputation</strong><br/>
+      <code>"Normalization"</code> — Normalizing raw counts to remove sequencing-depth differences between cells (e.g. CP10K, scran, SCTransform, DESeq2 size factors).<br/>
+      <code>"Scaling"</code> — Scaling and/or centering normalized expression values across genes (e.g. z-score standardization prior to PCA).<br/>
+      <code>"Imputation"</code> — Imputing missing or zero (dropout) expression values to denoise the count matrix (e.g. MAGIC, SAVER, scImpute, DeepImpute).<br/><br/>
+      <strong>Cell cycle and feature selection</strong><br/>
+      <code>"Cell Cycle Scoring"</code> — Assigning cell cycle phase scores and/or regressing out cell cycle effects (e.g. Seurat CellCycleScoring, scanpy score_genes_cell_cycle).<br/>
+      <code>"Feature Selection"</code> — Selecting the most informative features (e.g. highly variable genes) for downstream analysis.<br/><br/>
+      <strong>Dimensionality reduction and embedding</strong><br/>
+      <code>"Dimensionality Reduction"</code> — Reducing the feature space to a lower-dimensional representation (e.g. PCA, LSI, NMF, diffusion maps).<br/>
+      <code>"Dimensionality Evaluation"</code> — Determining the number of statistically significant dimensions to retain (e.g. Jackstraw test, elbow plot, scree plot, permutation-based tests).<br/>
+      <code>"Embedding"</code> — Computing a low-dimensional (2D/3D) embedding for visualization (e.g. UMAP, t-SNE, ForceAtlas2, diffusion map layout).<br/><br/>
+      <strong>Clustering and annotation</strong><br/>
+      <code>"Clustering"</code> — Unsupervised partitioning of cells into clusters (e.g. Leiden, Louvain, k-means, hierarchical clustering).<br/>
+      <code>"Marker Gene Detection"</code> — Identifying genes that are specifically or differentially expressed within each cluster or cell type.<br/>
+      <code>"Cell Type Annotation"</code> — Assigning cell type labels to clusters or individual cells, manually or using automated tools (e.g. SingleR, scANVI, Celltypist, manual curation).<br/>
+      <code>"Subsetting"</code> — Subsetting the dataset to a specific cell population for focused downstream analysis (e.g. sub-clustering a lineage).<br/><br/>
+      <strong>Batch correction and integration</strong><br/>
+      <code>"Batch Correction"</code> — Correcting for technical batch effects between samples, experiments, or platforms (e.g. Harmony, ComBat, MNN, scVI).<br/>
+      <code>"Integration"</code> — Integrating data across samples, donors, datasets, or modalities into a joint representation (e.g. Seurat integration, scVI, LIGER, WNN).<br/><br/>
+      <strong>Differential and compositional analysis</strong><br/>
+      <code>"Differential Expression"</code> — Testing for genes that are differentially expressed between conditions, cell types, or time points (e.g. DESeq2, edgeR, FindMarkers, MAST).<br/>
+      <code>"Pseudobulk Analysis"</code> — Aggregating single-cell counts into pseudobulk profiles per sample for robust differential analysis.<br/>
+      <code>"Compositional Analysis"</code> — Analysing changes in cell type proportions across conditions (e.g. scCODA, propeller, DA-seq).<br/>
+      <code>"Gene Set Enrichment"</code> — Gene set enrichment, pathway, or Gene Ontology (GO) analysis on gene lists (e.g. GSEA, enrichR, clusterProfiler, fgsea).<br/>
+      <code>"Perturbation Modeling"</code> — Modelling the transcriptional effect of genetic or chemical perturbations (e.g. scGen, CPA, CINEMA-OT).<br/><br/>
+      <strong>Trajectory and dynamics</strong><br/>
+      <code>"Trajectory Analysis"</code> — Inferring pseudotemporal orderings and differentiation trajectories (e.g. Monocle, PAGA, Palantir, scFates).<br/>
+      <code>"RNA Velocity"</code> — Estimating the future transcriptional state of cells from spliced/unspliced ratios (e.g. scVelo, velocyto, UniTVelo).<br/>
+      <code>"Lineage Tracing"</code> — Reconstructing cell lineages from clonal barcodes or somatic mutations (e.g. Cassiopeia, Starcode, LARRY).<br/><br/>
+      <strong>Mechanisms and interactions</strong><br/>
+      <code>"Cell Communication"</code> — Inferring cell-cell communication via ligand-receptor interactions (e.g. CellChat, NicheNet, LIANA, CellPhoneDB).<br/>
+      <code>"Gene Regulatory Network"</code> — Inferring gene regulatory networks and transcription factor activity (e.g. SCENIC, pySCENIC, GRNBoost2, Dictys).<br/>
+      <code>"Copy Number Variation"</code> — Inferring copy number variation from single-cell expression data to identify tumour cells (e.g. inferCNV, CopyKAT, SCEVAN).<br/>
+      <code>"Deconvolution"</code> — Deconvolving bulk or spatial transcriptomics profiles into cell type fractions (e.g. RCTD, SPOTlight, BayesPrism, MuSiC).<br/><br/>
+      <strong>Immune repertoire (TCR/BCR)</strong><br/>
+      <code>"Immune Receptor Profiling"</code> — Profiling T-cell or B-cell receptor (TCR/BCR) sequences from V(D)J data (e.g. CellRanger V(D)J, Trust4).<br/>
+      <code>"Clonotype Analysis"</code> — Analysing clonotype diversity, expansion, and sharing across samples (e.g. Scirpy, immunarch).<br/><br/>
+      <strong>Chromatin accessibility (scATAC-seq)</strong><br/>
+      <code>"Peak Calling"</code> — Calling chromatin accessibility peaks from scATAC-seq fragment data (e.g. MACS2, ArchR, Signac).<br/>
+      <code>"Motif Analysis"</code> — Analysing transcription factor motif enrichment within accessibility peaks (e.g. chromVAR, HOMER, ArchR).<br/><br/>
+      <strong>Spatial transcriptomics</strong><br/>
+      <code>"Spatially Variable Genes"</code> — Identifying genes whose expression is spatially structured (e.g. SpatialDE, SPARK, Moran's I).<br/>
+      <code>"Spatial Neighborhood Analysis"</code> — Analysing cellular co-localization and spatial interaction patterns (e.g. Squidpy, SPATA2).<br/>
+      <code>"Spatial Domain Detection"</code> — Identifying spatially coherent tissue regions or domains (e.g. BayesSpace, STAGATE, GraphST).<br/>
+      <code>"Spatial Deconvolution"</code> — Deconvolving cell type composition at each spatial spot (e.g. RCTD, SPOTlight, cell2location).<br/><br/>
+      <strong>Catch-all</strong><br/>
+      <code>"Visualization"</code> — Generating analysis plots or figures not covered by another category (e.g. custom heatmaps, dot plots, violin plots).<br/>
+      <code>"Other"</code> — Any analysis step not covered by the categories above.<br/><br/></td>
     </tr>
 </tbody></table>
 <br/>
