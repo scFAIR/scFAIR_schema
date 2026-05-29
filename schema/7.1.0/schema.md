@@ -157,7 +157,7 @@ Reserved Names from previous schema versions that have since been deprecated MUS
 
 **Redundant Metadata**. It is STRONGLY RECOMMENDED to avoid multiple metadata fields containing identical or similar information.
 
-**No Personal Identifiable Information (PII)**. This is not strictly enforced by validation because it is difficult to predict what is and is not PII; however, curators MUST agree with this requirement:
+**No Personal Identifiable Information (PII)**. This is not strictly enforced by validation because it is difficult to predict what is and is not PII; however, data submitters and curators MUST agree with this requirement:
 
 > It is my responsibility to ensure that this data is not identifiable. In particular, I commit that I will remove any [direct personal identifiers](https://docs.google.com/document/d/1sboOmbafvMh3VYjK1-3MAUt0I13UUJfkQseq8ANLPl8/edit) in the metadata portions of the data.
 
@@ -198,36 +198,33 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
 
 **Note:** Terms in italic are auto-filled by the CZI CELLxGENE submission pipeline. scFAIR schema now consider them as required.
 
-Curators MUST annotate the following columns in the `obs` dataframe:
-
 ### index of pandas.DataFrame
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>index of <code>pandas.DataFrame</code></td>
+      <td><code>index</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
-        <td><code>str</code>. The index of the pandas.DataFrame MUST contain unique identifiers for observations.<br/><br/></td>
+        <td><code>str</code>. The index of the pandas.DataFrame MUST contain unique identifiers for observations (unique cell names).</td>
     </tr>
 </tbody></table>
-<br/>
 
 ### assay_ontology_term_id
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>assay_ontology_term_id</td>
+      <td><code>assay_ontology_term_id</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -297,37 +294,34 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *assay*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>assay</td>
+      <td><code>assay</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be the human-readable name assigned to the value of <code>assay_ontology_term_id</code>. 
-        </td>
+        <td>categorical with <code>str</code> categories. This MUST be the human-readable name assigned to the value of <code>assay_ontology_term_id</code>.</td>
     </tr>
 </tbody></table>
-<br/>
 
 ### tissue_type
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>tissue_type</td>
+      <td><code>tissue_type</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -338,20 +332,20 @@ Curators MUST annotate the following columns in the `obs` dataframe:
             <li><code>"primary cell culture"</code></li>
             <li><code>"tissue"</code></li>
          </ul>
+        </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### tissue_ontology_term_id
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>tissue_ontology_term_id</td>
+      <td><code>tissue_ontology_term_id</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -360,23 +354,21 @@ Curators MUST annotate the following columns in the `obs` dataframe:
       </td>
   </tr>
 </tbody></table>
-<br/>
 
 ### *tissue*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>tissue</td>
+      <td><code>tissue</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be the human-readable name assigned to the value of <code>tissue_ontology_term_id</code>.
-        </td>
+        <td>categorical with <code>str</code> categories. This MUST be the human-readable name assigned to the value of <code>tissue_ontology_term_id</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -386,11 +378,11 @@ Curators MUST annotate the following columns in the `obs` dataframe:
 <table><tbody>
   <tr>
     <th>Key</th>
-    <td>cell_type_ontology_term_id</td>
+    <td><code>cell_type_ontology_term_id</code></td>
   </tr>
   <tr>
-    <th>Annotator</th>
-    <td>Curator MUST annotate.</td>
+    <th>Requirement</th>
+    <td>REQUIRED</td>
   </tr>
   <tr>
     <th>Value</th>
@@ -418,18 +410,17 @@ Curators MUST annotate the following columns in the `obs` dataframe:
     </td>
   </tr>
 </tbody></table>
-<br/>
 
 ### *cell_type*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>cell_type</td>
+      <td><code>cell_type</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate if <code>cell_type_ontology_term_id</code> is present; otherwise, otherwise this key MUST NOT be present.</td>
+      <th>Requirement</th>
+      <td>REQUIRED if <code>cell_type_ontology_term_id</code> is present; otherwise this key MUST NOT be present.</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -437,38 +428,36 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### development_stage_ontology_term_id
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>development_stage_ontology_term_id</td>
+      <td><code>development_stage_ontology_term_id</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
       <td>
-        categorical with <code>str</code> categories.<br/><br/>If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/terms?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/hsapdv/terms?obo_id=HsapDv%3A0000001"><code>HsapDv:0000001</code></a> for <i>life cycle</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a> for <i>Homo sapiens</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000071"><code>UBERON:0000071</code></a> for <i>death stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/terms?obo_id=XAO:0000437"><code>XAO:0000437</code></a> for <i>death</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a> for <i>Xenopus <genus></i>), and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFS%3A0000000"><code>ZFS:0000000</code></a> for <i>Unknown</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>. A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.<br/><br/>
+        categorical with <code>str</code> categories.<br/><br/>If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/terms?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/hsapdv/terms?obo_id=HsapDv%3A0000001"><code>HsapDv:0000001</code></a> for <i>life cycle</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a> for <i>Homo sapiens</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000071"><code>UBERON:0000071</code></a> for <i>death stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/terms?obo_id=XAO:0000437"><code>XAO:0000437</code></a> for <i>death</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a> for <i>Xenopus <genus></i>), and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFS%3A0000000"><code>ZFS:0000000</code></a> for <i>Unknown</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>. A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.
       </td>
   </tr>
 </tbody></table>
-<br/>
 
 ### *development_stage*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>development_stage</td>
+      <td><code>development_stage</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -476,18 +465,17 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### sex_ontology_term_id
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>sex_ontology_term_id</td>
+      <td><code>sex_ontology_term_id</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -500,18 +488,17 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *sex*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>sex</td>
+      <td><code>sex</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -519,19 +506,17 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### self_reported_ethnicity_ontology_term_id
 
-<table>
-  <tbody>
+<table><tbody>
     <tr>
       <th>Key</th>
-      <td>self_reported_ethnicity_ontology_term_id</td>
+      <td><code>self_reported_ethnicity_ontology_term_id</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -551,20 +536,18 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </ul>
       </td>
     </tr>
-  </tbody>
-</table>
-<br />
+</tbody></table>
 
 ### *self_reported_ethnicity*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>self_reported_ethnicity</td>
+      <td><code>self_reported_ethnicity</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -572,18 +555,17 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### disease_ontology_term_id
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>disease_ontology_term_id</td>
+      <td><code>disease_ontology_term_id</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -595,43 +577,41 @@ Curators MUST annotate the following columns in the `obs` dataframe:
        MONDO terms MUST be either:
        <ul>
           <li>a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/mondo/classes?obo_id=MONDO%3A0000001"><code>"MONDO:0000001"</code></a> for <i>disease</i></li>
-          <li><a href="https://www.ebi.ac.uk/ols4/ontologies/mondo/classes?obo_id=MONDO%3A0021178"><code>"MONDO:0021178"</code></a> for <i>injury</i> or <b>preferably</b> its most accurate descendant</li>       </ul>
+          <li><a href="https://www.ebi.ac.uk/ols4/ontologies/mondo/classes?obo_id=MONDO%3A0021178"><code>"MONDO:0021178"</code></a> for <i>injury</i> or <b>preferably</b> its most accurate descendant</li>
+       </ul>
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *disease*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>disease</td>
+      <td><code>disease</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
         <td>categorical with <code>str</code> categories. This MUST be one or more human-readable names for the terms in <code>disease_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>
-        For example, if the value of <code>disease_ontology_term_id</code> is <code>"MONDO:0004604 || MONDO:0043004 || MONDO:0800349 || MONDO:1030008"</code> then the value MUST be <code>"Hodgkin's lymphoma, lymphocytic-histiocytic predominance || Weil's disease || atrial fibrillation, familial, 16 || mitral valve insufficiency"</code>.<br/><br/>
+        For example, if the value of <code>disease_ontology_term_id</code> is <code>"MONDO:0004604 || MONDO:0043004 || MONDO:0800349 || MONDO:1030008"</code> then the value MUST be <code>"Hodgkin's lymphoma, lymphocytic-histiocytic predominance || Weil's disease || atrial fibrillation, familial, 16 || mitral valve insufficiency"</code>.
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### experimental_condition_ontology_term_id
 
-<table>
-  <tbody>
+<table><tbody>
     <tr>
       <th>Key</th>
-      <td>experimental_condition_ontology_term_id</td>
+      <td><code>experimental_condition_ontology_term_id</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -784,19 +764,18 @@ Curators MUST annotate the following columns in the `obs` dataframe:
           <br/>If the experimental condition is a diet perturbation, then the value MUST include either <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0002755"><code>"EFO:0002755"</code></a> for <i>diet</i> or its most accurate descendant.<br/><br/>If the experimental condition is a temperature perturbation, then the value MUST include <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0001702"><code>"EFO:0001702"</code></a> for <i>temperature</i>.<br/><br/>No other values MUST be present for experimental conditions. 
       </td>
     </tr>
-  </tbody>
-</table>
+</tbody></table>
 
 ### *experimental_condition*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>experimental_condition</td>
+      <td><code>experimental_condition</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate if <code>obs['experimental_condition_ontology_term_id']</code> is present; otherwise this key MUST NOT be present.</td>
+      <th>Requirement</th>
+      <td>REQUIRED if <code>obs['experimental_condition_ontology_term_id']</code> is present; otherwise this key MUST NOT be present.</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -806,18 +785,17 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *perturbation_types*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>perturbation_types</td>
+      <td><code>perturbation_types</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate if <code>obs['experimental_condition_ontology_term_id']</code> or <code>obs['genetic_perturbation_id']</code> is present; otherwise this key MUST NOT be present.</td>
+      <th>Requirement</th>
+      <td>REQUIRED if <code>obs['experimental_condition_ontology_term_id']</code> or <code>obs['genetic_perturbation_id']</code> is present; otherwise this key MUST NOT be present.</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -833,22 +811,21 @@ Curators MUST annotate the following columns in the `obs` dataframe:
           <li> <code>"genetic"</code></li>
           <li> <code>"protein"</code></li>
           <li> <code>"temperature"</code></li>
-        </ul>and formatted in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of elements.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains a <code>"CHEBI:"</code> term identifier, then <code>"chemical"</code> MUST be added to the set of values.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains the <code>"EFO:0002755"</code> term identifier or its descendants, then <code>"diet"</code> MUST be added to the set of values.<br/><br/>If <code>genetic_perturbation_term_id</code> is present and its value is not <code>"na"</code>, then <code>"genetic"</code> MUST be added to the set of values.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains a <code>"uniprot:"</code> term identifier, then <code>"protein"</code> MUST be added to the set of values.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains the <code>"EFO:0001702"</code> term identifier, then <code>"temperature"</code> MUST be added to the set of values.<br/><br/> 
+        </ul>and formatted in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of elements.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains a <code>"CHEBI:"</code> term identifier, then <code>"chemical"</code> MUST be added to the set of values.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains the <code>"EFO:0002755"</code> term identifier or its descendants, then <code>"diet"</code> MUST be added to the set of values.<br/><br/>If <code>genetic_perturbation_term_id</code> is present and its value is not <code>"na"</code>, then <code>"genetic"</code> MUST be added to the set of values.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains a <code>"uniprot:"</code> term identifier, then <code>"protein"</code> MUST be added to the set of values.<br/><br/>If <code>experimental_condition_ontology_term_id</code> contains the <code>"EFO:0001702"</code> term identifier, then <code>"temperature"</code> MUST be added to the set of values.
       </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### donor_id
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>donor_id</td>
+      <td><code>donor_id</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -857,18 +834,17 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### is_primary_data
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>is_primary_data</td>
+      <td><code>is_primary_data</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -876,18 +852,17 @@ Curators MUST annotate the following columns in the `obs` dataframe:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### suspension_type
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>suspension_type</td>
+      <td><code>suspension_type</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1007,24 +982,21 @@ Curators MUST annotate the following columns in the `obs` dataframe:
               <td><code>"cell"</code> or <code>"nucleus"</code></td>
            </tr> 
           </tbody></table>
-          <br/>If the assay does not appear in this table, the most appropriate value MUST be selected and <a href="mailto:scFAIR@chanzuckerberg.com">the curation team informed</a> during submission so that the assay can be added to the table.<br/>
+          <br/>If the assay does not appear in this table, the most appropriate value MUST be selected and <a href="mailto:scFAIR@chanzuckerberg.com">the curation team informed</a> during submission so that the assay can be added to the table.
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ## `obsm` (Embeddings)
 
-The value for each `str` key MUST be a  `numpy.ndarray` of shape `(n_obs, m)`, where `n_obs` is the number of rows in `X` and `m >= 1`. 
-
-Curators MUST annotate **one or more** embeddings of at least two-dimensions (e.g. tSNE, UMAP, PCA, spatial coordinates) as `numpy.ndarrays` in `obsm`.<br/><br/>
+The value for each `str` key MUST be a  `numpy.ndarray` of shape `(n_obs, m)`, where `n_obs` is the number of rows in `X` and `m >= 1`.
 
 ### X_{suffix}
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>X_{suffix} with the following requirements:<br/><br/>
+      <td><code>X_{suffix}</code> with the following requirements:<br/><br/>
       <ul>
         <li>{suffix} MUST be at least one character in length.</li>
         <li>The first character of {suffix} MUST be a letter of the alphabet and the remaining characters MUST be alphanumeric characters, <code>'_'</code>, <code>'-'</code>, or <code>'.'</code> (This is equivalent to the regular expression pattern <code>"^[a-zA-Z][a-zA-Z0-9_.-]*$"</code>.)</li>
@@ -1033,8 +1005,9 @@ Curators MUST annotate **one or more** embeddings of at least two-dimensions (e.
       {suffix} is presented as text to users in the <b>Embedding Choice</b> selector in scFAIR Explorer so it is STRONGLY RECOMMENDED that it be descriptive.<br/><br/>See also <code>default_embedding</code> in <code>uns</code>.</td>
     </tr>
     <tr>
-      <th>Annotator</th>
-         <td>Curator MUST annotate if <code>assay_ontology_term_id</code> is neither a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> nor <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i>.<br/><br/>Curator MAY annotate if <code>assay_ontology_term_id</code> is either a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i>.</td>
+      <th>Requirement</th>
+         <td>REQUIRED if <code>assay_ontology_term_id</code> is neither a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> nor <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i>.<br/><br/>
+             OPTIONAL if <code>assay_ontology_term_id</code> is either a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0010961"><code>"EFO:0010961"</code></a> for <i>Visium Spatial Gene Expression</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0030062"><code>"EFO:0030062"</code></a> for <i>Slide-seqV2</i>.</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1048,34 +1021,30 @@ values</li></ul>
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ## `obsp`
 
 The size of the ndarray stored for a key in `obsp` MUST NOT be zero.
-<br/>
 
 ## `var` and `raw.var` (Gene Metadata)
 
 `var` and `raw.var` are both of type [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
-
-Curators MUST annotate the following columns in the `var` dataframe and if present, the `raw.var` dataframe.
 
 ### index of pandas.DataFrame
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>index of <code>pandas.DataFrame</code></td>
+      <td><code>index</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
         <td>
-          <code>str</code>. The index of the <code>pandas.DataFrame</code> MUST contain unique identifiers for features. If present, the index of <code>raw.var</code> MUST be identical to the index of <code>var</code>.
+          <code>str</code>. The index of the <code>pandas.DataFrame</code> MUST contain unique identifiers for features (e.g. gene names). If present, the index of <code>raw.var</code> MUST be identical to the index of <code>var</code>.
           <br/><br/>
           Here, we accept both genes and ERCC spike-ins. In short, ENSEMBL identifiers are required for genes and <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4978944/">External RNA Controls Consortium (ERCC)</a> identifiers for <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fcms_086340.pdf&title=VXNlciBHdWlkZTogRVJDQyBSTkEgU3Bpa2UtSW4gQ29udHJvbCBNaXhlcyAoRW5nbGlzaCAp">RNA Spike-In Control Mixes</a> to ensure that all datasets measure the same features and can therefore be integrated.
           <br/><br/>
@@ -1088,20 +1057,19 @@ Curators MUST annotate the following columns in the `var` dataframe and if prese
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### feature_is_filtered
 
-Curators MUST annotate this column only in the `var` dataframe. This column MUST NOT be present in `raw.var`:
+This column is REQUIRED only in the `var` dataframe. This column MUST NOT be present in `raw.var`:
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>feature_is_filtered</td>
+      <td><code>feature_is_filtered</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1111,41 +1079,38 @@ Curators MUST annotate this column only in the `var` dataframe. This column MUST
         <td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *feature_biotype*
 
-Curators MUST annotate this column in the `var` dataframe and if present, the `raw.var` dataframe.
+This column is REQUIRED in the `var` dataframe and if present, also in the `raw.var` dataframe.
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>feature_biotype</td>
+      <td><code>feature_biotype</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
-        <td>This MUST be <code>"gene"</code> or <code>"spike-in"</code>.  
-        </td>
+        <td>This MUST be <code>"gene"</code> or <code>"spike-in"</code>.</td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *feature_length*
 
-Curators MUST annotate this column in the `var` dataframe and if present, the `raw.var` dataframe.
+This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` dataframe.
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>feature_length</td>
+      <td><code>feature_length</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1154,20 +1119,19 @@ Curators MUST annotate this column in the `var` dataframe and if present, the `r
       </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *feature_name*
 
-Curators MUST annotate this column in the `var` dataframe and if present, the `raw.var` dataframe.
+This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` dataframe.
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>feature_name</td>
+      <td><code>feature_name</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1175,20 +1139,19 @@ Curators MUST annotate this column in the `var` dataframe and if present, the `r
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *feature_reference*
 
-Curators MUST annotate this column in the `var` dataframe and if present, the `raw.var` dataframe.
+This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` dataframe.
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>feature_reference</td>
+      <td><code>feature_reference</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1287,20 +1250,19 @@ Curators MUST annotate this column in the `var` dataframe and if present, the `r
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *feature_type*
 
-Curators MUST annotate this column in the `var` dataframe and if present, the `raw.var` dataframe.
+This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` dataframe.
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>feature_type</td>
+      <td><code>feature_type</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1308,20 +1270,19 @@ Curators MUST annotate this column in the `var` dataframe and if present, the `r
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### feature_chromosome
 
-Curators MUST annotate this column in the `var` dataframe and if present, the `raw.var` dataframe.
+This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` dataframe.
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>feature_chromosome</td>
+      <td><code>feature_chromosome</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1333,34 +1294,29 @@ Curators MUST annotate this column in the `var` dataframe and if present, the `r
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ## `varm`
 
-The size of the ndarray stored for a key in `varm` MUST NOT be zero.
-<br/>
+If present, the size of the ndarray stored for a key in `varm` MUST NOT be zero.
 
 ## `varp`
 
-The size of the ndarray stored for a key in `varp` MUST NOT be zero.
-<br/>
+If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
 
 ## `uns` (Dataset Metadata)
 
-`uns` is a ordered dictionary with a `str` key. The data stored as a value for a key in `uns` MUST be `True`, `False`, `None`, or its size MUST NOT be zero.
-
-Curators MUST annotate the following keys and values in `uns`:
+`uns` is a ordered dictionary with a `str` key. The size of the data stored as a value for a key in `uns` MUST NOT be zero.
 
 ### ensembl_release
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>ensembl_release</td>
+      <td><code>ensembl_release</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1369,18 +1325,17 @@ Curators MUST annotate the following keys and values in `uns`:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### ensembl_database
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>ensembl_database</td>
+      <td><code>ensembl_database</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1398,18 +1353,17 @@ Curators MUST annotate the following keys and values in `uns`:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### ensembl_assembly
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>ensembl_assembly</td>
+      <td><code>ensembl_assembly</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MAY annotate.</td>
+      <th>Requirement</th>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1418,18 +1372,17 @@ Curators MUST annotate the following keys and values in `uns`:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### organism_ontology_term_id
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>organism_ontology_term_id</td>
+      <td><code>organism_ontology_term_id</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1437,37 +1390,34 @@ Curators MUST annotate the following keys and values in `uns`:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *organism*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>organism</td>
+      <td><code>organism</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
-        <td>categorical with <code>str</code> categories. This MUST be the human-readable name assigned to the value of <code>organism_ontology_term_id</code>.
-        </td>
+        <td>categorical with <code>str</code> categories. This MUST be the human-readable name assigned to the value of <code>organism_ontology_term_id</code>.</td>
     </tr>
 </tbody></table>
-<br/>
 
 ### title
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>title</td>
+      <td><code>title</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1476,80 +1426,72 @@ Curators MUST annotate the following keys and values in `uns`:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *schema_reference*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>schema_reference</td>
+      <td><code>schema_reference</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
-        <td>
-          This MUST be <code>"https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema.md"</code>.
-        </td>
+        <td>This MUST be <code>"https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema.md"</code>.</td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *schema_version*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>schema_version</td>
+      <td><code>schema_version</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MUST annotate.</td>
+      <th>Requirement</th>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Value</th>
-        <td>
-          This MUST be <code>"7.1.0_scfair"</code>.
-        </td>
+        <td>This MUST be <code>"7.1.0_scfair"</code>.</td>
     </tr>
 </tbody></table>
-<br/>
 
 ---
 
-​Curators MAY also annotate the following optional keys and values in `uns`. If the key is present, then its value MUST NOT be empty.
+​The following keys and values in `uns` are OPTIONAL. If the key is present, then its value MUST NOT be empty.
 ​
 ### analysis_pipeline
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>analysis_pipeline</td>
+      <td><code>analysis_pipeline</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MAY annotate.</td>
+      <th>Requirement</th>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Value</th>
         <td><code>str</code>. A JSON entry describing the analysis pipeline used to preprocess (sequencing, alignment, counting) and perform the downstream analysis (filtering, normalization, dimension reduction, integration, clustering, annotation of the clusters) of the dataset. The JSON file should follow the standard defined in <a href="https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_analysis_json.md"><code>schema_analysis_json.md</code></a>. The goal of this field is to better understand how the results were obtained and also to enhance reproducibility.</td>
     </tr>
 </tbody></table>
-<br/>
 
 ### batch_condition
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>batch_condition</td>
+      <td><code>batch_condition</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MAY annotate.</td>
+      <th>Requirement</th>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1558,25 +1500,23 @@ Curators MUST annotate the following keys and values in `uns`:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### *citation*
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>citation</td>
+      <td><code>citation</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MAY annotate.</td>
+      <th>Requirement</th>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Value</th>
         <td><code>str</code>. Publication DOI url associated with the dataset.</td>
     </tr>
 </tbody></table>
-<br/>
 
 ### {column}_colors
 
@@ -1584,12 +1524,12 @@ Curators MUST annotate the following keys and values in `uns`:
   <tr>
     <th>Key</th>
       <td>
-        {column}_colors where {column} MUST be the name of a <code>category</code> data type column in <code>obs</code> that<br/> is annotated by the data submitter or curator. {column} can be for example <code>assay</code>, <code>assay_ontology_term_id</code>, <code>cell_type</code>, or any other categorical <code>obs</code>.
+        <code>{column}_colors</code> where {column} MUST be the name of a <code>category</code> data type column in <code>obs</code> that<br/> is annotated by the data submitter or curator. {column} can be for example <code>assay</code>, <code>assay_ontology_term_id</code>, <code>cell_type</code>, or any other categorical <code>obs</code>.
       </td>
   </tr>
   <tr>
-    <th>Annotator</th>
-    <td>Curator MAY annotate.</td>
+    <th>Requirement</th>
+    <td>OPTIONAL</td>
   </tr>
   <tr>
     <th>Value</th>
@@ -1631,18 +1571,17 @@ Curators MUST annotate the following keys and values in `uns`:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### default_embedding
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>default_embedding</td>
+      <td><code>default_embedding</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MAY annotate.</td>
+      <th>Requirement</th>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Value</th>
@@ -1651,27 +1590,25 @@ Curators MUST annotate the following keys and values in `uns`:
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ### X_approximate_distribution
 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td>X_approximate_distribution</td>
+      <td><code>X_approximate_distribution</code></td>
     </tr>
     <tr>
-      <th>Annotator</th>
-      <td>Curator MAY annotate.</td>
+      <th>Requirement</th>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Value</th>
         <td>
-          <code>str</code>. This field enables the curator to specify the data distribution explicitly and not relying on portal automatic detection of the type of data (raw counts, or normalized). The value MUST be <code>"count"</code> (for data whose distributions are best approximated by counting distributions like Poisson, Binomial, or Negative Binomial) or <code>"normal"</code> (for data whose distributions are best approximated by the Gaussian distribution.)
+          <code>str</code>. This field enables the data submitter or curator to specify the data distribution explicitly and not relying on portal automatic detection of the type of data (raw counts, or normalized). The value MUST be <code>"count"</code> (for data whose distributions are best approximated by counting distributions like Poisson, Binomial, or Negative Binomial) or <code>"normal"</code> (for data whose distributions are best approximated by the Gaussian distribution.)
         </td>
     </tr>
 </tbody></table>
-<br/>
 
 ---
 
@@ -1710,11 +1647,13 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Removed `is_pre_analysis` as it is specific for CELLxGENE collection handling
   * Moved <code>genetic_perturbations</code>, <code>genetic_perturbations[<i>id</i>]</code>, <code>genetic_perturbations[<i>id</i>]['role']</code>, <code>genetic_perturbations[<i>id</i>]['protospacer_sequence']</code>, <code>genetic_perturbations[<i>id</i>]['protospacer_adjacent_motif']</code>, <code>genetic_perturbations[<i>id</i>]['derived_genomic_regions']</code>, <code>genetic_perturbations[<i>id</i>]['derived_features']</code>, and <code>genetic_perturbations[<i>id</i>]['derived_features'][<i>feature_id</i>]</code> to perturb-specific schema ['schema_perturb.md'](https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema_perturb.md#genetic_perturbations)
   * Moved <code>spatial</code>, <code>spatial[<i>library_id</i>]</code>, <code>spatial[<i>library_id</i>]['is_single']</code>, <code>spatial[<i>library_id</i>]['images']</code>, <code>spatial[<i>library_id</i>]['images']['fullres']</code>, <code>spatial[<i>library_id</i>]['images']['hires']</code>, <code>spatial[<i>library_id</i>]['scalefactors']</code>, <code>spatial[<i>library_id</i>]['scalefactors']['spot_diameter_fullres']</code>, and <code>spatial[<i>library_id</i>]['scalefactors']['tissue_hires_scalef']</code> to spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema_spatial.md#spatial)
-  * Modified `{column}_colors` so that anything can be edited by the curator, and everything is thus optional.
+  * Modified `{column}_colors` so that anything can be edited by the data submitter or curator, and everything is thus optional.
   * Modified `organism_ontology_term_id` to allow any species
   * Modified `citation` so that it contains only the DOI. Made this field Optional.
 * Move scTAC-seq assets to atac-specific schema ['schema_atac.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_atac.md#scatac-seq-assets)
 * Created the analysis-specific schema ['schema_analysis_json.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_analysis_json.md) in JSON, for storing the analysis and annotation pipeline. The JSON entry itself is stored in uns/[`analysis_pipeline`](#analysis_pipeline)
+* Changed the format of the tables, specifically Annotator -> Requirement, and created a specific field for the type, instead of merging with Value.
+* Made the embedding optional for visualization (it was CELLxGENE-specific for its visualization portal)
 
 ## Appendix B. Relevant ontologies
 
