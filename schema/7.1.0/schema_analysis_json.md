@@ -286,7 +286,8 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>A controlled term describing the broad category of the analysis step (inspired from <a href="https://www.sc-best-practices.org">sc-best-practices.org</a>). The vocabulary is organized into thematic groups below (groups are informational only; the value is a flat string). MUST be one of the following values, or <code>"Other"</code> if no term applies:<br/><br/>
+      <td>A controlled term describing the broad category of the analysis step (inspired from <a href="https://www.sc-best-practices.org">sc-best-practices.org</a>). The vocabulary is organized into thematic groups below (groups are informational only; the value is a flat string).<br/>
+        MUST be one of the following values, or <code>"Other"</code> if no term applies:<br/><br/>
       <strong>Raw data processing</strong><br/>
       <code>"Alignment"</code> — Read alignment / mapping to a reference genome (e.g. STAR, HISAT2, CellRanger).<br/>
       <code>"Quantification"</code> — Generating a count matrix from aligned reads (e.g. STARsolo, featureCounts, salmon alevin). Often bundled with Alignment in all-in-one tools.<br/>
