@@ -104,7 +104,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>A short, human-readable name for the pipeline. Example: <code>"ASAP Analysis Pipeline"</code>, <code>"Seurat Standard Workflow"</code>.<br/><br/></td>
+      <td>A short, human-readable name for the pipeline. Example: <code>"ASAP Analysis Pipeline"</code>, <code>"Seurat Standard Workflow"</code> or <code>"Scanpy"</code>.<br/><br/></td>
     </tr>
 </tbody></table>
 <br/>
