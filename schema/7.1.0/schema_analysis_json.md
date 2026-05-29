@@ -82,7 +82,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>The version of the scFAIR <code>analysis_json</code> schema used to generate this document. MUST match the version string of the core schema. Example: <code>"7.1.0+scfair1.0"</code>.<br/><br/></td>
+      <td>The version of the scFAIR <code>analysis_json</code> schema used to generate this document. MUST match the version string of the core schema. Example: <code>"7.1.0+scfair1.0"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -104,7 +104,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>A short, human-readable name for the pipeline. Example: <code>"ASAP"</code>, <code>"Seurat"</code> or <code>"Scanpy"</code>.<br/><br/></td>
+      <td>A short, human-readable name for the pipeline. Example: <code>"ASAP"</code>, <code>"Seurat"</code> or <code>"Scanpy"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -126,7 +126,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>The version of the pipeline that was run (if existing). SHOULD follow <a href="https://semver.org/">Semantic Versioning</a>. Should be <code>null</code> if not versioned. Example: <code>"v5"</code>, <code>"1.3.2"</code>. Could be the version of the Seurat/Scanpy package used, the version of the online tool, or the version of the snakemake/nextflow pipeline.<br/><br/></td>
+      <td>The version of the pipeline that was run (if existing). SHOULD follow <a href="https://semver.org/">Semantic Versioning</a>. Should be <code>null</code> if not versioned. Example: <code>"v5"</code>, <code>"1.3.2"</code>. Could be the version of the Seurat/Scanpy package used, the version of the online tool, or the version of the snakemake/nextflow pipeline.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -148,7 +148,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>A free-text description of the overall pipeline and its purpose. Example: <code>"Standard preprocessing and clustering pipeline for 10x Chromium scRNA-seq data."</code>.<br/><br/></td>
+      <td>A free-text description of the overall pipeline and its purpose. Example: <code>"Standard preprocessing and clustering pipeline for 10x Chromium scRNA-seq data."</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -170,7 +170,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>A URL pointing to the source code, documentation, or publication describing the pipeline. MUST be a valid URL if provided. Example: <code>"https://github.com/my-lab/my-pipeline"</code>.<br/><br/></td>
+      <td>A URL pointing to the source code, documentation, or publication describing the pipeline. MUST be a valid URL if provided. Example: <code>"https://github.com/my-lab/my-pipeline"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -192,7 +192,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>The date and time at which this JSON document was generated, in ISO 8601 format. Example: <code>"2024-01-15T10:30:00Z"</code>.<br/><br/></td>
+      <td>The date and time at which this JSON document was generated, in ISO 8601 format. Example: <code>"2024-01-15T10:30:00Z"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -214,7 +214,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>An ordered array of step objects describing each analysis step. Steps MUST appear in chronological execution order. Each element is a step object as described in the <a href="#steps-pipeline-steps"><code>steps</code> (Pipeline steps)</a> section. The array MAY be empty (<code>[]</code>) if no steps are documented.<br/><br/></td>
+      <td>An ordered array of step objects describing each analysis step. Steps MUST appear in chronological execution order. Each element is a step object as described in the <a href="#steps-pipeline-steps"><code>steps</code> (Pipeline steps)</a> section. The array MAY be empty (<code>[]</code>) if no steps are documented.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -242,7 +242,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>A short, human-readable label for the step. SHOULD be unique within the <code>steps</code> array, as it may be used for cross-referencing. Example: <code>"Parsing"</code>, <code>"Quality Control"</code>, <code>"UMAP"</code>, <code>"Leiden Clustering"</code>.<br/><br/></td>
+      <td>A short, human-readable label for the step. SHOULD be unique within the <code>steps</code> array, as it may be used for cross-referencing. Example: <code>"Parsing"</code>, <code>"Quality Control"</code>, <code>"UMAP"</code>, <code>"Leiden Clustering"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -264,7 +264,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>A free-text description of what this step does. Example: <code>"Filters cells with fewer than 200 genes expressed and removes cells with more than 20% mitochondrial gene expression."</code>.<br/><br/></td>
+      <td>A free-text description of what this step does. Example: <code>"Filters cells with fewer than 200 genes expressed and removes cells with more than 20% mitochondrial gene expression."</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -346,7 +346,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
       <code>"Spatial Deconvolution"</code> — Deconvolving cell type composition at each spatial spot (e.g. RCTD, SPOTlight, cell2location).<br/><br/>
       <strong>Other methods and plotting</strong><br/>
       <code>"Visualization"</code> — Generating analysis plots or figures not covered by another category (e.g. custom heatmaps, dot plots, violin plots).<br/>
-      <code>"Other"</code> — Any analysis step not covered by the categories above.<br/><br/></td>
+      <code>"Other"</code> — Any analysis step not covered by the categories above.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -370,7 +370,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>The name of the method, script, function, or tool used for this step. Example: <code>"Parsing.java"</code>, <code>"scanpy.pp.normalize_total"</code>, <code>"Seurat::FindClusters"</code>, <code>"cellranger count"</code>, <code>"Manual curation"</code>.<br/><br/></td>
+      <td>The name of the method, script, function, or tool used for this step. Example: <code>"Parsing.java"</code>, <code>"scanpy.pp.normalize_total"</code>, <code>"Seurat::FindClusters"</code>, <code>"cellranger count"</code>, <code>"Manual curation"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -392,7 +392,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>The exact command line or function call used to run this step, including all arguments. If <code>null</code>, the step is considered <strong>non-reproducible</strong> and all environment fields (<code>docker_image_name</code>, <code>docker_image_url</code>, <code>docker_image_digest</code>, <code>conda_env_url</code>, <code>conda_env_file</code>) and data fields (<code>parameters</code>, <code>inputs</code>, <code>outputs</code>) MAY also be <code>null</code>. If not <code>null</code>, all environment fields SHOULD be provided. Example: <code>"java -jar /opt/asap/Parsing.jar --input /data/raw/ --genome hg38 --threads 8"</code>.<br/><br/></td>
+      <td>The exact command line or function call used to run this step, including all arguments. If <code>null</code>, the step is considered <strong>non-reproducible</strong> and all environment fields (<code>docker_image_name</code>, <code>docker_image_url</code>, <code>docker_image_digest</code>, <code>conda_env_url</code>, <code>conda_env_file</code>) and data fields (<code>parameters</code>, <code>inputs</code>, <code>outputs</code>) MAY also be <code>null</code>. If not <code>null</code>, all environment fields SHOULD be provided. Example: <code>"java -jar /opt/asap/Parsing.jar --input /data/raw/ --genome hg38 --threads 8"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -414,7 +414,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>The version of the tool, package, or method used in this step. This refers to the software itself (e.g. Scanpy <code>"1.10.1"</code>), not the container. <code>null</code> if not applicable or unknown. Example: <code>"1.10.1"</code>, <code>"4.3.1"</code>, <code>"v5"</code>, <code>"8.2.0"</code>.<br/><br/></td>
+      <td>The version of the tool, package, or method used in this step. This refers to the software itself (e.g. Scanpy <code>"1.10.1"</code>), not the container. <code>null</code> if not applicable or unknown. Example: <code>"1.10.1"</code>, <code>"4.3.1"</code>, <code>"v5"</code>, <code>"8.2.0"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -436,7 +436,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>The programming language used to implement this step. Example: <code>"Python"</code>, <code>"R"</code>, <code>"Java"</code>, <code>"Bash"</code>, <code>"Julia"</code>.<br/><br/></td>
+      <td>The programming language used to implement this step. Example: <code>"Python"</code>, <code>"R"</code>, <code>"Java"</code>, <code>"Bash"</code>, <code>"Julia"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -458,7 +458,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
     </tr>
     <tr>
       <th>Value</th>
-      <td>The version of the programming language runtime used. Example: <code>"3.11.5"</code> (Python), <code>"4.3.2"</code> (R), <code>"11"</code> (Java).<br/><br/></td>
+      <td>The version of the programming language runtime used. Example: <code>"3.11.5"</code> (Python), <code>"4.3.2"</code> (R), <code>"11"</code> (Java).</td>
     </tr>
 </tbody></table>
 <br/>
@@ -484,7 +484,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The Docker registry hosting the image used for this step. MUST be one of: <code>"dockerhub"</code> (<a href="https://hub.docker.com/">Docker Hub</a>), <code>"ghcr"</code> (<a href="https://ghcr.io/">GitHub Container Registry</a>), <code>"quay"</code> (<a href="https://quay.io/">Quay.io</a>), <code>"custom"</code> (any other registry). <code>null</code> if Docker was not used.<br/><br/></td>
+      <td>The Docker registry hosting the image used for this step. MUST be one of: <code>"dockerhub"</code> (<a href="https://hub.docker.com/">Docker Hub</a>), <code>"ghcr"</code> (<a href="https://ghcr.io/">GitHub Container Registry</a>), <code>"quay"</code> (<a href="https://quay.io/">Quay.io</a>), <code>"custom"</code> (any other registry). <code>null</code> if Docker was not used.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -506,7 +506,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>A URL pointing to the specific image (or image layer page) on the Docker registry. MUST be a valid URL if provided. Example: <code>"https://hub.docker.com/layers/fabdavid/asap_run/v5"</code>.<br/><br/></td>
+      <td>A URL pointing to the specific image (or image layer page) on the Docker registry. MUST be a valid URL if provided. Example: <code>"https://hub.docker.com/layers/fabdavid/asap_run/v5"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -528,7 +528,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The full Docker image name with tag, following the format <code>"<repository>/<image>:<tag>"</code>. Example: <code>"fabdavid/asap_run:v5"</code>, <code>"bioconductor/bioconductor_docker:RELEASE_3_18"</code>.<br/><br/></td>
+      <td>The full Docker image name with tag, following the format <code>"<repository>/<image>:<tag>"</code>. Example: <code>"fabdavid/asap_run:v5"</code>, <code>"bioconductor/bioconductor_docker:RELEASE_3_18"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -550,7 +550,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The content-addressable SHA-256 digest of the Docker image, in the format <code>"sha256:<hex>"</code>. This provides stronger reproducibility guarantees than a mutable tag, since a tag can be reassigned to a different image. Example: <code>"sha256:a7c4d1f2e3b5c6d7e8f9..."</code>.<br/><br/></td>
+      <td>The content-addressable SHA-256 digest of the Docker image, in the format <code>"sha256:<hex>"</code>. This provides stronger reproducibility guarantees than a mutable tag, since a tag can be reassigned to a different image. Example: <code>"sha256:a7c4d1f2e3b5c6d7e8f9..."</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -572,7 +572,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>A URL pointing to a conda environment specification file (e.g. <code>environment.yml</code>) used for this step. MUST be a valid URL if provided. Either <code>docker_image_name</code> or <code>conda_env_url</code> SHOULD be provided for reproducible steps; both MAY be provided simultaneously. Example: <code>"https://github.com/my-lab/pipeline/blob/v1.0/env/environment.yml"</code>.<br/><br/></td>
+      <td>A URL pointing to a conda environment specification file (e.g. <code>environment.yml</code>) used for this step. MUST be a valid URL if provided. Either <code>docker_image_name</code> or <code>conda_env_url</code> SHOULD be provided for reproducible steps; both MAY be provided simultaneously. Example: <code>"https://github.com/my-lab/pipeline/blob/v1.0/env/environment.yml"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -594,7 +594,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The full verbatim content of the conda <code>environment.yml</code> file, embedded as a string. Provides the strongest offline reproducibility guarantees when no stable public URL exists. Either <code>conda_env_url</code> or <code>conda_env_file</code> SHOULD be provided (not necessarily both).<br/><br/></td>
+      <td>The full verbatim content of the conda <code>environment.yml</code> file, embedded as a string. Provides the strongest offline reproducibility guarantees when no stable public URL exists. Either <code>conda_env_url</code> or <code>conda_env_file</code> SHOULD be provided (not necessarily both).</td>
     </tr>
 </tbody></table>
 <br/>
@@ -618,7 +618,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>An ordered array of parameter objects, each describing one named argument or setting passed to the method in this run. Parameters SHOULD be listed in the same order as they appear in the <code>command</code>. <code>null</code> if not applicable or if the step is non-reproducible.<br/><br/></td>
+      <td>An ordered array of parameter objects, each describing one named argument or setting passed to the method in this run. Parameters SHOULD be listed in the same order as they appear in the <code>command</code>. <code>null</code> if not applicable or if the step is non-reproducible.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -640,7 +640,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The name of the parameter as used by the tool or method. Example: <code>"min_genes"</code>, <code>"n_neighbors"</code>, <code>"resolution"</code>, <code>"--threads"</code>.<br/><br/></td>
+      <td>The name of the parameter as used by the tool or method. Example: <code>"min_genes"</code>, <code>"n_neighbors"</code>, <code>"resolution"</code>, <code>"--threads"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -662,7 +662,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The value of the parameter as used in this run. <code>null</code> means the tool default was used without explicit specification. Example: <code>200</code>, <code>0.5</code>, <code>true</code>, <code>"leiden"</code>, <code>["PC_1", "PC_2"]</code>.<br/><br/></td>
+      <td>The value of the parameter as used in this run. <code>null</code> means the tool default was used without explicit specification. Example: <code>200</code>, <code>0.5</code>, <code>true</code>, <code>"leiden"</code>, <code>["PC_1", "PC_2"]</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -684,7 +684,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The expected data type of the parameter value. SHOULD be one of: <code>"string"</code>, <code>"integer"</code>, <code>"float"</code>, <code>"boolean"</code>, <code>"array"</code>. Example: <code>"integer"</code>.<br/><br/></td>
+      <td>The expected data type of the parameter value. SHOULD be one of: <code>"string"</code>, <code>"integer"</code>, <code>"float"</code>, <code>"boolean"</code>, <code>"array"</code>. Example: <code>"integer"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -706,7 +706,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>A free-text description of what this parameter controls. Example: <code>"Minimum number of genes a cell must express to be retained after filtering."</code>.<br/><br/></td>
+      <td>A free-text description of what this parameter controls. Example: <code>"Minimum number of genes a cell must express to be retained after filtering."</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -730,7 +730,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>An array of input objects, each describing a file or h5ad metadata slot consumed by this step. <code>null</code> if no inputs are documented or if the step is non-reproducible. Each input object contains the sub-fields described below.<br/><br/></td>
+      <td>An array of input objects, each describing a file or h5ad metadata slot consumed by this step. <code>null</code> if no inputs are documented or if the step is non-reproducible. Each input object contains the sub-fields described below.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -752,7 +752,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>A short, human-readable label for this input. Example: <code>"Raw count matrix"</code>, <code>"Cell barcodes"</code>, <code>"Genome reference FASTA"</code>.<br/><br/></td>
+      <td>A short, human-readable label for this input. Example: <code>"Raw count matrix"</code>, <code>"Cell barcodes"</code>, <code>"Genome reference FASTA"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -774,7 +774,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The type of the input. MUST be one of: <code>"file"</code> (a file on disk or remote storage), <code>"metadata_key"</code> (a slot or key in the h5ad object, e.g. <code>obs</code>, <code>var</code>, <code>obsm</code>, <code>obsp</code>, <code>varm</code>, <code>varp</code>, <code>uns</code>), <code>"url"</code> (a remote resource referenced by URL but not downloaded as a file).<br/><br/></td>
+      <td>The type of the input. MUST be one of: <code>"file"</code> (a file on disk or remote storage), <code>"metadata_key"</code> (a slot or key in the h5ad object, e.g. <code>obs</code>, <code>var</code>, <code>obsm</code>, <code>obsp</code>, <code>varm</code>, <code>varp</code>, <code>uns</code>), <code>"url"</code> (a remote resource referenced by URL but not downloaded as a file).</td>
     </tr>
 </tbody></table>
 <br/>
@@ -796,7 +796,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The file format of the input. SHOULD use <a href="http://edamontology.org/">EDAM ontology</a> format terms (e.g. <code>"format_3590"</code> for HDF5) when possible. Free-text values are also accepted. Example: <code>"h5ad"</code>, <code>"fastq.gz"</code>, <code>"mtx"</code>, <code>"tsv"</code>, <code>"csv"</code>, <code>"bam"</code>.<br/><br/></td>
+      <td>The file format of the input. SHOULD use <a href="http://edamontology.org/">EDAM ontology</a> format terms (e.g. <code>"format_3590"</code> for HDF5) when possible. Free-text values are also accepted. Example: <code>"h5ad"</code>, <code>"fastq.gz"</code>, <code>"mtx"</code>, <code>"tsv"</code>, <code>"csv"</code>, <code>"bam"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -818,7 +818,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>The file path, URL, or h5ad slot key of the input. MAY be a relative path, absolute path, or URL. For <code>"metadata_key"</code> type inputs, this SHOULD be the Python-style accessor string. Example: <code>"data/raw/matrix.mtx.gz"</code>, <code>"https://ftp.ncbi.nlm.nih.gov/..."</code>, <code>"obsm['X_pca']"</code>, <code>"uns['neighbors']"</code>.<br/><br/></td>
+      <td>The file path, URL, or h5ad slot key of the input. MAY be a relative path, absolute path, or URL. For <code>"metadata_key"</code> type inputs, this SHOULD be the Python-style accessor string. Example: <code>"data/raw/matrix.mtx.gz"</code>, <code>"https://ftp.ncbi.nlm.nih.gov/..."</code>, <code>"obsm['X_pca']"</code>, <code>"uns['neighbors']"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -840,7 +840,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>A free-text description of this input and its role in the step. Example: <code>"10x Genomics CellRanger output directory containing barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz."</code>.<br/><br/></td>
+      <td>A free-text description of this input and its role in the step. Example: <code>"10x Genomics CellRanger output directory containing barcodes.tsv.gz, features.tsv.gz, and matrix.mtx.gz."</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -862,7 +862,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>A checksum of the input file for integrity verification, in the format <code>"<algorithm>:<hex>"</code>. SHA-256 is preferred. Example: <code>"sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"</code>.<br/><br/></td>
+      <td>A checksum of the input file for integrity verification, in the format <code>"<algorithm>:<hex>"</code>. SHA-256 is preferred. Example: <code>"sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -886,7 +886,7 @@ The environment section describes the computational environment in which the ste
     </tr>
     <tr>
       <th>Value</th>
-      <td>An array of output objects, each describing a file or h5ad metadata slot produced by this step. <code>null</code> if no outputs are documented or if the step is non-reproducible. Each output object contains the same sub-fields as the input objects.<br/><br/></td>
+      <td>An array of output objects, each describing a file or h5ad metadata slot produced by this step. <code>null</code> if no outputs are documented or if the step is non-reproducible. Each output object contains the same sub-fields as the input objects.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -912,7 +912,7 @@ The fields `outputs[*].label`, `outputs[*].type`, `outputs[*].format`, `outputs[
     </tr>
     <tr>
       <th>Value</th>
-      <td>An object describing the computational resources used for this step. <code>null</code> if not documented. Contains the sub-fields described below.<br/><br/></td>
+      <td>An object describing the computational resources used for this step. <code>null</code> if not documented. Contains the sub-fields described below.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -934,7 +934,7 @@ The fields `outputs[*].label`, `outputs[*].type`, `outputs[*].format`, `outputs[
     </tr>
     <tr>
       <th>Value</th>
-      <td>The number of CPU cores used or requested. Example: <code>8</code>.<br/><br/></td>
+      <td>The number of CPU cores used or requested. Example: <code>8</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -956,7 +956,7 @@ The fields `outputs[*].label`, `outputs[*].type`, `outputs[*].format`, `outputs[
     </tr>
     <tr>
       <th>Value</th>
-      <td>The amount of RAM used or requested, in gigabytes. Example: <code>64.0</code>.<br/><br/></td>
+      <td>The amount of RAM used or requested, in gigabytes. Example: <code>64.0</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -978,7 +978,7 @@ The fields `outputs[*].label`, `outputs[*].type`, `outputs[*].format`, `outputs[
     </tr>
     <tr>
       <th>Value</th>
-      <td>The number of GPU devices used. <code>0</code> if the step ran on CPU only. <code>null</code> if not documented. Example: <code>1</code>.<br/><br/></td>
+      <td>The number of GPU devices used. <code>0</code> if the step ran on CPU only. <code>null</code> if not documented. Example: <code>1</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -1000,7 +1000,7 @@ The fields `outputs[*].label`, `outputs[*].type`, `outputs[*].format`, `outputs[
     </tr>
     <tr>
       <th>Value</th>
-      <td>The model name of the GPU device(s) used. Example: <code>"NVIDIA A100 80GB"</code>, <code>"NVIDIA V100"</code>.<br/><br/></td>
+      <td>The model name of the GPU device(s) used. Example: <code>"NVIDIA A100 80GB"</code>, <code>"NVIDIA V100"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -1024,7 +1024,7 @@ The fields `outputs[*].label`, `outputs[*].type`, `outputs[*].format`, `outputs[
     </tr>
     <tr>
       <th>Value</th>
-      <td>The date and time at which this step started executing, in ISO 8601 format. Example: <code>"2024-01-15T10:35:00Z"</code>.<br/><br/></td>
+      <td>The date and time at which this step started executing, in ISO 8601 format. Example: <code>"2024-01-15T10:35:00Z"</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -1046,7 +1046,7 @@ The fields `outputs[*].label`, `outputs[*].type`, `outputs[*].format`, `outputs[
     </tr>
     <tr>
       <th>Value</th>
-      <td>The wall-clock execution time of this step, in seconds. Example: <code>120.5</code>.<br/><br/></td>
+      <td>The wall-clock execution time of this step, in seconds. Example: <code>120.5</code>.</td>
     </tr>
 </tbody></table>
 <br/>
@@ -1068,7 +1068,7 @@ The fields `outputs[*].label`, `outputs[*].type`, `outputs[*].format`, `outputs[
     </tr>
     <tr>
       <th>Value</th>
-      <td>The integer random seed used in this step, if the method involves any stochastic element (e.g. UMAP, t-SNE, Leiden/Louvain clustering, doublet detection, simulation). Setting and recording a fixed seed is critical for exact reproducibility. <code>null</code> if the step is fully deterministic or if the seed was not recorded. Example: <code>42</code>.<br/><br/></td>
+      <td>The integer random seed used in this step, if the method involves any stochastic element (e.g. UMAP, t-SNE, Leiden/Louvain clustering, doublet detection, simulation). Setting and recording a fixed seed is critical for exact reproducibility. <code>null</code> if the step is fully deterministic or if the seed was not recorded. Example: <code>42</code>.</td>
     </tr>
 </tbody></table>
 <br/>
