@@ -290,8 +290,8 @@ The top-level JSON object MUST be an `object` containing the following fields:
         MUST be one of the following values, or <code>"Other"</code> if no term applies:<br/><br/>
       <strong>Raw data processing</strong><br/>
       <code>"Alignment"</code> — Read alignment / mapping to a reference genome (e.g. STAR, HISAT2, CellRanger).<br/>
-      <code>"Quantification"</code> — Generating a count matrix from aligned reads (e.g. STARsolo, featureCounts, salmon alevin). Often bundled with Alignment in all-in-one tools.<br/>
-      <code>"Parsing"</code> — Loading and parsing tool output files (e.g. CellRanger output directory, MTX/H5 files) into an in-memory data structure.<br/>
+      <code>"Quantification"</code> — Generating a count matrix from aligned reads (e.g. STARsolo, featureCounts, salmon alevin). Should be <code>"Alignment"</code> if bundled with Alignment in all-in-one tools.<br/>
+      <code>"Parsing"</code> — Loading and parsing tool output files (e.g. CellRanger output directory, MTX/H5 files) into an in-memory data structure. Could be important if number formats are changing for example.<br/>
       <code>"Report Generation"</code> — Generating automated QC or analysis reports (e.g. MultiQC, FastQC, CellRanger HTML report).<br/><br/>
       <strong>Quality control and filtering</strong><br/>
       <code>"Quality Control"</code> — Computing per-cell and per-gene QC metrics (e.g. number of genes, UMI counts, mitochondrial fraction).<br/>
@@ -301,7 +301,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
       <code>"Gene Filtering"</code> — Filtering out lowly detected or uninformative genes (e.g. genes expressed in fewer than N cells).<br/><br/>
       <strong>Normalization and imputation</strong><br/>
       <code>"Normalization"</code> — Normalizing raw counts to remove sequencing-depth differences between cells (e.g. CP10K, scran, SCTransform, DESeq2 size factors).<br/>
-      <code>"Scaling"</code> — Scaling and/or centering normalized expression values across genes (e.g. z-score standardization prior to PCA).<br/>
+      <code>"Scaling"</code> — Scaling and/or centering normalized expression values across genes (e.g. z-score standardization prior to PCA). Should be <code>"Normalization"</code> if bundled with Normalization in all-in-one tools such as SCTransform.<br/>
       <code>"Imputation"</code> — Imputing missing or zero (dropout) expression values to denoise the count matrix (e.g. MAGIC, SAVER, scImpute, DeepImpute).<br/><br/>
       <strong>Cell cycle and feature selection</strong><br/>
       <code>"Cell Cycle Scoring"</code> — Assigning cell cycle phase scores and/or regressing out cell cycle effects (e.g. Seurat CellCycleScoring, scanpy score_genes_cell_cycle).<br/>
@@ -344,7 +344,7 @@ The top-level JSON object MUST be an `object` containing the following fields:
       <code>"Spatial Neighborhood Analysis"</code> — Analysing cellular co-localization and spatial interaction patterns (e.g. Squidpy, SPATA2).<br/>
       <code>"Spatial Domain Detection"</code> — Identifying spatially coherent tissue regions or domains (e.g. BayesSpace, STAGATE, GraphST).<br/>
       <code>"Spatial Deconvolution"</code> — Deconvolving cell type composition at each spatial spot (e.g. RCTD, SPOTlight, cell2location).<br/><br/>
-      <strong>Catch-all</strong><br/>
+      <strong>Other methods and plotting</strong><br/>
       <code>"Visualization"</code> — Generating analysis plots or figures not covered by another category (e.g. custom heatmaps, dot plots, violin plots).<br/>
       <code>"Other"</code> — Any analysis step not covered by the categories above.<br/><br/></td>
     </tr>
