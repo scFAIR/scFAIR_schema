@@ -638,6 +638,52 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     </tr>
 </tbody></table>
 
+### strain_or_genetic_background_term_id
+
+<table><tbody>
+    <tr>
+      <th>Key</th>
+      <td><code>strain_or_genetic_background</code></td>
+    </tr>
+    <tr>
+      <th>Requirement</th>
+      <td>OPTIONAL</td>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <td>categorical with <code>str</code> categories.</td>
+    </tr>
+    <tr>
+      <th>Value</th>
+      <td>
+          When existing and relevant, this MUST be a controlled value describing the experimentally relevant genetic background of a non human organism, such as strain, stock, line, cultivar, genotype, ecotype, variety, serovar, or breeding and crossing design. For example, strain can be described using EFO terms such as <code>"EFO:0002742"</code> for <code>"C57BL/6 congenically expressing H2g7 mouse strain"</code>.
+      </td>
+    </tr>
+</tbody></table>
+
+### strain_or_genetic_background
+
+<table><tbody>
+    <tr>
+      <th>Key</th>
+      <td><code>strain_or_genetic_background</code></td>
+    </tr>
+    <tr>
+      <th>Requirement</th>
+      <td>OPTIONAL</td>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <td><code>str</code>.</td>
+    </tr>
+    <tr>
+      <th>Value</th>
+      <td>
+          This MUST be the human-readable name assigned to the value of <code>strain_or_genetic_background_term_id</code> if set. Else, it is a free text describing the experimentally relevant genetic background of a non human organism, such as strain, stock, line, cultivar, genotype, ecotype, variety, serovar, or breeding and crossing design.
+      </td>
+    </tr>
+</tbody></table>
+
 ### disease_ontology_term_id
 
 <table><tbody>
