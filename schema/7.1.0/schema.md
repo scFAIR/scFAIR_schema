@@ -1849,6 +1849,7 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Removed `observation_joinid` as it is specific for CELLxGENE
   * Moved `array_row`, `array_col`, and `in_tissue` to spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_spatial.md#array_row)
   * Moved `genetic_perturbation_id`, `genetic_perturbation_strategy` to perturbation-specific schema ['schema_perturb.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_perturb.md#genetic_perturbation_id)
+  * Added `strain_or_genetic_background_term_id` and `strain_or_genetic_background` to describe strain, genotype,etc..
 * [`obsm`](#obsm-embeddings) (Embeddings)
   * Moved `spatial` to the spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_spatial.md#spatial).
 * [`var` and `raw.var`](#var-and-rawvar-gene-metadata) (Gene metadata)
