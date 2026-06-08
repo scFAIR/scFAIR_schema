@@ -1637,7 +1637,7 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
     <tr>
       <th>Value</th>
       <td>
-        This MUST be <code>"7.1.0_scfair"</code>.
+        This MUST be <code>"7.1.0+scfair1.0"</code>.
       </td>
     </tr>
 </tbody></table>
