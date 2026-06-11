@@ -198,7 +198,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
 
 **Note:** Terms in italic are auto-filled by the CZI CELLxGENE submission pipeline. scFAIR schema now consider them as required.
 
-### index of pandas.DataFrame
+### index
 
 <table><tbody>
     <tr>
@@ -1137,7 +1137,7 @@ If present, the size of the ndarray stored for a key in `obsp` MUST NOT be zero.
 
 `var` and `raw.var` are both of type [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
 
-### index of pandas.DataFrame
+### index
 
 <table><tbody>
     <tr>
@@ -1835,7 +1835,7 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Recommended using the [Uberon collected metazoan ontology] or [Uberon composite metazoan ontology] version of [Uberon multi-species anatomy ontology], instead of taxon-specific ontologies, for anatomy, cell types, developemental and life stages.
 * Moved the **Important note on types** section to the [General Requirements](#general-requirements) section. Expanding on the difference between reported Python types and HDF5 inner typing.
 * **Required Gene Annotations**
-  * This section was removed, but its content was moved to the [`index`](#index-of-pandasdataframe-1) subsection of [`var` and `raw.var`](#var-and-rawvar-gene-metadata) section where it immediately applies.
+  * This section was removed, but its content was moved to the [`index`](#index) subsection of [`var` and `raw.var`](#var-and-rawvar-gene-metadata) section where it immediately applies.
   * CZI CELLxGENE schema only handles certain Taxons, and specify a fixed Ensembl release for each species that they "attach" to the schema version as fixed. scFAIR allows gene annotations from any Ensembl and Ensembl Metazoa species, and any release present in one of the Ensembl database ([Main Ensembl](https://www.ensembl.org/index.html), [Ensembl Metazoa](https://metazoa.ensembl.org/index.html)), and [Ensembl COVID-19](https://covid-19.ensembl.org/index.html). We planned the structure so that later we can add EnsemblPlants, EnsemblProtists, EnsemblBacteria and EnsemblFungi as well.
   * Removed GENCODE from authorized gene names. Only Ensembl is allowed.
 * [`X` (Matrix layers)](#x-matrix-layers)
@@ -1849,7 +1849,7 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
 * [`obsm`](#obsm-embeddings) (Embeddings)
   * Moved `spatial` to the spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_spatial.md#spatial).
 * [`var` and `raw.var`](#var-and-rawvar-gene-metadata) (Gene metadata)
-  * Modified [`index`](#index-of-pandasdataframe-1) subsection, as detailed above.
+  * Modified [`index`](#index-1) subsection, as detailed above.
   * We think [`feature_type`](#feature_type) and [`feature_biotype`](#feature_biotype) are probably intertwined in CxG definition but for now we keep them as is for compatibility purpose.
   * Added [`feature_chromosome`](#feature_chromosome) to provide chromosome information for each feature. Useful for MT QC plot.
 * [`uns`](#uns-dataset-metadata) (Dataset Metadata)
