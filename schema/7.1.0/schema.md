@@ -216,7 +216,8 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     <tr>
       <th>Value</th>
       <td>
-        The index of the pandas.DataFrame MUST contain unique identifiers for observations (e.g. unique cell names).
+        The index of the pandas.DataFrame MUST contain unique identifiers for observations (e.g. unique cell names).<br/>
+        Of note, in the h5ad file, this is stored as an attribute of <code>obs</code> named <code>_index</code>, pointing to an existing <code>obs</code> metadata.
       </td>
     </tr>
 </tbody></table>
@@ -1160,7 +1161,8 @@ If present, the size of the ndarray stored for a key in `obsp` MUST NOT be zero.
           If the feature is a gene then the value MUST be the <code>gene_id</code> attribute from the corresponding <code>organism_ontology_term_id</code>. scFAIR allows gene annotations from any species, and any release present in the Ensembl database. In particular, we accept terms from <a href="https://www.ensembl.org/index.html"><code>"Ensembl"</code></a>, <a href="https://metazoa.ensembl.org/index.html"><code>"Ensembl Metazoa"</code></a>, and <a href="https://covid-19.ensembl.org/"><code>"Ensembl COVID-19"</code></a>.<br/><br/>
           The Ensembl database and assembly used for gene annotation should also be specified in <a href="#uns-dataset-metadata"><code>uns</code></a> entries <a href="#ensembl_release"><code>ensembl_release</code></a>, <a href="#ensembl_database"><code>ensembl_database</code></a>, and <a href="#ensembl_assembly"><code>ensembl_assembly</code></a>.<br/><br/>
           <b>Note:</b> Version numbers MUST be removed from the <code>gene_id</code> if it is prefixed with <code>"ENS"</code> for <i>Ensembl stable identifier</i>. See <a href="https://ensembl.org/Help/Faq?id=488">I have an Ensembl ID, what can I tell about it from the ID?</a> For example, if the <code>gene_id</code> is <code>“ENSG00000186092.7”</code>, then the value MUST be <code>“ENSG00000186092”</code>.<br/><br/>
-          If the feature is a <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fcms_086340.pdf&title=VXNlciBHdWlkZTogRVJDQyBSTkEgU3Bpa2UtSW4gQ29udHJvbCBNaXhlcyAoRW5nbGlzaCAp">RNA Spike-In Control Mix</a> then the value MUST be an ERCC Spike-In identifier (e.g. <code>"ERCC-0003"</code>) from <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/cms_095047.txt">cms_095047.txt</a>.
+          If the feature is a <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fcms_086340.pdf&title=VXNlciBHdWlkZTogRVJDQyBSTkEgU3Bpa2UtSW4gQ29udHJvbCBNaXhlcyAoRW5nbGlzaCAp">RNA Spike-In Control Mix</a> then the value MUST be an ERCC Spike-In identifier (e.g. <code>"ERCC-0003"</code>) from <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/cms_095047.txt">cms_095047.txt</a>.<br/>
+        Of note, in the h5ad file, this is stored as an attribute of <code>var</code> named <code>_index</code>, pointing to an existing <code>var</code> metadata.
         </td>
     </tr>
 </tbody></table>
