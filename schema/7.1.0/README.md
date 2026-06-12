@@ -14,7 +14,7 @@
 * [`AnnData.raw.X`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#x-matrix-layers) [`scipy.sparse.csr_matrix`] - Main dataset. Raw counts (not normalized). Fix the dimension for all other metadata. Contains all genes and filtered cells.
 * [`AnnData.X`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#x-matrix-layers) - Main dataset. Normalized counts. Should be the same dimension than `AnnData.raw.X`. **Exception** (not recommended):  if `AnnData.raw.X` is NOT provided, it can be the raw count matrix.
 * [`AnnData.obs`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#obs-cell-metadata) - Cell metadata. Describe each cell in the dataset.
-  * [`index`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#index-of-pandasdataframe) [`str`] - The index of the pandas.DataFrame MUST contain unique identifiers for observations. It's usually set as the cell barcodes.
+  * [`index`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#index) [`str`] - The index of the pandas.DataFrame MUST contain unique identifiers for observations. It's usually set as the cell barcodes.
   * [`assay_ontology_term_id`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#assay_ontology_term_id) [`str`] - EFO term describing the assay. e.g. `"EFO:0022605"` for *10x 5' v3*.
   * *[`assay`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#assay)* [`str`] (Paired with `assay_ontology_term_id`) - Human-readable name assigned to the value of `assay_ontology_term_id`.
   * [`tissue_type`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#tissue_type) [`str`] - One of `"tissue"`, `"organoid"`, `"cell line"`, or `"primary cell culture"`.
