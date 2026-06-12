@@ -656,7 +656,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     <tr>
       <th>Value</th>
       <td>
-          When existing and relevant, this MUST be a controlled value describing the experimentally relevant genetic background of a non human organism, such as strain, stock, line, cultivar, genotype, ecotype, variety, serovar, or breeding and crossing design. For example, strain can be described using EFO terms such as <code>"EFO:0002742"</code> for <code>"C57BL/6 congenically expressing H2g7 mouse strain"</code>.
+          When existing and relevant, this MUST be a controlled value describing the experimentally relevant genetic background of a non human organism, such as strain, stock, cultivar, genotype, ecotype, variety, serovar, or breeding and crossing design. For example, strain can be described using EFO terms such as <code>"EFO:0002742"</code> for <code>"C57BL/6 congenically expressing H2g7 mouse strain"</code>.
       </td>
     </tr>
 </tbody></table>
