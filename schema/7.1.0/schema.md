@@ -1514,7 +1514,7 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
     </tr>
     <tr>
       <th>Requirement</th>
-      <td>OPTIONAL</td>
+      <td>REQUIRED</td>
     </tr>
     <tr>
       <th>Type</th>
