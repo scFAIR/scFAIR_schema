@@ -495,7 +495,52 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>
         If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>
         Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/terms?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/hsapdv/terms?obo_id=HsapDv%3A0000001"><code>HsapDv:0000001</code></a> for <i>life cycle</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a> for <i>Homo sapiens</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000071"><code>UBERON:0000071</code></a> for <i>death stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/terms?obo_id=XAO:0000437"><code>XAO:0000437</code></a> for <i>death</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a> for <i>Xenopus <genus></i>), and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFS%3A0000000"><code>ZFS:0000000</code></a> for <i>Unknown</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>.<br/><br/>
-          <b>Note:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.
+          <b>Note:</b> When a taxon-specific developmental stage ontology is available for the organism under study, terms from that ontology MUST be preferred over taxon-neutral UBERON terms where a more precise match exists. The following organism-specific ontologies are recognized and their terms are valid in addition to UBERON:<br/><br/>
+          <table><tbody>
+            <tr>
+              <th>Organism</th>
+              <th><code>organism_ontology_term_id</code></th>
+              <th>Ontology prefix</th>
+              <th>Notes</th>
+            </tr>
+            <tr>
+              <td><i>Homo sapiens</i></td>
+              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a></td>
+              <td><code>HsapDv:</code></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><i>Mus musculus</i></td>
+              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10090"><code>NCBITaxon:10090</code></a></td>
+              <td><code>MmusDv:</code></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><i>Caenorhabditis elegans</i></td>
+              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a></td>
+              <td><code>WBls:</code></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><i>Danio rerio</i></td>
+              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a></td>
+              <td><code>ZFS:</code></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><i>Drosophila melanogaster</i></td>
+              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a></td>
+              <td><code>FBdv:</code></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><i>Aedes aegypti</i></td>
+              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7159"><code>NCBITaxon:7159</code></a></td>
+              <td><code>FBdv:</code></td>
+              <td>No dedicated ontology exists; <code>FBdv:</code> is used as a proxy given the conservation of dipteran developmental stages.</td>
+            </tr>
+          </tbody></table>    
+          Terms from organism-specific ontologies MUST NOT be used for organisms not listed in the table above (please contact maintainer if you need to add one). For unlisted organisms, a taxon-neutral <code>UBERON:</code> term MUST be used.
       </td>
   </tr>
 </tbody></table>
