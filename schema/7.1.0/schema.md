@@ -1,6 +1,6 @@
 # Schema
 
-Contact: vincent.gardeux@epfl.ch
+Maintainer: vincent.gardeux@epfl.ch
 
 Document Status: _Drafting_
 
@@ -14,7 +14,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 The scFAIR schema version is based on [Semantic Versioning](https://semver.org/) and matches major/minor versions of the CZI CELLxGENE schemas (see below for exact fork).
 
-All changes from the CZI CELLxGENE schema are documented in the scFAIR schema [Changelog](#appendix-a-changelog).
+Since this is the first fork of the CZI CELLxGENE schema, all changes are documented in the scFAIR schema [Changelog](#appendix-a-changelog).
 
 ## Schema split
 
@@ -161,7 +161,7 @@ Reserved Names from previous schema versions that have since been deprecated MUS
 
 > It is my responsibility to ensure that this data is not identifiable. In particular, I commit that I will remove any [direct personal identifiers](https://docs.google.com/document/d/1sboOmbafvMh3VYjK1-3MAUt0I13UUJfkQseq8ANLPl8/edit) in the metadata portions of the data.
 
-This includes names, emails, or other PII for researchers or curators involved in the data generation and submission.
+This includes names, emails, exact date of birth, or other PII for researchers or curators involved in the data generation and submission.
 
 **Ontology-dependent Metadata**. scFAIR requires ontology terms to enable search, comparison, and integration of data. With the exception of Cellosaurus, ontology terms for cell metadata MUST use [OBO-format identifiers](http://www.obofoundry.org/id-policy.html), meaning a CURIE (prefixed identifier) of the form **Ontology:Identifier**. For example, [EFO:0000001](https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0000001) is a term in the Experimental Factor Ontology (EFO). Cellosaurus requires a prefixed identifier of the form **Ontology_Identifier** such as [CVCL_1P02](https://www.cellosaurus.org/CVCL_1P02).
 
@@ -382,7 +382,8 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         - If the organoid is an embryoid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0014374"><code>UBERON:0014374</code></a> for <i>embryoid body</i>.<br/>
         - If the organoid is a gastruloid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0004734"><code>UBERON:0004734</code></a> for <i>gastrula</i>.<br/><br/>
         Otherwise, if <code>tissue_type</code> is <code>"organoid"</code> or <code>"tissue"</code> then MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/classes?obo_id=FBBT%3A10000000"><code>FBbt:10000000</code></a> for <i>anatomical entity</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000468"><code>UBERON:0000468</code></a> for <i>multicellular organism</i> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/wbphenotype/classes?obo_id=WBbt%3A0007833"><code>WBbt:0007833</code></a> for <i>organism</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a> for <i>Caenorhabditis elegans</i>) and its descendants , and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=CL%3A0000000"><code>CL:0000000</code></a> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0009000"><code>ZFA:0009000</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>) and its descendants, and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0001093"><code>ZFA:0001093</code></a> for <i>unspecified</i> and <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/classes?obo_id=XAO%3A0003003"><code>XAO:0003003</code></a> for <i>unspecified</i>.<br/><br/>
-       <b>Note:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.
+       <b>Note 1:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.
+       <n>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, for <i>Drosophila Melanogaster</i>, this entry could be "<code>FBbt:00000002</code> || <code>FBbt:00000015</code>" for "<code>abdomen</code> || <code>thorax</code>" as a substitute for "body without head" since this term does not exist in the ontology. In addition, "<code>FBbt:00000002</code> || <code>FBbt:00000004</code> || <code>FBbt:00000015</code>" for "<code>abdomen</code> || <code>head</code> || <code>thorax</code>" could be used to describe the whole fly, instead of "<code>UBERON:0000468</code>" for "<code>multicellular organism</code>"
       </td>
   </tr>
 </tbody></table>
