@@ -1,4 +1,4 @@
-# scFAIR schema 7.1.0 compliance rules (single source of truth).
+# scFAIR schema 7.1.0 compliance rules for validators
 # Reference: https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md
 
 schema:
