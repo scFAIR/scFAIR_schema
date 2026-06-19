@@ -406,7 +406,8 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     <tr>
       <th>Value</th>
       <td>
-        This MUST be the human-readable name assigned to the value of <code>tissue_ontology_term_id</code>.
+        This MUST be one or more human-readable names for the terms in <code>tissue_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>
+        For example, if the value of <code>tissue_ontology_term_id</code> is "<code>FBbt:00000002 || FBbt:00000015</code>" then the value of <code>tissue</code> MUST be "<code>abdomen || thorax</code>".
       </td>
     </tr>
 </tbody></table>
