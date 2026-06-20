@@ -502,7 +502,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
           <b>Note 1:</b> When a taxon-specific developmental stage ontology is available for the organism under study, terms from that ontology MUST be preferred over taxon-neutral UBERON terms where a more precise match exists.<br/><br/>
           <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. This feature is meant to prevent loss of information when multiple samples are pooled but without a way to later demultiplex & assign each cell back to the original pre-pooled sample. For example, for <i>Homo Sapiens</i>, this entry could be <code>"HsapDv:0000124 || HsapDv:0000130"</code> for <code>"30-year-old stage || 36-year-old stage"</code> instead of <code>"HsapDv:0000238"</code> for <code>"fourth decade stage"</code> which would be a unique term, but with loss of information.<br/><br/>
           The following organism-specific ontologies are recognized and their terms are valid in addition to UBERON:
-          <table><tbody>
+          <table style="max-width:400px;"><tbody>
             <tr>
               <th>Organism</th>
               <th><code>organism_ontology_term_id</code></th>
@@ -543,7 +543,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
               <td><i>Aedes aegypti</i></td>
               <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7159"><code>NCBITaxon:7159</code></a></td>
               <td><code>FBdv:</code></td>
-              <td>No dedicated ontology exists; <code>FBdv:</code> is used as a proxy given the conservation of dipteran developmental stages.</td>
+              <td style="max-width:400px;">No dedicated ontology exists; <code>FBdv:</code> is used as a proxy given the conservation of dipteran developmental stages.</td>
             </tr>
           </tbody></table>    
           Terms from organism-specific ontologies MUST NOT be used for organisms not listed in the table above (please contact maintainer if you need to add one). For unlisted organisms, a taxon-neutral <code>UBERON:</code> term MUST be used.
@@ -903,10 +903,11 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     </tr>
     <tr>
       <th>Value</th>
+      <td>
           This MUST be <code>"na"</code> if the value of <code>experimental_condition_ontology_term_id</code> is <code>"na"</code>.<br/><br/>
           Otherwise, this MUST be one or more human-readable names for the terms in <code>experimental_condition_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>
           If an antibody value is present, then the human-readable name is prefixed with <code>"anti-"</code> such as <code>"anti-PTPRC_HUMAN"</code>.<br/><br/>For example, if the value of <code>experimental_condition_ontology_term_id</code> is <code>"CHEBI:16412 || CHEBI:41774 || EFO:0001702 || EFO:0002757 || anti-uniprot:Q99467 || uniprot:P05112"</code> then the value of <code>experimental_condition</code> MUST be <code>"lipopolysaccharide || tamoxifen || temperature || high fat diet || anti-CD180_HUMAN || IL4_HUMAN"</code>.
-        </td>
+      </td>
     </tr>
 </tbody></table>
 
@@ -1238,7 +1239,7 @@ This column is REQUIRED only in the `var` dataframe. This column MUST NOT be pre
         <td>
           When a raw matrix is not present, the value for all features MUST be <code>False</code>.<br/><br/>
           When both a raw and normalized matrix are present, this MUST be <code>True</code> if the feature was filtered out in the normalized matrix (<code>X</code>) but is present in the raw matrix (<code>raw.X</code>). The value for all cells of the given feature in the normalized matrix MUST be <code>0</code>. If a feature contains all zeroes in the normalized matrix, then either the corresponding feature in the raw matrix MUST be all zeroes or the value MUST be <code>True</code>.
-        <td>
+        </td>
     </tr>
 </tbody></table>
 
