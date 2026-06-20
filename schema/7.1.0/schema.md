@@ -383,7 +383,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         - If the organoid is a gastruloid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0004734"><code>UBERON:0004734</code></a> for <i>gastrula</i>.<br/><br/>
         Otherwise, if <code>tissue_type</code> is <code>"organoid"</code> or <code>"tissue"</code> then MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/classes?obo_id=FBBT%3A10000000"><code>FBbt:10000000</code></a> for <i>anatomical entity</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000468"><code>UBERON:0000468</code></a> for <i>multicellular organism</i> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/wbphenotype/classes?obo_id=WBbt%3A0007833"><code>WBbt:0007833</code></a> for <i>organism</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a> for <i>Caenorhabditis elegans</i>) and its descendants , and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=CL%3A0000000"><code>CL:0000000</code></a> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0009000"><code>ZFA:0009000</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>) and its descendants, and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0001093"><code>ZFA:0001093</code></a> for <i>unspecified</i> and <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/classes?obo_id=XAO%3A0003003"><code>XAO:0003003</code></a> for <i>unspecified</i>.<br/><br/>
        <b>Note 1:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.<br/><br/>
-       <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, for <i>Drosophila Melanogaster</i>, this entry could be <code>"FBbt:00000002 || FBbt:00000015"</code> for <code>"abdomen || thorax"</code> as a substitute for "body without head" since this term does not exist in the ontology. In addition, <code>"FBbt:00000002 || FBbt:00000004 || FBbt:00000015"</code> for <code>"abdomen || head || thorax"</code> could be used to describe the whole fly, or <code>"UBERON:0000468"</code> for <code>"multicellular organism"</code>.
+       <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, for <i>Drosophila Melanogaster</i>, this entry could be <code>"FBbt:00000002 || FBbt:00000015"</code> for <code>"abdomen || thorax"</code> as a substitute for "body without head" since this term does not exist in the ontology. In addition, even if <code>"FBbt:00000002 || FBbt:00000004 || FBbt:00000015"</code> for <code>"abdomen || head || thorax"</code> could be used to describe the whole fly, we rather recommend using the unique term <code>"UBERON:0000468"</code> for <code>"multicellular organism"</code>.
       </td>
   </tr>
 </tbody></table>
@@ -447,7 +447,8 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         <li><a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000548"><code>"CL:0000548"</code></a> for <i>animal cell</i></li>
       </ul>
       Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000000"><code>CL:0000000</code></a> for <i>cell</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/terms?obo_id=FBbt:00007002"><code>FBbt:00007002</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/terms?obo_id=NCBITaxon:7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/wbbt/classes?obo_id=WBbt%3A0006803"><code>WBbt:0006803</code></a> for <i>Nucleus</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a>for <i>Caenorhabditis elegans</i>, and its descendants.<br/><br/>
-       <b>Note:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral CL term SHOULD be used.
+       <b>Note 1:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral CL term SHOULD be used.<br/><br/>
+       <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, for <i>Drosophila Melanogaster</i>, this entry could be <code>"FBbt:00003731 || FBbt:00003736"</code> for <code>"T4 neuron || T5 neuron"</code>. Even though, in this case, <code>"FBbt:00003726"</code> for <code>"T neuron"</code> could be used (as direct ascendant of both terms), this feature is meant to allow for more precise annotation of cell-types, preventing loss of information.
     </td>
   </tr>
 </tbody></table>
@@ -472,7 +473,8 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         <td>
           This MUST be <code>"na"</code> if the value of  <code>cell_type_ontology_term_id</code> is <code>"na"</code>.<br/><br/>
           This MUST be <code>"unknown"</code> if the value of  <code>cell_type_ontology_term_id</code> is <code>"unknown"</code>.<br/><br/>
-          Otherwise, this MUST be the human-readable name assigned to the value of <code>cell_type_ontology_term_id</code>.
+          Otherwise, this MUST be one or more human-readable names for the terms in <code>cell_type_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>
+          For example, if the value of <code>cell_type_ontology_term_id</code> is <code>"FBbt:00003731 || FBbt:00003736"</code> then the value of <code>cell_type</code> MUST be <code>"T4 neuron || T5 neuron"</code>.
         </td>
     </tr>
 </tbody></table>
@@ -497,7 +499,9 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <td>
         If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>
         Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/terms?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/hsapdv/terms?obo_id=HsapDv%3A0000001"><code>HsapDv:0000001</code></a> for <i>life cycle</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a> for <i>Homo sapiens</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000071"><code>UBERON:0000071</code></a> for <i>death stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/terms?obo_id=XAO:0000437"><code>XAO:0000437</code></a> for <i>death</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a> for <i>Xenopus <genus></i>), and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFS%3A0000000"><code>ZFS:0000000</code></a> for <i>Unknown</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>.<br/><br/>
-          <b>Note:</b> When a taxon-specific developmental stage ontology is available for the organism under study, terms from that ontology MUST be preferred over taxon-neutral UBERON terms where a more precise match exists. The following organism-specific ontologies are recognized and their terms are valid in addition to UBERON:<br/><br/>
+          <b>Note 1:</b> When a taxon-specific developmental stage ontology is available for the organism under study, terms from that ontology MUST be preferred over taxon-neutral UBERON terms where a more precise match exists.<br/><br/>
+          <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. This feature is meant to prevent loss of information when multiple samples are pooled but without a way to later demultiplex & assign each cell back to the original pre-pooled sample. For example, for <i>Homo Sapiens</i>, this entry could be <code>"HsapDv:0000124 || HsapDv:0000130"</code> for <code>"30-year-old stage || 36-year-old stage"</code> instead of <code>"HsapDv:0000238"</code> for <code>"fourth decade stage"</code> which would be a unique term, but with loss of information.<br/><br/>
+          The following organism-specific ontologies are recognized and their terms are valid in addition to UBERON:
           <table><tbody>
             <tr>
               <th>Organism</th>
@@ -566,7 +570,8 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <th>Value</th>
       <td>
         This MUST be <code>"na"</code> if the value of <code>development_stage_ontology_term_id</code> is <code>"na"</code>.<br/><br/>This MUST be <code>"unknown"</code> if the value of <code>development_stage_ontology_term_id</code> is <code>"unknown"</code>.<br/><br/>
-        Otherwise, this MUST be the human-readable name assigned to the value of <code>development_stage_ontology_term_id</code>.
+        Otherwise, this MUST be one or more human-readable names for the terms in <code>development_stage_ontology_term_id</code> in the same order separated by the delimiter <code>" || "</code>.<br/><br/>
+          For example, if the value of <code>development_stage_ontology_term_id</code> is <code>"HsapDv:0000124 || HsapDv:0000130"</code> then the value of <code>development_stage</code> MUST be <code>"30-year-old stage || 36-year-old stage"</code>.
       </td>
     </tr>
 </tbody></table>
@@ -1877,13 +1882,13 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
 This is the first fork of CELLxGENE schema. So, here are recorded the differences with CZI CELLxGENE schema v7.1.0
 
 * **Required ontologies**
-  * Moved the ontology table from [General Requirements](#general-requirements) as [Appendix B. Relevant ontologies](#appendix-b-relevant-ontologies). Since we don't enforce a schema-specific version anymore.
-  * Recommended using the [Uberon collected metazoan ontology] or [Uberon composite metazoan ontology] version of [Uberon multi-species anatomy ontology], instead of taxon-specific ontologies, for anatomy, cell types, developemental and life stages.
-* Moved the **Important note on types** section to the [General Requirements](#general-requirements) section. Expanding on the difference between reported Python types and HDF5 inner typing.
+  * Moved the ontology table from [General Requirements](#general-requirements) as [Appendix B. Relevant ontologies](#appendix-b-relevant-ontologies). Since we don't enforce a schema-specific version anymore
+  * Recommended using the [Uberon collected metazoan ontology] or [Uberon composite metazoan ontology] version of [Uberon multi-species anatomy ontology], instead of taxon-specific ontologies, for anatomy, cell types, developemental and life stages
+* Moved the **Important note on types** section to the [General Requirements](#general-requirements) section. Expanding on the difference between reported Python types and HDF5 inner typing
 * **Required Gene Annotations**
-  * This section was removed, but its content was moved to the [`index`](#index) subsection of [`var` and `raw.var`](#var-and-rawvar-gene-metadata) section where it immediately applies.
-  * CZI CELLxGENE schema only handles certain Taxons, and specify a fixed Ensembl release for each species that they "attach" to the schema version as fixed. scFAIR allows gene annotations from any Ensembl and Ensembl Metazoa species, and any release present in one of the Ensembl database ([Main Ensembl](https://www.ensembl.org/index.html), [Ensembl Metazoa](https://metazoa.ensembl.org/index.html)), and [Ensembl COVID-19](https://covid-19.ensembl.org/index.html). We planned the structure so that later we can add EnsemblPlants, EnsemblProtists, EnsemblBacteria and EnsemblFungi as well.
-  * Removed GENCODE from authorized gene names. Only Ensembl is allowed.
+  * This section was removed, but its content was moved to the [`index`](#index) subsection of [`var` and `raw.var`](#var-and-rawvar-gene-metadata) section where it immediately applies
+  * CZI CELLxGENE schema only handles certain Taxons, and specify a fixed Ensembl release for each species that they "attach" to the schema version as fixed. scFAIR allows gene annotations from any Ensembl and Ensembl Metazoa species, and any release present in one of the Ensembl database ([Main Ensembl](https://www.ensembl.org/index.html), [Ensembl Metazoa](https://metazoa.ensembl.org/index.html)), and [Ensembl COVID-19](https://covid-19.ensembl.org/index.html). We planned the structure so that later we can add EnsemblPlants, EnsemblProtists, EnsemblBacteria and EnsemblFungi as well
+  * Removed GENCODE from authorized gene names. Only Ensembl is allowed
 * [`X` (Matrix layers)](#x-matrix-layers)
   * Moved the scATAC-seq part (and requirement table) to scATAC-specific schema ['schema_atac.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_atac.md)
 * [`obs`](#obs-cell-metadata) (Cell metadata)
@@ -1892,12 +1897,16 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Moved `array_row`, `array_col`, and `in_tissue` to spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_spatial.md#array_row)
   * Moved `genetic_perturbation_id`, `genetic_perturbation_strategy` to perturbation-specific schema ['schema_perturb.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_perturb.md#genetic_perturbation_id)
   * Added `strain_or_genetic_background_term_id` and `strain_or_genetic_background` to describe strain, genotype,etc..
+  * Modified `tissue_ontology_term_id` and `tissue` to allow for multiple terms with a separator ` || `
+  * Modified `cell_type_ontology_term_id` and `cell_type` to allow for multiple terms with a separator ` || `
+  * Modified `development_stage_ontology_term_id` and `development_stage` to allow for multiple terms with a separator ` || `
 * [`obsm`](#obsm-embeddings) (Embeddings)
+  * Modified [`X_{suffix}`](#x_suffix) section and related comments throughout the document to make the embedding optional for visualization (it was CELLxGENE-specific for its visualization portal)
   * Moved `spatial` to the spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_spatial.md#spatial).
 * [`var` and `raw.var`](#var-and-rawvar-gene-metadata) (Gene metadata)
-  * Modified [`index`](#index-1) subsection, as detailed above.
-  * We think [`feature_type`](#feature_type) and [`feature_biotype`](#feature_biotype) are probably intertwined in CxG definition but for now we keep them as is for compatibility purpose.
-  * Added [`feature_chromosome`](#feature_chromosome) to provide chromosome information for each feature. Useful for MT QC plot.
+  * Modified [`index`](#index-1) subsection, as detailed above
+  * We think [`feature_type`](#feature_type) and [`feature_biotype`](#feature_biotype) are probably intertwined in CxG definition but for now we keep them as is for compatibility purpose
+  * Added [`feature_chromosome`](#feature_chromosome) to provide chromosome information for each feature. Useful for MT QC plot
 * [`uns`](#uns-dataset-metadata) (Dataset Metadata)
   * Moved this entire section after [`var` and `raw.var`](#var-and-rawvar-gene-metadata), I think it was misplaced before.
   * Added [`ensembl_release`](#ensembl_release) to inform on the Ensembl release used for gene annotation, since scFAIR allows all available species in Ensembl
@@ -1909,11 +1918,10 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Moved <code>spatial</code>, <code>spatial[<i>library_id</i>]</code>, <code>spatial[<i>library_id</i>]['is_single']</code>, <code>spatial[<i>library_id</i>]['images']</code>, <code>spatial[<i>library_id</i>]['images']['fullres']</code>, <code>spatial[<i>library_id</i>]['images']['hires']</code>, <code>spatial[<i>library_id</i>]['scalefactors']</code>, <code>spatial[<i>library_id</i>]['scalefactors']['spot_diameter_fullres']</code>, and <code>spatial[<i>library_id</i>]['scalefactors']['tissue_hires_scalef']</code> to spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/edit/main/schema/7.1.0/schema_spatial.md#spatial)
   * Modified `{column}_colors` so that anything can be edited by the data submitter or curator, and everything is thus optional.
   * Modified `organism_ontology_term_id` to allow any species
-  * Modified `citation` so that it contains only the DOI. Made this field Optional.
+  * Modified `citation` so that it contains only the DOI. Made this field Optional
 * Move scTAC-seq assets to atac-specific schema ['schema_atac.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_atac.md#scatac-seq-assets)
 * Created the analysis-specific schema ['schema_analysis_json.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_analysis_json.md) in JSON, for storing the analysis and annotation pipeline. The JSON entry itself is stored in uns/[`analysis_pipeline`](#analysis_pipeline)
-* Changed the format of the tables, specifically Annotator -> Requirement, and created a specific field for the type, instead of merging with Value.
-* Made the embedding optional for visualization (it was CELLxGENE-specific for its visualization portal)
+* Changed the format of the tables, specifically Annotator -> Requirement, and created a specific field for the type, instead of merging with Value
 
 ## Appendix B. Relevant ontologies
 
