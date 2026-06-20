@@ -502,7 +502,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
           <b>Note 1:</b> When a taxon-specific developmental stage ontology is available for the organism under study, terms from that ontology MUST be preferred over taxon-neutral UBERON terms where a more precise match exists.<br/><br/>
           <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. This feature is meant to prevent loss of information when multiple samples are pooled but without a way to later demultiplex & assign each cell back to the original pre-pooled sample. For example, for <i>Homo Sapiens</i>, this entry could be <code>"HsapDv:0000124 || HsapDv:0000130"</code> for <code>"30-year-old stage || 36-year-old stage"</code> instead of <code>"HsapDv:0000238"</code> for <code>"fourth decade stage"</code> which would be a unique term, but with loss of information.<br/><br/>
           The following organism-specific ontologies are recognized and their terms are valid in addition to UBERON:
-          <table style="max-width:400px;"><tbody>
+          <table><tbody>
             <tr>
               <th>Organism</th>
               <th><code>organism_ontology_term_id</code></th>
@@ -543,7 +543,12 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
               <td><i>Aedes aegypti</i></td>
               <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7159"><code>NCBITaxon:7159</code></a></td>
               <td><code>FBdv:</code></td>
-              <td style="max-width:400px;">No dedicated ontology exists; <code>FBdv:</code> is used as a proxy given the conservation of dipteran developmental stages.</td>
+              <td>
+                No dedicated ontology exists;<br/>
+                <code>FBdv:</code> is used as a proxy<br/>
+                given the conservation of dipteran<br/>
+                developmental stages.
+              </td>
             </tr>
           </tbody></table>    
           Terms from organism-specific ontologies MUST NOT be used for organisms not listed in the table above (please contact maintainer if you need to add one). For unlisted organisms, a taxon-neutral <code>UBERON:</code> term MUST be used.
