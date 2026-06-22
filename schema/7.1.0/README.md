@@ -39,7 +39,7 @@
   * [`is_primary_data`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#is_primary_data) [`bool`] - True or False depending on origin. For meta-analyses or integration study it should be False.
   * [`suspension_type`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#suspension_type) [`str`] - One of `"cell"`, `"nucleus"`, or `"na"`. Should match with selected `assay`.
 * [`AnnData.obsm`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#obsm-embeddings) - Embeddings. Describe each embedding in the dataset
-  * [`X_{suffix}`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#x_suffix) [`numpy.ndarray`] - One or multiple embeddings e.g. X_tSNE, X_PCA, X_UMAP, ...
+  * *&lt;Optional&gt;*[`X_{suffix}`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#x_suffix) [`numpy.ndarray`] - One or multiple embeddings e.g. X_tSNE, X_PCA, X_UMAP, ...
 * [`Anndata.obsp`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#obsp) - Describe pairwise annotation of observations. Nothing is mandatory here.
 * [`Anndata.var` and `Anndata.raw.var`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#var-and-rawvar-gene-metadata) - Gene metadata. Describe each gene in the dataset.
   * [`feature_is_filtered`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#feature_is_filtered) - Describe which genes in the normalized matrix are filtered as compared to the raw matrix.
