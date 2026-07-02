@@ -1344,8 +1344,8 @@ This column is REQUIRED in the `var` dataframe and if present, in the `raw.var` 
       <th>Value</th>
         <td>
           This MUST be the reference organism for the corresponding feature. For example, if the feature comes from the <i>Caenorhabditis elegans</i> assembly then the value MUST be <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>"NCBITaxon:6293"</code></a>.<br /><br />
-          Special case when the feature comes from <td><i>SARS-CoV-2</i></td>, then the value MUST be <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A2697049"><code>"NCBITaxon:2697049"</code></a><br /><br />
-          Similarly, if the feature is an <i>ERCC Spike-Ins</i></td>, then the value MUST be <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A32630"><code>"NCBITaxon:32630"</code></a>
+          Special case when the feature comes from <i>SARS-CoV-2</i>, then the value MUST be <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A2697049"><code>"NCBITaxon:2697049"</code></a><br /><br />
+          Similarly, if the feature is an <i>ERCC Spike-Ins</i>, then the value MUST be <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A32630"><code>"NCBITaxon:32630"</code></a>
         </td>
     </tr>
 </tbody></table>
@@ -1826,6 +1826,7 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Modified [`index`](#index-1) subsection, as detailed above
   * We think [`feature_type`](#feature_type) and [`feature_biotype`](#feature_biotype) are probably intertwined in CxG definition but for now we keep them as is for compatibility purpose
   * Added [`feature_chromosome`](#feature_chromosome) to provide chromosome information for each feature. Useful for MT QC plot
+  * Modified [`feature_reference`](#feature_reference) to allow other species. Only kept some examples.
 * [`uns`](#uns-dataset-metadata) (Dataset Metadata)
   * Moved this entire section after [`var` and `raw.var`](#var-and-rawvar-gene-metadata), I think it was misplaced before.
   * Added [`ensembl_release`](#ensembl_release) to inform on the Ensembl release used for gene annotation, since scFAIR allows all available species in Ensembl
