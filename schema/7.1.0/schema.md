@@ -1465,8 +1465,8 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
           One of the following terms MUST be used: 
           <table>
             <tr><td><a href="https://www.ensembl.org/"><code>"Ensembl"</code></a></td></tr>
-            <tr><td><a href="https://metazoa.ensembl.org/"><code>"EnsemblMetazoa"</code></a></td></tr>
-            <tr><td><a href="https://covid-19.ensembl.org/"><code>"EnsemblCOVID-19"</code></a></td></tr>
+            <tr><td><a href="https://metazoa.ensembl.org/"><code>"Ensembl Metazoa"</code></a></td></tr>
+            <tr><td><a href="https://covid-19.ensembl.org/"><code>"Ensembl COVID-19"</code></a></td></tr>
           </table>
         </td>
     </tr>
