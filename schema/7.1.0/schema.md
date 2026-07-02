@@ -807,7 +807,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     </tr>
     <tr>
       <th>Requirement</th>
-      <td>REQUIRED</td>
+      <td>OPTIONAL</td>
     </tr>
     <tr>
       <th>Type</th>
@@ -1906,6 +1906,7 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Modified `tissue_ontology_term_id` and `tissue` to allow for multiple terms with a separator ` || `
   * Modified `cell_type_ontology_term_id` and `cell_type` to allow for multiple terms with a separator ` || `
   * Modified `development_stage_ontology_term_id` and `development_stage` to allow for multiple terms with a separator ` || `
+  * Made `experimental_condition_ontology_term_id` OPTIONAL, since if all values are `na` then the field MUST NOT be present.
 * [`obsm`](#obsm-embeddings) (Embeddings)
   * Modified [`X_{suffix}`](#x_suffix) section and related comments throughout the document to make the embedding optional for visualization (it was CELLxGENE-specific for its visualization portal)
   * Moved `spatial` to the spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_spatial.md#spatial).
