@@ -594,7 +594,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
               <td>Descendant of <code>PO:0009012</code> for<br/><i>plant structure development stage</i>.<br/>No taxon-neutral fallback exists.</td>
             </tr>
           </tbody></table>    
-          Terms from organism-specific ontologies MUST NOT be used for organisms not listed in the table above or in <a href="#appendix-b-relevant-ontologies">Appendix B</a> (please contact maintainer if you need to add one). For unlisted organisms, a taxon-neutral <code>UBERON:</code> term MUST be used. The clade-specific ontologies that cover anatomy only &mdash; <code>CEPH:</code>, <code>PORO:</code> and <code>HAO:</code> &mdash; provide no developmental stage terms.
+          Terms from organism-specific ontologies MUST NOT be used for organisms not listed in the table above or in <a href="#appendix-b-relevant-ontologies">Appendix B</a> (please contact maintainer if you need to add one). For unlisted organisms, a taxon-neutral <code>UBERON:</code> term MUST be used. The clade-specific ontologies that cover anatomy only (<code>CEPH:</code>, <code>PORO:</code> and <code>HAO:</code>) provide no developmental stage terms.
       </td>
   </tr>
 </tbody></table>
