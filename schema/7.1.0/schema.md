@@ -1245,8 +1245,8 @@ If present, the size of the ndarray stored for a key in `obsp` MUST NOT be zero.
         <td>
           The index of the <code>pandas.DataFrame</code> MUST contain unique identifiers for features (e.g. gene names). If present, the index of <code>raw.var</code> MUST be identical to the index of <code>var</code>.<br/><br/>
           Here, we accept both genes and ERCC spike-ins. In short, ENSEMBL identifiers are required for genes and <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4978944/">External RNA Controls Consortium (ERCC)</a> identifiers for <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fcms_086340.pdf&title=VXNlciBHdWlkZTogRVJDQyBSTkEgU3Bpa2UtSW4gQ29udHJvbCBNaXhlcyAoRW5nbGlzaCAp">RNA Spike-In Control Mixes</a> to ensure that all datasets measure the same features and can therefore be integrated.<br/><br/>
-          If the feature is a gene then the value MUST be the <code>gene_id</code> attribute from the corresponding <code>organism_ontology_term_id</code>. scFAIR allows gene annotations from any species, and any release present in the Ensembl database. In particular, we accept terms from <a href="https://www.ensembl.org/index.html"><code>"Ensembl"</code></a>, <a href="https://metazoa.ensembl.org/index.html"><code>"Ensembl Metazoa"</code></a>, and <a href="https://covid-19.ensembl.org/"><code>"Ensembl COVID-19"</code></a>.<br/><br/>
-          The Ensembl database and assembly used for gene annotation should also be specified in <a href="#uns-dataset-metadata"><code>uns</code></a> entries <a href="#ensembl_release"><code>ensembl_release</code></a>, <a href="#ensembl_database"><code>ensembl_database</code></a>, and <a href="#ensembl_assembly"><code>ensembl_assembly</code></a>.<br/><br/>
+          If the feature is a gene then the value MUST be the <code>gene_id</code> attribute from the corresponding <code>organism_ontology_term_id</code>. scFAIR allows gene annotations from any species, and any release present in the Ensembl database.<br/><br/>
+          The Ensembl release and assembly used for gene annotation should also be specified in <a href="#uns-dataset-metadata"><code>uns</code></a> entries <a href="#ensembl_release"><code>ensembl_release</code></a>, and <a href="#ensembl_assembly"><code>ensembl_assembly</code></a>.<br/><br/>
           <b>Note:</b> Version numbers MUST be removed from the <code>gene_id</code> if it is prefixed with <code>"ENS"</code> for <i>Ensembl stable identifier</i>. See <a href="https://ensembl.org/Help/Faq?id=488">I have an Ensembl ID, what can I tell about it from the ID?</a> For example, if the <code>gene_id</code> is <code>“ENSG00000186092.7”</code>, then the value MUST be <code>“ENSG00000186092”</code>.<br/><br/>
           If the feature is a <a href="https://www.thermofisher.com/document-connect/document-connect.html?url=https%3A%2F%2Fassets.thermofisher.com%2FTFS-Assets%2FLSG%2Fmanuals%2Fcms_086340.pdf&title=VXNlciBHdWlkZTogRVJDQyBSTkEgU3Bpa2UtSW4gQ29udHJvbCBNaXhlcyAoRW5nbGlzaCAp">RNA Spike-In Control Mix</a> then the value MUST be an ERCC Spike-In identifier (e.g. <code>"ERCC-0003"</code>) from <a href="https://assets.thermofisher.com/TFS-Assets/LSG/manuals/cms_095047.txt">cms_095047.txt</a>.<br/>
         Of note, in the h5ad file, this is stored as an attribute of <code>var</code> named <code>_index</code>, pointing to an existing <code>var</code> metadata.
@@ -1475,35 +1475,6 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
     </tr>
 </tbody></table>
 
-### ensembl_database
-
-<table><tbody>
-    <tr>
-      <th>Key</th>
-      <td><code>ensembl_database</code></td>
-    </tr>
-    <tr>
-      <th>Requirement</th>
-      <td>REQUIRED</td>
-    </tr>
-    <tr>
-      <th>Type</th>
-      <td><code>str</code>.</td>
-    </tr>
-    <tr>
-      <th>Value</th>
-        <td>
-          The key MUST be the <b>Ensembl</b> database name of the assembly used for gene annotation.<br/><br/>
-          One of the following terms MUST be used: 
-          <table>
-            <tr><td><a href="https://www.ensembl.org/"><code>"Ensembl"</code></a></td></tr>
-            <tr><td><a href="https://metazoa.ensembl.org/"><code>"Ensembl Metazoa"</code></a></td></tr>
-            <tr><td><a href="https://covid-19.ensembl.org/"><code>"Ensembl COVID-19"</code></a></td></tr>
-          </table>
-        </td>
-    </tr>
-</tbody></table>
-
 ### ensembl_assembly
 
 <table><tbody>
@@ -1522,7 +1493,7 @@ If present, the size of the ndarray stored for a key in `varp` MUST NOT be zero.
     <tr>
       <th>Value</th>
         <td>
-          The key MUST be the <b>Ensembl</b> assembly name of the assembly used for gene annotation, e.g. <code>"GRCh38.p14"</code> for Homo Sapiens release 115. You can relate for e.g. to this <a href="https://www.ensembl.org/info/website/archives/assembly.html">correspondance table</a> for the main Ensembl database.
+          The key MUST be the <b>Ensembl</b> assembly name of the assembly used for gene annotation, e.g. <code>"GRCh38.p14"</code> for Homo Sapiens release 115. You can relate for e.g. to this <a href="https://www.ensembl.org/info/website/archives/assembly.html">correspondance table</a>.
         </td>
     </tr>
 </tbody></table>
@@ -1834,10 +1805,11 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
 * **Required ontologies**
   * Moved the ontology table from [General Requirements](#general-requirements) as [Appendix B. Relevant ontologies](#appendix-b-relevant-ontologies). Since we don't enforce a schema-specific version anymore
   * Recommended using the [Uberon collected metazoan ontology] or [Uberon composite metazoan ontology] version of [Uberon multi-species anatomy ontology], instead of taxon-specific ontologies, for anatomy, cell types, developemental and life stages
+  * Added plants and other invertebrate ontologies
 * Moved the **Important note on types** section to the [General Requirements](#general-requirements) section. Expanding on the difference between reported Python types and HDF5 inner typing
 * **Required Gene Annotations**
   * This section was removed, but its content was moved to the [`index`](#index) subsection of [`var` and `raw.var`](#var-and-rawvar-gene-metadata) section where it immediately applies
-  * CZI CELLxGENE schema only handles certain Taxons, and specify a fixed Ensembl release for each species that they "attach" to the schema version as fixed. scFAIR allows gene annotations from any Ensembl and Ensembl Metazoa species, and any release present in one of the Ensembl database ([Main Ensembl](https://www.ensembl.org/index.html), [Ensembl Metazoa](https://metazoa.ensembl.org/index.html)), and [Ensembl COVID-19](https://covid-19.ensembl.org/index.html). We planned the structure so that later we can add EnsemblPlants, EnsemblProtists, EnsemblBacteria and EnsemblFungi as well
+  * CZI CELLxGENE schema only handles certain Taxons, and specify a fixed Ensembl release for each species that they "attach" to the schema version as fixed. scFAIR allows gene annotations from any Ensembl species, and any release present in the [Ensembl database](https://www.ensembl.org/index.html). You can check available species from [species.json](https://ftp.ebi.ac.uk/pub/ensemblorganisms/species.json)
   * Removed GENCODE from authorized gene names. Only Ensembl is allowed
 * [`X` (Matrix layers)](#x-matrix-layers)
   * Moved the scATAC-seq part (and requirement table) to scATAC-specific schema ['schema_atac.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_atac.md)
@@ -1851,6 +1823,8 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
   * Modified `cell_type_ontology_term_id` and `cell_type` to allow for multiple terms with a separator ` || `
   * Modified `development_stage_ontology_term_id` and `development_stage` to allow for multiple terms with a separator ` || `
   * Made `experimental_condition_ontology_term_id` OPTIONAL, since if all values are `na` then the field MUST NOT be present.
+  * Removed some restriction in `tissue_ontology_term_id`, `cell_type_ontology_term_id`, `development_stage_ontology_term_id`, `experimental_condition_ontology_term_id`, and `disease_ontology_term_id` regarding certain basic terms that were previously not allowed (like 'cell' or 'organism'). It is clear enough that the more precise term should be used, and became impractical to update with new ontologies/species.
+  * Updated `sex_ontology_term_id`, `tissue_ontology_term_id`, `cell_type_ontology_term_id`, `development_stage_ontology_term_id`, `experimental_condition_ontology_term_id`, `perturbation_types`, and `disease_ontology_term_id` to handle plants and new species such as invertebrates which were not handled before
 * [`obsm`](#obsm-embeddings) (Embeddings)
   * Modified [`X_{suffix}`](#x_suffix) section and related comments throughout the document to make the embedding optional for visualization (it was CELLxGENE-specific for its visualization portal)
   * Moved `spatial` to the spatial-specific schema ['schema_spatial.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_spatial.md#spatial).
@@ -1862,7 +1836,7 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
 * [`uns`](#uns-dataset-metadata) (Dataset Metadata)
   * Moved this entire section after [`var` and `raw.var`](#var-and-rawvar-gene-metadata), I think it was misplaced before.
   * Added [`ensembl_release`](#ensembl_release) to inform on the Ensembl release used for gene annotation, since scFAIR allows all available species in Ensembl
-  * Added [`ensembl_database`](#ensembl_database) to inform on the Ensembl database used for gene annotation, since scFAIR allows all available species in Ensembl
+  * Added, then removed [`ensembl_database`](#ensembl_database) to inform on the Ensembl database used for gene annotation, since scFAIR allows all available species in Ensembl. Since the new Ensembl database does not separate the species as before.
   * Added [`ensembl_assembly`](#ensembl_assembly) to inform on the Ensembl assembly used for gene annotation, since scFAIR allows all available species in Ensembl
   * Added [`analysis_pipeline`](#analysis_pipeline) entry to store the analysis and annotation pipeline, as a JSON. The JSON schema itself is described in ['schema_analysis_json.md'](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema_analysis_json.md)
   * Removed `is_pre_analysis` as it is specific for CELLxGENE collection handling
