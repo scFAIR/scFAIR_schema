@@ -442,7 +442,6 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     <th>Value</th>
     <td>
       Please refer to <a href="#appendix-b-relevant-ontologies">Appendix B</a> for relevant cell ontologies according to your species.<br/><br/>
-      
       This MUST be <code>"unknown"</code> when:
       <ul>
         <li>
@@ -511,7 +510,6 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
       <th>Value</th>
       <td>
         Please refer to <a href="#appendix-b-relevant-ontologies">Appendix B</a> for relevant developmental ontologies according to your species.<br/><br/>
-        
         If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>
         Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/terms?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/hsapdv/terms?obo_id=HsapDv%3A0000001"><code>HsapDv:0000001</code></a> for <i>life cycle</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a> for <i>Homo sapiens</i>).<br/><br/>
           <b>Note 1:</b> When a taxon-specific developmental stage ontology is available for the organism under study, terms from that ontology MUST be preferred over taxon-neutral UBERON terms where a more precise match exists.<br/><br/>
@@ -846,6 +844,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     <tr>
       <th>Value</th>
       <td>
+        Please refer to <a href="#appendix-b-relevant-ontologies">Appendix B</a> for relevant developmental ontologies according to your species.<br/><br/>
         The value MUST be either be <code>"na"</code> or one or more experimental condition term identifiers in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of identifiers.<br/><br/>
         For example, if the terms are <code>"uniprot:P05112"</code>, <code>"anti-uniprot:Q99467"</code>, <code>"EFO:0002757"</code>, <code>"CHEBI:16412"</code>, <code>"EFO:0001702"</code>, and <code>"CHEBI:41774"</code> then the value MUST be <code>"CHEBI:16412 || CHEBI:41774 || EFO:0001702 || EFO:0002757 || anti-uniprot:Q99467 || uniprot:P05112"</code>.<br/><br/>
         The value MUST be <code>"na"</code> when there is no experimental condition for this observation. If all observations are <code>"na"</code>, then this field MUST NOT be present.<br/><br/>
@@ -916,7 +915,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         </ul>
         If the experimental condition is a diet perturbation, then the value MUST include either <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0002755"><code>"EFO:0002755"</code></a> for <i>diet</i> or its most accurate descendant.<br/><br/>
         If the experimental condition is a temperature perturbation, then the value MUST include <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0001702"><code>"EFO:0001702"</code></a> for <i>temperature</i>.<br/><br/>
-        If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, the value MAY also include one or more descendants of <a href="http://browser.planteome.org/amigo/term/PECO:0007359"><code>"PECO:0007359"</code></a> for <i>plant experimental condition</i>, covering the biotic and abiotic treatments, growing conditions and study types used in plant experiments (water deficit, red light, photoperiod, soil type, fertiliser, nutrients, growth hormone application). <code>PECO:</code> terms MUST NOT be used for any organism outside Viridiplantae. See [Appendix B](#appendix-b-relevant-ontologies).<br/><br/>
+        If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, the value MAY also include one or more descendants of <a href="http://browser.planteome.org/amigo/term/PECO:0007359"><code>"PECO:0007359"</code></a> for <i>plant experimental condition</i>, covering the biotic and abiotic treatments, growing conditions and study types used in plant experiments (water deficit, red light, photoperiod, soil type, fertiliser, nutrients, growth hormone application). <code>PECO:</code> terms MUST NOT be used for any organism outside Viridiplantae.<br/><br/>
         No other values MUST be present for experimental conditions. 
       </td>
     </tr>
