@@ -178,407 +178,11 @@ Of note, for tissue, cell type, and stage terms, the collected-metazoan or compo
 - A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment.<br />
 - From the composite and collected versions of Uberon, any term descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i>, <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000000"><code>CL:0000000</code></a> for <i>cell</i>, <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i>, or any term from an imported ontology cross-referenced to them, MUST be used.
 
-**Taxon-neutral core and clade-specific ontologies**. scFAIR organises anatomy, cell type, life stage, disease and experimental condition annotation into two layers.
+**Ontologies by clade.** The ontologies recognised by this schema fall into a **taxon-neutral core** (`UBERON:`, `CL:`, `MONDO:`, `PATO:`, `EFO:`, `CHEBI:`, `uniprot:`) and a set of **clade-specific extensions** (`EHDAA2:`, `EMAPA:`, `MA:`, `ZFA:`, `ZFS:`, `XAO:`, `FBbt:`, `FBdv:`, `WBbt:`, `WBls:`, `HsapDv:`, `MmusDv:`, `CEPH:`, `CTENO:`, `PORO:`, `HAO:` for Metazoa; `PO:`, `TO:`, `PECO:`, `PSO:` for <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>). Whenever a taxon-neutral term is an adequate description it SHOULD be preferred; a clade-specific term MUST be used where it is more precise, or where the core does not cover the clade at all.
 
-1. A **taxon-neutral core**, which applies to every organism for which it provides an adequate description: [Uberon](https://obophenotype.github.io/uberon/) for anatomical entities and life cycle stages, the [Cell Ontology (CL)](https://obophenotype.github.io/cell-ontology/) for cell types, [MONDO](https://mondo.monarchinitiative.org/) for diseases, and EFO / CHEBI / UniProt for experimental conditions. Whenever a taxon-neutral term is an adequate description of the entity, it SHOULD be preferred, because it maximises cross-species comparability and searchability.
-2. A set of **clade-specific ontologies**, which MUST be used when they provide a more precise term than the taxon-neutral core for the taxon under study, or when the taxon-neutral core does not cover the clade at all. The latter is the case for <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>, which is outside the scope of both Uberon and CL.
+[Appendix B](#appendix-b-relevant-ontologies) is the authoritative index. For each ontology it gives the clade covered, the fields it applies to, the **validation root** its terms MUST descend from, and whether it is distributed inside a Uberon multi-species product. The field definitions below refer to Appendix B rather than restating it.
 
-**Scope of the Uberon descendant requirement.** The bullet above requiring that a term be a descendant of `UBERON:0001062`, `CL:0000000` or `UBERON:0000105`, *"or any term from an imported ontology cross-referenced to them"*, is satisfied only by ontologies that are actually merged into a Uberon multi-species product. It therefore applies to the ontologies marked **yes** in the index below. It does NOT apply to the ontologies marked **no**, which are standalone artefacts with no Uberon or CL cross-reference: currently `HAO:` for Hymenoptera and the four Planteome ontologies `PO:`, `TO:`, `PECO:` and `PSO:` for Viridiplantae. For those, the term MUST instead be a descendant of the root given in the "Validation root" column, validated against the standalone ontology release.
-
-The metazoan clade-specific ontologies marked **yes** are merged into the `collected-metazoan` and `composite-metazoan` Uberon products, where `collected-metazoan` = `collected-vertebrate` + `collected-drosophila` + `collected-worm` + `CEPH` + `CTENO` + `PORO`. Note that `collected-human` = `EHDAA2` + `AEO` and `collected-zebrafish` = `ZFA` only: `HsapDv:` and `ZFS:` are **not** part of the metazoan products and ship in `collected-lifestages` instead.
-
-The following table is the authoritative index of the ontologies recognised by this schema version. It is referenced by [`tissue_type`](#tissue_type), [`tissue_ontology_term_id`](#tissue_ontology_term_id), [`cell_type_ontology_term_id`](#cell_type_ontology_term_id), [`development_stage_ontology_term_id`](#development_stage_ontology_term_id), [`sex_ontology_term_id`](#sex_ontology_term_id), [`disease_ontology_term_id`](#disease_ontology_term_id) and [`experimental_condition_ontology_term_id`](#experimental_condition_ontology_term_id).
-
-<table><tbody>
-  <tr>
-    <th>Scope</th>
-    <th>Clade / organism</th>
-    <th><code>organism_ontology_term_id</code></th>
-    <th>Ontology prefix</th>
-    <th>Domain covered</th>
-    <th>Validation root</th>
-    <th>In Uberon<br/>collected/composite-metazoan</th>
-  </tr>
-  <tr>
-    <td rowspan="4"><b>Taxon-neutral<br/>core</b></td>
-    <td><i>any organism</i></td>
-    <td>&mdash;</td>
-    <td><code>UBERON:</code></td>
-    <td>anatomical entity, life cycle stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>UBERON:0000105</code></td>
-    <td>core</td>
-  </tr>
-  <tr>
-    <td><i>any organism</i></td>
-    <td>&mdash;</td>
-    <td><code>CL:</code></td>
-    <td>cell type</td>
-    <td><code>CL:0000000</code></td>
-    <td>core</td>
-  </tr>
-  <tr>
-    <td><i>any organism</i></td>
-    <td>&mdash;</td>
-    <td><code>MONDO:</code>, <code>PATO:</code></td>
-    <td>disease, injury, normal/healthy</td>
-    <td><code>MONDO:0000001</code></td>
-    <td>n/a</td>
-  </tr>
-  <tr>
-    <td><i>any organism</i></td>
-    <td>&mdash;</td>
-    <td><code>EFO:</code>, <code>CHEBI:</code>, <code>uniprot:</code></td>
-    <td>experimental condition, perturbation</td>
-    <td><code>CHEBI:24431</code> etc.</td>
-    <td>n/a</td>
-  </tr>
-  <tr>
-    <td rowspan="12"><b>Metazoa<br/>clade-specific</b></td>
-    <td><i>Homo sapiens</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a></td>
-    <td><code>EHDAA2:</code></td>
-    <td>embryonic anatomy</td>
-    <td><code>UBERON:0001062</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Homo sapiens</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a></td>
-    <td><code>HsapDv:</code></td>
-    <td>developmental stage</td>
-    <td><code>UBERON:0000105</code></td>
-    <td>via <code>collected-lifestages</code></td>
-  </tr>
-  <tr>
-    <td><i>Mus musculus</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10090"><code>NCBITaxon:10090</code></a></td>
-    <td><code>EMAPA:</code>, <code>MA:</code>, <code>MmusDv:</code></td>
-    <td>anatomy, developmental stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>UBERON:0000105</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Danio rerio</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a></td>
-    <td><code>ZFA:</code></td>
-    <td>anatomy, cell type</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Danio rerio</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a></td>
-    <td><code>ZFS:</code></td>
-    <td>developmental stage</td>
-    <td><code>UBERON:0000105</code></td>
-    <td>via <code>collected-lifestages</code></td>
-  </tr>
-  <tr>
-    <td><i>Xenopus</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a></td>
-    <td><code>XAO:</code></td>
-    <td>anatomy, cell type, developmental stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Drosophila melanogaster</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a></td>
-    <td><code>FBbt:</code>, <code>FBdv:</code></td>
-    <td>anatomy, cell type, developmental stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code>,<br/><code>UBERON:0000105</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Caenorhabditis elegans</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a></td>
-    <td><code>WBbt:</code>, <code>WBls:</code></td>
-    <td>anatomy, cell type, life stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code>,<br/><code>UBERON:0000105</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Cephalopoda</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6605"><code>NCBITaxon:6605</code></a></td>
-    <td><code>CEPH:</code></td>
-    <td>anatomy, cell type</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Ctenophora</i> (comb jellies)</td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10197"><code>NCBITaxon:10197</code></a></td>
-    <td><code>CTENO:</code></td>
-    <td>anatomy, cell type, developmental stage<br/>(e.g. <code>CTENO:0000024</code> for <i>cydippid stage</i>)</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code>,<br/><code>UBERON:0000105</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Porifera</i> (sponges)</td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6040"><code>NCBITaxon:6040</code></a></td>
-    <td><code>PORO:</code></td>
-    <td>anatomy, cell type</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Hymenoptera</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7399"><code>NCBITaxon:7399</code></a></td>
-    <td><code>HAO:</code></td>
-    <td>anatomy</td>
-    <td><code>HAO:0000000</code></td>
-    <td><b>no</b> &mdash; standalone,<br/>rooted in CARO</td>
-  </tr>
-  <tr>
-    <td rowspan="4"><b>Viridiplantae<br/>clade-specific</b></td>
-    <td><i>Viridiplantae</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
-    <td><code>PO:</code></td>
-    <td>plant anatomy, plant cell type,<br/>plant structure development stage</td>
-    <td><code>PO:0025131</code>,<br/><code>PO:0009002</code>,<br/><code>PO:0009012</code></td>
-    <td><b>no</b> &mdash; standalone</td>
-  </tr>
-  <tr>
-    <td><i>Viridiplantae</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
-    <td><code>TO:</code></td>
-    <td>plant trait</td>
-    <td><code>TO:0000387</code></td>
-    <td><b>no</b> &mdash; standalone</td>
-  </tr>
-  <tr>
-    <td><i>Viridiplantae</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
-    <td><code>PECO:</code></td>
-    <td>plant experimental condition</td>
-    <td><code>PECO:0007359</code></td>
-    <td><b>no</b> &mdash; standalone</td>
-  </tr>
-  <tr>
-    <td><i>Viridiplantae</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
-    <td><code>PSO:</code></td>
-    <td>plant stress (biotic and abiotic)</td>
-    <td><code>PSO:0000001</code></td>
-    <td><b>no</b> &mdash; standalone</td>
-  </tr>
-</tbody></table>
-
-Browse and download locations for the clade-specific ontologies that are not distributed as part of a Uberon multi-species product:
-
-| Ontology | Prefix | Browse | Download |
-| --- | --- | --- | --- |
-| Plant Ontology | `PO:` | [plant anatomical entity `PO:0025131`](http://browser.planteome.org/amigo/term/PO:0025131#display-lineage-tab) &middot; [plant structure development stage `PO:0009012`](http://browser.planteome.org/amigo/term/PO:0009012#display-lineage-tab) | [Planteome/plant-ontology](https://github.com/Planteome/plant-ontology) |
-| Plant Trait Ontology | `TO:` | [plant trait `TO:0000387`](http://browser.planteome.org/amigo/term/TO:0000387#display-lineage-tab) | [Planteome/plant-trait-ontology](https://github.com/Planteome/plant-trait-ontology) |
-| Plant Experimental Conditions Ontology | `PECO:` | [plant experimental condition `PECO:0007359`](http://browser.planteome.org/amigo/term/PECO:0007359#display-lineage-tab) | [Planteome/plant-experimental-conditions-ontology](https://github.com/Planteome/plant-experimental-conditions-ontology) |
-| Plant Stress Ontology | `PSO:` | [plant stress `PSO:0000001`](https://browser.planteome.org/amigo/term/PSO:0000001#display-lineage-tab) | [Planteome/plant-stress-ontology](https://github.com/Planteome/plant-stress-ontology) |
-| Hymenoptera Anatomy Ontology | `HAO:` | [anatomical entity `HAO:0000000`](https://www.ebi.ac.uk/ols4/ontologies/hao/classes?obo_id=HAO%3A0000000) | [OBO Foundry: hao](http://obofoundry.org/ontology/hao.html) |
-| Ctenophore Ontology | `CTENO:` | [OLS4: cteno](https://www.ebi.ac.uk/ols4/ontologies/cteno) | [obophenotype/ctenophore-ontology](https://github.com/obophenotype/ctenophore-ontology) |
-| Porifera Ontology | `PORO:` | [OLS4: poro](https://www.ebi.ac.uk/ols4/ontologies/poro) | [obophenotype/porifera-ontology](https://github.com/obophenotype/porifera-ontology) |
-| Cephalopod Ontology | `CEPH:` | [OLS4: ceph](https://www.ebi.ac.uk/ols4/ontologies/ceph) | [obophenotype/ceph-ontology](https://github.com/obophenotype/ceph-ontology) |
-
-Terms from a clade-specific ontology MUST NOT be used for an organism outside the clade that ontology covers. If the organism under study belongs to a clade that is not listed above, a taxon-neutral term MUST be used, and an addition to this table MAY be requested from the schema maintainers.
-
-**Taxon-neutral core and clade-specific ontologies**. scFAIR organises anatomy, cell type, life stage, disease and experimental condition annotation into two layers.
-
-1. A **taxon-neutral core**, which applies to every organism for which it provides an adequate description: [Uberon](https://obophenotype.github.io/uberon/) for anatomical entities and life cycle stages, the [Cell Ontology (CL)](https://obophenotype.github.io/cell-ontology/) for cell types, [MONDO](https://mondo.monarchinitiative.org/) for diseases, and EFO / CHEBI / UniProt for experimental conditions. Whenever a taxon-neutral term is an adequate description of the entity, it SHOULD be preferred, because it maximises cross-species comparability and searchability.
-2. A set of **clade-specific ontologies**, which MUST be used when they provide a more precise term than the taxon-neutral core for the taxon under study, or when the taxon-neutral core does not cover the clade at all. The latter is the case for <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>, which is outside the scope of both Uberon and CL.
-
-**Scope of the Uberon descendant requirement.** The bullet above requiring that a term be a descendant of `UBERON:0001062`, `CL:0000000` or `UBERON:0000105`, *"or any term from an imported ontology cross-referenced to them"*, is satisfied only by ontologies that are actually merged into a Uberon multi-species product. It therefore applies to the ontologies marked **yes** in the index below. It does NOT apply to the ontologies marked **no**, which are standalone artefacts with no Uberon or CL cross-reference: currently `HAO:` for Hymenoptera and the four Planteome ontologies `PO:`, `TO:`, `PECO:` and `PSO:` for Viridiplantae. For those, the term MUST instead be a descendant of the root given in the "Validation root" column, validated against the standalone ontology release.
-
-The metazoan clade-specific ontologies marked **yes** are merged into the `collected-metazoan` and `composite-metazoan` Uberon products, where `collected-metazoan` = `collected-vertebrate` + `collected-drosophila` + `collected-worm` + `CEPH` + `CTENO` + `PORO`. Note that `collected-human` = `EHDAA2` + `AEO` and `collected-zebrafish` = `ZFA` only: `HsapDv:` and `ZFS:` are **not** part of the metazoan products and ship in `collected-lifestages` instead.
-
-The following table is the authoritative index of the ontologies recognised by this schema version. It is referenced by [`tissue_type`](#tissue_type), [`tissue_ontology_term_id`](#tissue_ontology_term_id), [`cell_type_ontology_term_id`](#cell_type_ontology_term_id), [`development_stage_ontology_term_id`](#development_stage_ontology_term_id), [`sex_ontology_term_id`](#sex_ontology_term_id), [`disease_ontology_term_id`](#disease_ontology_term_id) and [`experimental_condition_ontology_term_id`](#experimental_condition_ontology_term_id).
-
-<table><tbody>
-  <tr>
-    <th>Scope</th>
-    <th>Clade / organism</th>
-    <th><code>organism_ontology_term_id</code></th>
-    <th>Ontology prefix</th>
-    <th>Domain covered</th>
-    <th>Validation root</th>
-    <th>In Uberon<br/>collected/composite-metazoan</th>
-  </tr>
-  <tr>
-    <td rowspan="4"><b>Taxon-neutral<br/>core</b></td>
-    <td><i>any organism</i></td>
-    <td>&mdash;</td>
-    <td><code>UBERON:</code></td>
-    <td>anatomical entity, life cycle stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>UBERON:0000105</code></td>
-    <td>core</td>
-  </tr>
-  <tr>
-    <td><i>any organism</i></td>
-    <td>&mdash;</td>
-    <td><code>CL:</code></td>
-    <td>cell type</td>
-    <td><code>CL:0000000</code></td>
-    <td>core</td>
-  </tr>
-  <tr>
-    <td><i>any organism</i></td>
-    <td>&mdash;</td>
-    <td><code>MONDO:</code>, <code>PATO:</code></td>
-    <td>disease, injury, normal/healthy</td>
-    <td><code>MONDO:0000001</code></td>
-    <td>n/a</td>
-  </tr>
-  <tr>
-    <td><i>any organism</i></td>
-    <td>&mdash;</td>
-    <td><code>EFO:</code>, <code>CHEBI:</code>, <code>uniprot:</code></td>
-    <td>experimental condition, perturbation</td>
-    <td><code>CHEBI:24431</code> etc.</td>
-    <td>n/a</td>
-  </tr>
-  <tr>
-    <td rowspan="12"><b>Metazoa<br/>clade-specific</b></td>
-    <td><i>Homo sapiens</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a></td>
-    <td><code>EHDAA2:</code></td>
-    <td>embryonic anatomy</td>
-    <td><code>UBERON:0001062</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Homo sapiens</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a></td>
-    <td><code>HsapDv:</code></td>
-    <td>developmental stage</td>
-    <td><code>UBERON:0000105</code></td>
-    <td>via <code>collected-lifestages</code></td>
-  </tr>
-  <tr>
-    <td><i>Mus musculus</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10090"><code>NCBITaxon:10090</code></a></td>
-    <td><code>EMAPA:</code>, <code>MA:</code>, <code>MmusDv:</code></td>
-    <td>anatomy, developmental stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>UBERON:0000105</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Danio rerio</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a></td>
-    <td><code>ZFA:</code></td>
-    <td>anatomy, cell type</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Danio rerio</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a></td>
-    <td><code>ZFS:</code></td>
-    <td>developmental stage</td>
-    <td><code>UBERON:0000105</code></td>
-    <td>via <code>collected-lifestages</code></td>
-  </tr>
-  <tr>
-    <td><i>Xenopus</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a></td>
-    <td><code>XAO:</code></td>
-    <td>anatomy, cell type, developmental stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Drosophila melanogaster</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a></td>
-    <td><code>FBbt:</code>, <code>FBdv:</code></td>
-    <td>anatomy, cell type, developmental stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code>,<br/><code>UBERON:0000105</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Caenorhabditis elegans</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a></td>
-    <td><code>WBbt:</code>, <code>WBls:</code></td>
-    <td>anatomy, cell type, life stage</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code>,<br/><code>UBERON:0000105</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Cephalopoda</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6605"><code>NCBITaxon:6605</code></a></td>
-    <td><code>CEPH:</code></td>
-    <td>anatomy, cell type</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Ctenophora</i> (comb jellies)</td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10197"><code>NCBITaxon:10197</code></a></td>
-    <td><code>CTENO:</code></td>
-    <td>anatomy, cell type, developmental stage<br/>(e.g. <code>CTENO:0000024</code> for <i>cydippid stage</i>)</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code>,<br/><code>UBERON:0000105</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Porifera</i> (sponges)</td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6040"><code>NCBITaxon:6040</code></a></td>
-    <td><code>PORO:</code></td>
-    <td>anatomy, cell type</td>
-    <td><code>UBERON:0001062</code>,<br/><code>CL:0000000</code></td>
-    <td>yes</td>
-  </tr>
-  <tr>
-    <td><i>Hymenoptera</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7399"><code>NCBITaxon:7399</code></a></td>
-    <td><code>HAO:</code></td>
-    <td>anatomy</td>
-    <td><code>HAO:0000000</code></td>
-    <td><b>no</b> &mdash; standalone,<br/>rooted in CARO</td>
-  </tr>
-  <tr>
-    <td rowspan="4"><b>Viridiplantae<br/>clade-specific</b></td>
-    <td><i>Viridiplantae</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
-    <td><code>PO:</code></td>
-    <td>plant anatomy, plant cell type,<br/>plant structure development stage</td>
-    <td><code>PO:0025131</code>,<br/><code>PO:0009002</code>,<br/><code>PO:0009012</code></td>
-    <td><b>no</b> &mdash; standalone</td>
-  </tr>
-  <tr>
-    <td><i>Viridiplantae</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
-    <td><code>TO:</code></td>
-    <td>plant trait</td>
-    <td><code>TO:0000387</code></td>
-    <td><b>no</b> &mdash; standalone</td>
-  </tr>
-  <tr>
-    <td><i>Viridiplantae</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
-    <td><code>PECO:</code></td>
-    <td>plant experimental condition</td>
-    <td><code>PECO:0007359</code></td>
-    <td><b>no</b> &mdash; standalone</td>
-  </tr>
-  <tr>
-    <td><i>Viridiplantae</i></td>
-    <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
-    <td><code>PSO:</code></td>
-    <td>plant stress (biotic and abiotic)</td>
-    <td><code>PSO:0000001</code></td>
-    <td><b>no</b> &mdash; standalone</td>
-  </tr>
-</tbody></table>
-
-Browse and download locations for the clade-specific ontologies that are not distributed as part of a Uberon multi-species product:
-
-| Ontology | Prefix | Browse | Download |
-| --- | --- | --- | --- |
-| Plant Ontology | `PO:` | [plant anatomical entity `PO:0025131`](http://browser.planteome.org/amigo/term/PO:0025131#display-lineage-tab) &middot; [plant structure development stage `PO:0009012`](http://browser.planteome.org/amigo/term/PO:0009012#display-lineage-tab) | [Planteome/plant-ontology](https://github.com/Planteome/plant-ontology) |
-| Plant Trait Ontology | `TO:` | [plant trait `TO:0000387`](http://browser.planteome.org/amigo/term/TO:0000387#display-lineage-tab) | [Planteome/plant-trait-ontology](https://github.com/Planteome/plant-trait-ontology) |
-| Plant Experimental Conditions Ontology | `PECO:` | [plant experimental condition `PECO:0007359`](http://browser.planteome.org/amigo/term/PECO:0007359#display-lineage-tab) | [Planteome/plant-experimental-conditions-ontology](https://github.com/Planteome/plant-experimental-conditions-ontology) |
-| Plant Stress Ontology | `PSO:` | [plant stress `PSO:0000001`](https://browser.planteome.org/amigo/term/PSO:0000001#display-lineage-tab) | [Planteome/plant-stress-ontology](https://github.com/Planteome/plant-stress-ontology) |
-| Hymenoptera Anatomy Ontology | `HAO:` | [anatomical entity `HAO:0000000`](https://www.ebi.ac.uk/ols4/ontologies/hao/classes?obo_id=HAO%3A0000000) | [OBO Foundry: hao](http://obofoundry.org/ontology/hao.html) |
-| Ctenophore Ontology | `CTENO:` | [OLS4: cteno](https://www.ebi.ac.uk/ols4/ontologies/cteno) | [obophenotype/ctenophore-ontology](https://github.com/obophenotype/ctenophore-ontology) |
-| Porifera Ontology | `PORO:` | [OLS4: poro](https://www.ebi.ac.uk/ols4/ontologies/poro) | [obophenotype/porifera-ontology](https://github.com/obophenotype/porifera-ontology) |
-| Cephalopod Ontology | `CEPH:` | [OLS4: ceph](https://www.ebi.ac.uk/ols4/ontologies/ceph) | [obophenotype/ceph-ontology](https://github.com/obophenotype/ceph-ontology) |
-
-Terms from a clade-specific ontology MUST NOT be used for an organism outside the clade that ontology covers. If the organism under study belongs to a clade that is not listed above, a taxon-neutral term MUST be used, and an addition to this table MAY be requested from the schema maintainers.
+Note that the `UBERON:0001062` / `CL:0000000` / `UBERON:0000105` descendant requirement stated immediately above is satisfied only by ontologies that are actually merged into a Uberon multi-species product. Ontologies marked **standalone** in Appendix B &mdash; currently `HAO:` and the four Planteome ontologies &mdash; carry no Uberon or CL cross-reference, and their terms MUST instead be validated against the root given in Appendix B.
 
 ## `X` (Matrix Layers)
 
@@ -756,19 +360,8 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
           <li><code>"tissue"</code></li>
          </ul>
         <br/>
-        For <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>, the four values above map to plant material as follows:
-        <ul>
-          <li>dedifferentiated callus and regenerating callus are <code>"tissue"</code>, annotated with <a href="http://browser.planteome.org/amigo/term/PO:0005052"><code>PO:0005052</code></a> for <i>plant callus</i> or its most accurate descendant;</li>
-          <li>a plant cell suspension culture derived from a named, immortalised, catalogued line (for example BY-2) is <code>"cell line"</code>; one established for the experiment from primary explant material is <code>"primary cell culture"</code>;</li>
-          <li>protoplast isolation is a dissociation method, not a <code>tissue_type</code>: the value MUST describe the source material, and the dissociation is recorded through <code>suspension_type</code> and the assay fields.</li>
-        </ul>
-        <br/>
-        For <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>, the four values above map to plant material as follows:
-        <ul>
-          <li>dedifferentiated callus and regenerating callus are <code>"tissue"</code>, annotated with <a href="http://browser.planteome.org/amigo/term/PO:0005052"><code>PO:0005052</code></a> for <i>plant callus</i> or its most accurate descendant;</li>
-          <li>a plant cell suspension culture derived from a named, immortalised, catalogued line (for example BY-2) is <code>"cell line"</code>; one established for the experiment from primary explant material is <code>"primary cell culture"</code>;</li>
-          <li>protoplast isolation is a dissociation method, not a <code>tissue_type</code>: the value MUST describe the source material, and the dissociation is recorded through <code>suspension_type</code> and the assay fields.</li>
-        </ul>
+        For <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>: callus is <code>"tissue"</code> (annotated with <a href="http://browser.planteome.org/amigo/term/PO:0005052"><code>PO:0005052</code></a> for <i>plant callus</i> or its most accurate descendant); a cell suspension from a catalogued immortalised line such as BY-2 is <code>"cell line"</code>, one established for the experiment from primary explant is <code>"primary cell culture"</code>; protoplast isolation is a dissociation method rather than a <code>tissue_type</code>, so the value MUST describe the source material.
+        
       </td>
     </tr>
 </tbody></table>
@@ -797,12 +390,9 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         - If the organoid is an embryoid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0014374"><code>UBERON:0014374</code></a> for <i>embryoid body</i>.<br/>
         - If the organoid is a gastruloid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0004734"><code>UBERON:0004734</code></a> for <i>gastrula</i>.<br/><br/>
         Otherwise, if <code>tissue_type</code> is <code>"organoid"</code> or <code>"tissue"</code> then MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/classes?obo_id=FBBT%3A10000000"><code>FBbt:10000000</code></a> for <i>anatomical entity</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000468"><code>UBERON:0000468</code></a> for <i>multicellular organism</i> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/wbphenotype/classes?obo_id=WBbt%3A0007833"><code>WBbt:0007833</code></a> for <i>organism</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a> for <i>Caenorhabditis elegans</i>) and its descendants , and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=CL%3A0000000"><code>CL:0000000</code></a> (or any term from an imported ontology cross-referenced to it, e.g. <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0009000"><code>ZFA:0009000</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>) and its descendants, and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFA%3A0001093"><code>ZFA:0001093</code></a> for <i>unspecified</i> and <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/classes?obo_id=XAO%3A0003003"><code>XAO:0003003</code></a> for <i>unspecified</i>.<br/><br/>
-       If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then the <code>"cell line"</code> and <code>"primary cell culture"</code> branches above are unchanged, but Uberon does not cover Viridiplantae and so the final <code>"organoid"</code>/<code>"tissue"</code> branch is replaced by the following: this MUST be the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0025131"><code>PO:0025131</code></a> for <i>plant anatomical entity</i>, excluding <a href="http://browser.planteome.org/amigo/term/PO:0009002"><code>PO:0009002</code></a> for <i>plant cell</i> and its descendants, which belong in <code>cell_type_ontology_term_id</code>, and excluding <a href="http://browser.planteome.org/amigo/term/PO:0000003"><code>PO:0000003</code></a> for <i>whole plant</i> and its descendants except where the whole organism was genuinely profiled. No Uberon fallback exists for Viridiplantae, so Note 1 and Note 2 below apply to Metazoa only.<br/><br/>
-       If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then the <code>"cell line"</code> and <code>"primary cell culture"</code> branches above are unchanged, but Uberon does not cover Viridiplantae and so the final <code>"organoid"</code>/<code>"tissue"</code> branch is replaced by the following: this MUST be the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0025131"><code>PO:0025131</code></a> for <i>plant anatomical entity</i>, excluding <a href="http://browser.planteome.org/amigo/term/PO:0009002"><code>PO:0009002</code></a> for <i>plant cell</i> and its descendants, which belong in <code>cell_type_ontology_term_id</code>, and excluding <a href="http://browser.planteome.org/amigo/term/PO:0000003"><code>PO:0000003</code></a> for <i>whole plant</i> and its descendants except where the whole organism was genuinely profiled. No Uberon fallback exists for Viridiplantae, so Note 1 and Note 2 below apply to Metazoa only.<br/><br/>
+       If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, the <code>"cell line"</code> and <code>"primary cell culture"</code> branches above are unchanged, but Uberon does not cover Viridiplantae: the final <code>"organoid"</code>/<code>"tissue"</code> branch is instead the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0025131"><code>PO:0025131</code></a> for <i>plant anatomical entity</i>, excluding <a href="http://browser.planteome.org/amigo/term/PO:0009002"><code>PO:0009002</code></a> for <i>plant cell</i> and its descendants, which belong in <code>cell_type_ontology_term_id</code>. There is no Uberon fallback for Viridiplantae, so Notes 1 and 2 below apply to Metazoa only. See [Appendix B](#appendix-b-relevant-ontologies).<br/><br/>
        <b>Note 1:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.<br/><br/>
-       <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, for <i>Drosophila Melanogaster</i>, this entry could be <code>"FBbt:00000002 || FBbt:00000015"</code> for <code>"abdomen || thorax"</code> as a substitute for "body without head" since this term does not exist in the ontology. In addition, even if <code>"FBbt:00000002 || FBbt:00000004 || FBbt:00000015"</code> for <code>"abdomen || head || thorax"</code> could be used to describe the whole fly, we rather recommend using the unique term <code>"UBERON:0000468"</code> for <code>"multicellular organism"</code>.<br/><br/>
-       <b>Note 3:</b> The clade-specific anatomy ontologies recognised by this schema are listed in the ontology index in <a href="#general-requirements">General Requirements</a>, together with the validation root that applies to each. For anatomy these are currently <code>EHDAA2:</code>, <code>EMAPA:</code>, <code>MA:</code>, <code>ZFA:</code>, <code>XAO:</code>, <code>FBbt:</code>, <code>WBbt:</code>, <code>CEPH:</code>, <code>CTENO:</code>, <code>PORO:</code> and <code>HAO:</code> for Metazoa, and <code>PO:</code> for Viridiplantae. A term from one of these ontologies MUST NOT be used for an organism outside the clade it covers.<br/><br/>
-       <b>Note 3:</b> The clade-specific anatomy ontologies recognised by this schema are listed in the ontology index in <a href="#general-requirements">General Requirements</a>, together with the validation root that applies to each. For anatomy these are currently <code>EHDAA2:</code>, <code>EMAPA:</code>, <code>MA:</code>, <code>ZFA:</code>, <code>XAO:</code>, <code>FBbt:</code>, <code>WBbt:</code>, <code>CEPH:</code>, <code>CTENO:</code>, <code>PORO:</code> and <code>HAO:</code> for Metazoa, and <code>PO:</code> for Viridiplantae. A term from one of these ontologies MUST NOT be used for an organism outside the clade it covers.
+       <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, for <i>Drosophila Melanogaster</i>, this entry could be <code>"FBbt:00000002 || FBbt:00000015"</code> for <code>"abdomen || thorax"</code> as a substitute for "body without head" since this term does not exist in the ontology. In addition, even if <code>"FBbt:00000002 || FBbt:00000004 || FBbt:00000015"</code> for <code>"abdomen || head || thorax"</code> could be used to describe the whole fly, we rather recommend using the unique term <code>"UBERON:0000468"</code> for <code>"multicellular organism"</code>.
       </td>
   </tr>
 </tbody></table>
@@ -866,12 +456,9 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         <li><a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000548"><code>"CL:0000548"</code></a> for <i>animal cell</i></li>
       </ul>
       Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000000"><code>CL:0000000</code></a> for <i>cell</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/terms?obo_id=FBbt:00007002"><code>FBbt:00007002</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/terms?obo_id=NCBITaxon:7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/wbbt/classes?obo_id=WBbt%3A0006803"><code>WBbt:0006803</code></a> for <i>Nucleus</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>NCBITaxon:6239</code></a>for <i>Caenorhabditis elegans</i>, and its descendants.<br/><br/>
-       If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then the <code>"unknown"</code>, <code>"na"</code> and excluded-term rules above are unchanged, but CL contains no non-obsolete plant cell terms and so the final branch is replaced by the following: this MUST be the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0009002"><code>PO:0009002</code></a> for <i>plant cell</i>. No CL fallback exists for Viridiplantae, so Note 1 and Note 2 below apply to Metazoa only.<br/><br/>
-       If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then the <code>"unknown"</code>, <code>"na"</code> and excluded-term rules above are unchanged, but CL contains no non-obsolete plant cell terms and so the final branch is replaced by the following: this MUST be the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0009002"><code>PO:0009002</code></a> for <i>plant cell</i>. No CL fallback exists for Viridiplantae, so Note 1 and Note 2 below apply to Metazoa only.<br/><br/>
+       If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, the <code>"unknown"</code>, <code>"na"</code> and excluded-term rules above are unchanged, but CL contains no non-obsolete plant cell terms: the final branch is instead the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0009002"><code>PO:0009002</code></a> for <i>plant cell</i>. There is no CL fallback for Viridiplantae, so Notes 1 and 2 below apply to Metazoa only. See [Appendix B](#appendix-b-relevant-ontologies).<br/><br/>
        <b>Note 1:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral CL term SHOULD be used.<br/><br/>
-       <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, for <i>Drosophila Melanogaster</i>, this entry could be <code>"FBbt:00003731 || FBbt:00003736"</code> for <code>"T4 neuron || T5 neuron"</code>. Even though, in this case, <code>"FBbt:00003726"</code> for <code>"T neuron"</code> could be used (as direct ascendant of both terms), this feature is meant to allow for more precise annotation of cell-types, preventing loss of information.<br/><br/>
-       <b>Note 3:</b> The clade-specific cell type ontologies recognised by this schema are listed in the ontology index in <a href="#general-requirements">General Requirements</a>, together with the validation root that applies to each. For cell types these are currently <code>ZFA:</code>, <code>XAO:</code>, <code>FBbt:</code>, <code>WBbt:</code>, <code>CEPH:</code>, <code>CTENO:</code> and <code>PORO:</code> for Metazoa, and <code>PO:</code> for Viridiplantae. A term from one of these ontologies MUST NOT be used for an organism outside the clade it covers.<br/><br/>
-       <b>Note 3:</b> The clade-specific cell type ontologies recognised by this schema are listed in the ontology index in <a href="#general-requirements">General Requirements</a>, together with the validation root that applies to each. For cell types these are currently <code>ZFA:</code>, <code>XAO:</code>, <code>FBbt:</code>, <code>WBbt:</code>, <code>CEPH:</code>, <code>CTENO:</code> and <code>PORO:</code> for Metazoa, and <code>PO:</code> for Viridiplantae. A term from one of these ontologies MUST NOT be used for an organism outside the clade it covers.
+       <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, for <i>Drosophila Melanogaster</i>, this entry could be <code>"FBbt:00003731 || FBbt:00003736"</code> for <code>"T4 neuron || T5 neuron"</code>. Even though, in this case, <code>"FBbt:00003726"</code> for <code>"T neuron"</code> could be used (as direct ascendant of both terms), this feature is meant to allow for more precise annotation of cell-types, preventing loss of information.
     </td>
   </tr>
 </tbody></table>
@@ -924,8 +511,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/terms?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/hsapdv/terms?obo_id=HsapDv%3A0000001"><code>HsapDv:0000001</code></a> for <i>life cycle</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A9606"><code>NCBITaxon:9606</code></a> for <i>Homo sapiens</i>), excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000071"><code>UBERON:0000071</code></a> for <i>death stage</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/xao/terms?obo_id=XAO:0000437"><code>XAO:0000437</code></a> for <i>death</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a> for <i>Xenopus <genus></i>), and excluding <a href="https://www.ebi.ac.uk/ols4/ontologies/zfa/classes?obo_id=ZFS%3A0000000"><code>ZFS:0000000</code></a> for <i>Unknown</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7955"><code>NCBITaxon:7955</code></a> for <i>Danio rerio</i>.<br/><br/>
           <b>Note 1:</b> When a taxon-specific developmental stage ontology is available for the organism under study, terms from that ontology MUST be preferred over taxon-neutral UBERON terms where a more precise match exists.<br/><br/>
           <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. This feature is meant to prevent loss of information when multiple samples are pooled but without a way to later demultiplex & assign each cell back to the original pre-pooled sample. For example, for <i>Homo Sapiens</i>, this entry could be <code>"HsapDv:0000124 || HsapDv:0000130"</code> for <code>"30-year-old stage || 36-year-old stage"</code> instead of <code>"HsapDv:0000238"</code> for <code>"fourth decade stage"</code> which would be a unique term, but with loss of information.<br/><br/>
-          If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then the <code>"na"</code> and <code>"unknown"</code> rules above are unchanged, but Uberon does not cover Viridiplantae and so the <code>UBERON:0000105</code> descendant requirement is replaced by the following: this MUST be the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0009012"><code>PO:0009012</code></a> for <i>plant structure development stage</i>. No taxon-neutral fallback exists for Viridiplantae.<br/><br/>
-          If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then the <code>"na"</code> and <code>"unknown"</code> rules above are unchanged, but Uberon does not cover Viridiplantae and so the <code>UBERON:0000105</code> descendant requirement is replaced by the following: this MUST be the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0009012"><code>PO:0009012</code></a> for <i>plant structure development stage</i>. No taxon-neutral fallback exists for Viridiplantae.<br/><br/>
+          If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, the <code>"na"</code> and <code>"unknown"</code> rules above are unchanged, but Uberon does not cover Viridiplantae: the value MUST instead be the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0009012"><code>PO:0009012</code></a> for <i>plant structure development stage</i>. See [Appendix B](#appendix-b-relevant-ontologies).<br/><br/>
           The following organism-specific ontologies are recognized and their terms are valid in addition to UBERON:
           <table><tbody>
             <tr>
@@ -979,52 +565,16 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
               <td><i>Ctenophora</i></td>
               <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10197"><code>NCBITaxon:10197</code></a></td>
               <td><code>CTENO:</code></td>
-              <td>
-                CTENO carries its own stage<br/>
-                terms, e.g. <code>CTENO:0000024</code><br/>
-                for <i>cydippid stage</i>.
-              </td>
+              <td>CTENO carries its own stage terms,<br/>e.g. <code>CTENO:0000024</code> for <i>cydippid stage</i>.</td>
             </tr>
             <tr>
               <td><i>Viridiplantae</i></td>
               <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
               <td><code>PO:</code></td>
-              <td>
-                Plant developmental stages are<br/>
-                part of PO itself: the value MUST<br/>
-                be a descendant of <code>PO:0009012</code><br/>
-                for <i>plant structure development stage</i>.<br/>
-                Uberon does not cover Viridiplantae,<br/>
-                so no taxon-neutral fallback exists.
-              </td>
-            </tr>
-            <tr>
-              <td><i>Ctenophora</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10197"><code>NCBITaxon:10197</code></a></td>
-              <td><code>CTENO:</code></td>
-              <td>
-                CTENO carries its own stage<br/>
-                terms, e.g. <code>CTENO:0000024</code><br/>
-                for <i>cydippid stage</i>.
-              </td>
-            </tr>
-            <tr>
-              <td><i>Viridiplantae</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a></td>
-              <td><code>PO:</code></td>
-              <td>
-                Plant developmental stages are<br/>
-                part of PO itself: the value MUST<br/>
-                be a descendant of <code>PO:0009012</code><br/>
-                for <i>plant structure development stage</i>.<br/>
-                Uberon does not cover Viridiplantae,<br/>
-                so no taxon-neutral fallback exists.
-              </td>
+              <td>Descendant of <code>PO:0009012</code> for<br/><i>plant structure development stage</i>.<br/>No taxon-neutral fallback exists.</td>
             </tr>
           </tbody></table>    
-          Terms from organism-specific ontologies MUST NOT be used for organisms not listed in the table above (please contact maintainer if you need to add one). For unlisted organisms, a taxon-neutral <code>UBERON:</code> term MUST be used.<br/><br/>
-          The clade-specific ontologies that cover anatomy only &mdash; currently <code>CEPH:</code>, <code>PORO:</code> and <code>HAO:</code> &mdash; provide no developmental stage terms. For organisms in those clades a taxon-neutral <code>UBERON:</code> term MUST be used.<br/><br/>
-          The clade-specific ontologies that cover anatomy only &mdash; currently <code>CEPH:</code>, <code>PORO:</code> and <code>HAO:</code> &mdash; provide no developmental stage terms. For organisms in those clades a taxon-neutral <code>UBERON:</code> term MUST be used.
+          Terms from organism-specific ontologies MUST NOT be used for organisms not listed in the table above (please contact maintainer if you need to add one). For unlisted organisms, a taxon-neutral <code>UBERON:</code> term MUST be used. The clade-specific ontologies that cover anatomy only &mdash; <code>CEPH:</code>, <code>PORO:</code> and <code>HAO:</code> &mdash; provide no developmental stage terms.
       </td>
   </tr>
 </tbody></table>
@@ -1075,20 +625,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
           If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be <code>"na"</code>.<br/><br/>
           If unavailable, this MUST be <code>"unknown"</code>.<br/><br/>
           If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6239"><code>"NCBITaxon:6239"</code></a> for <i>Caenorhabditis elegans</i>, this MUST be <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000384"><code>"PATO:0000384"</code></a> for <i>male</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0001340"><code>"PATO:0001340"</code></a> for <i>hermaphrodite</i><br/><br/>
-          If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, or is a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6040"><code>NCBITaxon:6040</code></a> for <i>Porifera</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10197"><code>NCBITaxon:10197</code></a> for <i>Ctenophora</i>, then a female/male distinction is frequently not applicable at the level of the sampled organism. In that case this MUST be one of:
-          <ul>
-            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0001340"><code>"PATO:0001340"</code></a> for <i>hermaphrodite</i>, for a monoecious plant or a simultaneous hermaphrodite;</li>
-            <li><code>"na"</code>, when the organism has no applicable sex phenotype;</li>
-            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000383"><code>"PATO:0000383"</code></a> for <i>female</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000384"><code>"PATO:0000384"</code></a> for <i>male</i>, for a dioecious plant or a gonochoric individual whose sex is known.</li>
-          </ul>
-          <code>"unknown"</code> MUST NOT be used to mean "not applicable"; it is reserved for the case where the sex exists but was not recorded.<br/><br/>
-          If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, or is a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6040"><code>NCBITaxon:6040</code></a> for <i>Porifera</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10197"><code>NCBITaxon:10197</code></a> for <i>Ctenophora</i>, then a female/male distinction is frequently not applicable at the level of the sampled organism. In that case this MUST be one of:
-          <ul>
-            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0001340"><code>"PATO:0001340"</code></a> for <i>hermaphrodite</i>, for a monoecious plant or a simultaneous hermaphrodite;</li>
-            <li><code>"na"</code>, when the organism has no applicable sex phenotype;</li>
-            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000383"><code>"PATO:0000383"</code></a> for <i>female</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000384"><code>"PATO:0000384"</code></a> for <i>male</i>, for a dioecious plant or a gonochoric individual whose sex is known.</li>
-          </ul>
-          <code>"unknown"</code> MUST NOT be used to mean "not applicable"; it is reserved for the case where the sex exists but was not recorded.<br/><br/>
+          If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>, or a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A6040"><code>NCBITaxon:6040</code></a> for <i>Porifera</i> or <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A10197"><code>NCBITaxon:10197</code></a> for <i>Ctenophora</i>, a female/male distinction is frequently not applicable to the sampled organism. This MUST then be <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0001340"><code>"PATO:0001340"</code></a> for <i>hermaphrodite</i> for a monoecious plant or simultaneous hermaphrodite, <code>"na"</code> where no sex phenotype applies, or <i>female</i>/<i>male</i> for a dioecious plant or gonochoric individual whose sex is known. <code>"unknown"</code> MUST NOT be used to mean "not applicable"; it is reserved for a sex that exists but was not recorded.<br/><br/>
           Otherwise, this MUST be one of:
           <ul>
             <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000383"><code>"PATO:0000383"</code></a> for  <i>female</i></li>
@@ -1257,21 +794,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
             <li>a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/mondo/classes?obo_id=MONDO%3A0000001"><code>"MONDO:0000001"</code></a> for <i>disease</i></li>
             <li><a href="https://www.ebi.ac.uk/ols4/ontologies/mondo/classes?obo_id=MONDO%3A0021178"><code>"MONDO:0021178"</code></a> for <i>injury</i> or <b>preferably</b> its most accurate descendant</li>
           </ul>
-          MONDO does not cover plant disease. If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then this MUST instead be one of:
-          <ul>
-            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000461"><code>"PATO:0000461"</code></a> for <i>normal</i> or <i>healthy</i>.</li>
-            <li>one or more <a href="https://browser.planteome.org/amigo/term/PSO:0000001">Plant Stress Ontology</a> terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. Each PSO term MUST be a descendant of <code>"PSO:0000001"</code> for <i>plant stress</i>; its biotic stress branch covers pathogen- and pest-induced disease, and its abiotic stress branch covers environmental damage.</li>
-          </ul>
-          <code>MONDO:</code> terms MUST NOT be used for <i>Viridiplantae</i>, and <code>PSO:</code> terms MUST NOT be used for any organism outside <i>Viridiplantae</i>.<br/><br/>
-          When the study concerns a resistance or susceptibility trait rather than an observed disease state, it is STRONGLY RECOMMENDED to additionally record the corresponding <a href="http://browser.planteome.org/amigo/term/TO:0000387">Plant Trait Ontology</a> term, a descendant of <code>"TO:0000387"</code> for <i>plant trait</i>, as an author-defined field.
-          
-          MONDO does not cover plant disease. If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then this MUST instead be one of:
-          <ul>
-            <li><a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000461"><code>"PATO:0000461"</code></a> for <i>normal</i> or <i>healthy</i>.</li>
-            <li>one or more <a href="https://browser.planteome.org/amigo/term/PSO:0000001">Plant Stress Ontology</a> terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. Each PSO term MUST be a descendant of <code>"PSO:0000001"</code> for <i>plant stress</i>; its biotic stress branch covers pathogen- and pest-induced disease, and its abiotic stress branch covers environmental damage.</li>
-          </ul>
-          <code>MONDO:</code> terms MUST NOT be used for <i>Viridiplantae</i>, and <code>PSO:</code> terms MUST NOT be used for any organism outside <i>Viridiplantae</i>.<br/><br/>
-          When the study concerns a resistance or susceptibility trait rather than an observed disease state, it is STRONGLY RECOMMENDED to additionally record the corresponding <a href="http://browser.planteome.org/amigo/term/TO:0000387">Plant Trait Ontology</a> term, a descendant of <code>"TO:0000387"</code> for <i>plant trait</i>, as an author-defined field.
+          MONDO does not cover plant disease. If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, this MUST instead be <a href="https://www.ebi.ac.uk/ols4/ontologies/pato/classes?obo_id=PATO%3A0000461"><code>"PATO:0000461"</code></a> for <i>normal</i> or <i>healthy</i>, or one or more descendants of <code>"PSO:0000001"</code> for <i>plant stress</i> in ascending lexical order separated by <code>" || "</code> with no duplication of terms &mdash; the biotic stress branch covering pathogen- and pest-induced disease, the abiotic branch covering environmental damage. <code>MONDO:</code> MUST NOT be used for Viridiplantae, and <code>PSO:</code> MUST NOT be used outside it. Where the study concerns a resistance or susceptibility trait rather than an observed disease state, it is STRONGLY RECOMMENDED to also record the matching descendant of <code>"TO:0000387"</code> for <i>plant trait</i> as an author-defined field. See [Appendix B](#appendix-b-relevant-ontologies).
           
         </td>
     </tr>
@@ -1389,8 +912,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         </ul>
         If the experimental condition is a diet perturbation, then the value MUST include either <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0002755"><code>"EFO:0002755"</code></a> for <i>diet</i> or its most accurate descendant.<br/><br/>
         If the experimental condition is a temperature perturbation, then the value MUST include <a href="https://www.ebi.ac.uk/ols4/ontologies/efo/classes?obo_id=EFO%3A0001702"><code>"EFO:0001702"</code></a> for <i>temperature</i>.<br/><br/>
-        If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then the value MAY also include one or more <a href="http://browser.planteome.org/amigo/term/PECO:0007359">Plant Experimental Conditions Ontology</a> terms, each a descendant of <a href="http://browser.planteome.org/amigo/term/PECO:0007359"><code>"PECO:0007359"</code></a> for <i>plant experimental condition</i>, describing the biotic and abiotic treatments, growing conditions and study types used in plant biology experiments (for example water deficit, red light, photoperiod, soil type, fertiliser, nutrients, or growth hormone application). <code>PECO:</code> terms MUST NOT be used for any organism outside <i>Viridiplantae</i>.<br/><br/>
-        If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, then the value MAY also include one or more <a href="http://browser.planteome.org/amigo/term/PECO:0007359">Plant Experimental Conditions Ontology</a> terms, each a descendant of <a href="http://browser.planteome.org/amigo/term/PECO:0007359"><code>"PECO:0007359"</code></a> for <i>plant experimental condition</i>, describing the biotic and abiotic treatments, growing conditions and study types used in plant biology experiments (for example water deficit, red light, photoperiod, soil type, fertiliser, nutrients, or growth hormone application). <code>PECO:</code> terms MUST NOT be used for any organism outside <i>Viridiplantae</i>.<br/><br/>
+        If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, the value MAY also include one or more descendants of <a href="http://browser.planteome.org/amigo/term/PECO:0007359"><code>"PECO:0007359"</code></a> for <i>plant experimental condition</i>, covering the biotic and abiotic treatments, growing conditions and study types used in plant experiments (water deficit, red light, photoperiod, soil type, fertiliser, nutrients, growth hormone application). <code>PECO:</code> terms MUST NOT be used for any organism outside Viridiplantae. See [Appendix B](#appendix-b-relevant-ontologies).<br/><br/>
         No other values MUST be present for experimental conditions. 
       </td>
     </tr>
@@ -1452,7 +974,6 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
               <li> <code>"protein"</code></li>
               <li> <code>"temperature"</code></li>
               <li> <code>"environmental"</code></li>
-              <li> <code>"environmental"</code></li>
             </ul>
           and formatted in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of elements.<br/><br/>
           If <code>experimental_condition_ontology_term_id</code> contains a <code>"CHEBI:"</code> term identifier, then <code>"chemical"</code> MUST be added to the set of values.<br/><br/>
@@ -1460,8 +981,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
           If <code>genetic_perturbation_term_id</code> is present and its value is not <code>"na"</code>, then <code>"genetic"</code> MUST be added to the set of values.<br/><br/>
           If <code>experimental_condition_ontology_term_id</code> contains a <code>"uniprot:"</code> term identifier, then <code>"protein"</code> MUST be added to the set of values.<br/><br/>
           If <code>experimental_condition_ontology_term_id</code> contains the <code>"EFO:0001702"</code> term identifier, then <code>"temperature"</code> MUST be added to the set of values.<br/><br/>
-          If <code>experimental_condition_ontology_term_id</code> contains a <code>"PECO:"</code> term identifier, then the set of values MUST include the type that matches the nature of the condition: <code>"chemical"</code> for a chemical or nutrient application, <code>"diet"</code> for a nutrient regime, <code>"temperature"</code> for a thermal condition, and <code>"environmental"</code> for any other growing condition or treatment, such as photoperiod, light quality, water deficit, soil type, or biotic challenge. A <code>"PECO:"</code> term therefore never leaves the set empty, and <code>"no perturbations"</code> MUST NOT be used for an observation that carries one.<br/><br/>
-          If <code>experimental_condition_ontology_term_id</code> contains a <code>"PECO:"</code> term identifier, then the set of values MUST include the type that matches the nature of the condition: <code>"chemical"</code> for a chemical or nutrient application, <code>"diet"</code> for a nutrient regime, <code>"temperature"</code> for a thermal condition, and <code>"environmental"</code> for any other growing condition or treatment, such as photoperiod, light quality, water deficit, soil type, or biotic challenge. A <code>"PECO:"</code> term therefore never leaves the set empty, and <code>"no perturbations"</code> MUST NOT be used for an observation that carries one.
+          If <code>experimental_condition_ontology_term_id</code> contains a <code>"PECO:"</code> term identifier, then the set MUST include the matching type: <code>"chemical"</code> for a chemical or nutrient application, <code>"diet"</code> for a nutrient regime, <code>"temperature"</code> for a thermal condition, and <code>"environmental"</code> for any other growing condition or treatment such as photoperiod, light quality, water deficit, soil type or biotic challenge. A <code>"PECO:"</code> term therefore never leaves the set empty, and <code>"no perturbations"</code> MUST NOT be used for an observation carrying one.
       </td>
     </tr>
 </tbody></table>
@@ -2360,16 +1880,24 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
 | [C. elegans Gross Anatomy Ontology] | WBbt: | [2025-08-18 WS298](https://github.com/obophenotype/c-elegans-gross-anatomy-ontology/releases/tag/v2025-08-18) | [wbbt.owl](https://github.com/obophenotype/c-elegans-gross-anatomy-ontology/blob/v2025-08-18/wbbt.owl) |
 | [Cell Ontology] | CL: |  [2025-07-30](https://github.com/obophenotype/cell-ontology/releases/tag/v2025-07-30) | [cl.owl](https://github.com/obophenotype/cell-ontology/releases/download/v2025-07-30/cl.owl)|
 | [Cellosaurus] | CVCL_ | 53.0 | [cellosaurus.obo ](https://ftp.expasy.org/databases/cellosaurus/cellosaurus.obo)_(Cellosaurus may replace this download with a newer release. Previous releases are <b>unavailable</b>. )_  |
+| [Cephalopod Ontology] | CEPH: | [2016-01-12](https://github.com/obophenotype/cephalopod-ontology/releases/tag/v2016-01-12) _(OBO Foundry status: **inactive**)_ | [ceph.owl](http://purl.obolibrary.org/obo/ceph.owl) |
 | [Chemical Entities of Biological Interest] | CHEBI: | [2026-01-06](https://ftp.ebi.ac.uk/pub/databases/chebi/ontology/)<br/>248 | [chebi-lite.owl](https://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi_lite.owl.gz) _(CHEBI may replace this download with a newer release. Previous releases are [available](https://ftp.ebi.ac.uk/pub/databases/chebi/archive/). )_ |
+| [Ctenophore Ontology] | CTENO: | [2016-10-19](https://github.com/obophenotype/ctenophore-ontology/releases/tag/v2016-10-19) | [cteno.owl](http://purl.obolibrary.org/obo/cteno.owl) |
 | [Drosophila Anatomy Ontology] | FBbt: | [2025-08-07](https://github.com/FlyBase/drosophila-anatomy-developmental-ontology/releases/tag/v2025-08-07)| [fbbt.owl](https://github.com/FlyBase/drosophila-anatomy-developmental-ontology/releases/download/v2025-08-07/fbbt.owl) |
 | [Drosophila Development Ontology] | FBdv: | [2025-05-29](https://github.com/FlyBase/drosophila-developmental-ontology/releases/tag/v2025-05-29) | [fbdv.owl](https://github.com/FlyBase/drosophila-developmental-ontology/releases/download/v2025-05-29/fbdv.owl) |
 | [Experimental Factor Ontology] | EFO: | [2025-09-15 EFO 3.82.0](https://github.com/EBISPOT/efo/releases/tag/v3.82.0) | [efo.owl](https://github.com/EBISPOT/efo/releases/download/v3.82.0/efo.owl) |
 | [Human Ancestry Ontology] | AfPO:<br/>HANCESTRO: | [2025-04-01](https://github.com/EBISPOT/hancestro/releases/tag/v2025-04-01) | [hancestro.owl](https://github.com/EBISPOT/hancestro/blob/v2025-04-01/hancestro.owl) |
 | [Human Developmental Stages] |  HsapDv: | [2025-01-23](https://github.com/obophenotype/developmental-stage-ontologies/releases/tag/v2025-01-23) | [hsapdv.owl](https://github.com/obophenotype/developmental-stage-ontologies/releases/download/v2025-01-23/hsapdv.owl) |
+| [Hymenoptera Anatomy Ontology] | HAO: | [2023-06-01](https://github.com/hymao/hao/releases/tag/v2023-06-01) | [hao.owl](http://purl.obolibrary.org/obo/hao.owl) |
 | [Mondo Disease Ontology] | MONDO: | [2025-09-02](https://github.com/monarch-initiative/mondo/releases/tag/v2025-09-02) | [mondo.owl](https://github.com/monarch-initiative/mondo/releases/download/v2025-09-02/mondo.owl) |
 | [Mouse Developmental Stages]| MmusDv: | [2025-01-23](https://github.com/obophenotype/developmental-stage-ontologies/releases/tag/v2025-01-23) | [mmusdv.owl](https://github.com/obophenotype/developmental-stage-ontologies/releases/download/v2025-01-23/mmusdv.owl) |
 | [NCBI organismal classification] |  NCBITaxon: | [2025-09-11](https://github.com/obophenotype/ncbitaxon/releases/tag/v2025-09-11) | [ncbitaxon.owl](https://github.com/obophenotype/ncbitaxon/releases/download/v2025-09-11/ncbitaxon.owl.gz) |
 | [Phenotype And Trait Ontology] | PATO: | [2025-05-14](https://github.com/pato-ontology/pato/releases/tag/v2025-05-14) | [pato.owl](https://github.com/pato-ontology/pato/blob/v2025-05-14/pato.owl)  |
+| [Plant Experimental Conditions Ontology] | PECO: | [2025-12-02](https://github.com/Planteome/plant-experimental-conditions-ontology/releases/tag/v2025-12-02) | [peco.owl](https://github.com/Planteome/plant-experimental-conditions-ontology/blob/v2025-12-02/peco.owl) |
+| [Plant Ontology] | PO: | [2026-01-09](https://github.com/Planteome/plant-ontology/releases/tag/v2026-01-09) | [po.owl](https://github.com/Planteome/plant-ontology/blob/v2026-01-09/po.owl) |
+| [Plant Stress Ontology] | PSO: | [2026-01-08](https://github.com/Planteome/plant-stress-ontology/releases/tag/v2026-01-08) | [pso.owl](https://github.com/Planteome/plant-stress-ontology/blob/v2026-01-08/pso.owl) |
+| [Plant Trait Ontology] | TO: | [2026-01-14](https://github.com/Planteome/plant-trait-ontology/releases/tag/v2026-01-14) | [to.owl](https://github.com/Planteome/plant-trait-ontology/blob/v2026-01-14/to.owl) |
+| [Porifera Ontology] | PORO: | [2016-10-06](https://github.com/obophenotype/porifera-ontology/releases/tag/v2016-10-06) | [poro.owl](http://purl.obolibrary.org/obo/poro.owl) |
 | [Uberon multi-species anatomy ontology] |  UBERON: | [2025-08-15](https://github.com/obophenotype/uberon/releases/tag/v2025-08-15) | [uberon.owl](https://github.com/obophenotype/uberon/releases/download/v2025-08-15/uberon.owl) |
 | [Uberon composite metazoan ontology] | UBERON:, CL:, and taxon-specific prefixes from imported ontologies | [2025-08-15](https://github.com/obophenotype/uberon/releases/tag/v2025-08-15) | [composite-metazoan.owl](https://github.com/obophenotype/uberon/releases/download/v2025-08-15/composite-metazoan.owl) |
 | [Uberon collected metazoan ontology] | UBERON:, CL:, and taxon-specific prefixes from imported ontologies | [2025-08-15](https://github.com/obophenotype/uberon/releases/tag/v2025-08-15) | [collected-metazoan.owl](https://github.com/obophenotype/uberon/releases/download/v2025-08-15/collected-metazoan.owl) |
@@ -2413,3 +1941,55 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
 [UniProt Knowledgebase]: https://uniprot.org
 
 [Zebrafish Anatomy Ontology]: https://obofoundry.org/ontology/zfa.html
+
+[Cephalopod Ontology]: https://obofoundry.org/ontology/ceph.html
+
+[Ctenophore Ontology]: https://obofoundry.org/ontology/cteno.html
+
+[Hymenoptera Anatomy Ontology]: https://obofoundry.org/ontology/hao.html
+
+[Plant Experimental Conditions Ontology]: https://obofoundry.org/ontology/peco.html
+
+[Plant Ontology]: https://obofoundry.org/ontology/po.html
+
+[Plant Stress Ontology]: https://obofoundry.org/ontology/pso.html
+
+[Plant Trait Ontology]: https://obofoundry.org/ontology/to.html
+
+[Porifera Ontology]: https://obofoundry.org/ontology/poro.html
+
+### B.1 Taxon-neutral core and clade-specific ontologies
+
+The ontologies above fall into two layers.
+
+A **taxon-neutral core** applies to every organism for which it provides an adequate description: [Uberon](https://obophenotype.github.io/uberon/) for anatomical entities and life cycle stages, the [Cell Ontology](https://obophenotype.github.io/cell-ontology/) for cell types, MONDO and PATO for disease and normal/healthy, and EFO, CHEBI and UniProt for experimental conditions. A taxon-neutral term SHOULD be preferred wherever it is adequate, because it maximises cross-species comparability and searchability.
+
+A set of **clade-specific ontologies** MUST be used where one provides a more precise term than the core for the taxon under study, or where the core does not cover the clade at all. The latter is the case for <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>, which is outside the scope of both Uberon and CL.
+
+Most metazoan clade-specific ontologies are merged into the Uberon multi-species products, where `collected-metazoan` = `collected-vertebrate` + `collected-drosophila` + `collected-worm` + `CEPH` + `CTENO` + `PORO`. Two caveats follow from the Uberon build: `collected-human` = `EHDAA2` + `AEO` and `collected-zebrafish` = `ZFA` only, so `HsapDv:` and `ZFS:` are **not** in the metazoan products and ship in `collected-lifestages` instead. Ontologies marked **standalone** below are in no Uberon product at all: they carry no Uberon or CL cross-reference, and their terms MUST be validated against the root in the *Validation root* column.
+
+Terms from a clade-specific ontology MUST NOT be used for an organism outside the clade that ontology covers. For an organism in a clade not listed below, a taxon-neutral term MUST be used, and an addition to this table MAY be requested from the schema maintainers.
+
+| Scope | Clade / organism | `organism_ontology_term_id` | Prefix | Applies to | Validation root | In Uberon metazoan product |
+|:--|:--|:--|:--|:--|:--|:--|
+| Taxon-neutral core | *any* | — | `UBERON:` | `tissue_ontology_term_id`, `development_stage_ontology_term_id` | `UBERON:0001062`, `UBERON:0000105` | core |
+| Taxon-neutral core | *any* | — | `CL:` | `cell_type_ontology_term_id` | `CL:0000000` | core |
+| Taxon-neutral core | *any* | — | `MONDO:`, `PATO:` | `disease_ontology_term_id`, `sex_ontology_term_id` | `MONDO:0000001` | n/a |
+| Taxon-neutral core | *any* | — | `EFO:`, `CHEBI:`, `uniprot:` | `experimental_condition_ontology_term_id` | see field | n/a |
+| Metazoa | *Homo sapiens* | `NCBITaxon:9606` | `EHDAA2:` | tissue | `UBERON:0001062` | yes |
+| Metazoa | *Homo sapiens* | `NCBITaxon:9606` | `HsapDv:` | development stage | `UBERON:0000105` | via `collected-lifestages` |
+| Metazoa | *Mus musculus* | `NCBITaxon:10090` | `EMAPA:`, `MA:`, `MmusDv:` | tissue, development stage | `UBERON:0001062`, `UBERON:0000105` | yes |
+| Metazoa | *Danio rerio* | `NCBITaxon:7955` | `ZFA:` | tissue, cell type | `UBERON:0001062`, `CL:0000000` | yes |
+| Metazoa | *Danio rerio* | `NCBITaxon:7955` | `ZFS:` | development stage | `UBERON:0000105` | via `collected-lifestages` |
+| Metazoa | *Xenopus* | `NCBITaxon:8353` | `XAO:` | tissue, cell type, development stage | `UBERON:0001062`, `CL:0000000` | yes |
+| Metazoa | *Drosophila melanogaster* | `NCBITaxon:7227` | `FBbt:`, `FBdv:` | tissue, cell type, development stage | `UBERON:0001062`, `CL:0000000`, `UBERON:0000105` | yes |
+| Metazoa | *Caenorhabditis elegans* | `NCBITaxon:6239` | `WBbt:`, `WBls:` | tissue, cell type, life stage | `UBERON:0001062`, `CL:0000000`, `UBERON:0000105` | yes |
+| Metazoa | *Cephalopoda* | `NCBITaxon:6605` | `CEPH:` | tissue, cell type | `UBERON:0001062`, `CL:0000000` | yes |
+| Metazoa | *Ctenophora* (comb jellies) | `NCBITaxon:10197` | `CTENO:` | tissue, cell type, development stage | `UBERON:0001062`, `CL:0000000`, `UBERON:0000105` | yes |
+| Metazoa | *Porifera* (sponges) | `NCBITaxon:6040` | `PORO:` | tissue, cell type | `UBERON:0001062`, `CL:0000000` | yes |
+| Metazoa | *Hymenoptera* | `NCBITaxon:7399` | `HAO:` | tissue | `HAO:0000000` | **standalone** (rooted in CARO) |
+| Viridiplantae | *Viridiplantae* | `NCBITaxon:33090` | `PO:` | tissue, cell type, development stage | `PO:0025131`, `PO:0009002`, `PO:0009012` | **standalone** |
+| Viridiplantae | *Viridiplantae* | `NCBITaxon:33090` | `TO:` | plant trait (author-defined field) | `TO:0000387` | **standalone** |
+| Viridiplantae | *Viridiplantae* | `NCBITaxon:33090` | `PECO:` | experimental condition | `PECO:0007359` | **standalone** |
+| Viridiplantae | *Viridiplantae* | `NCBITaxon:33090` | `PSO:` | disease | `PSO:0000001` | **standalone** |
+
