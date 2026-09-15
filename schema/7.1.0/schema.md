@@ -549,6 +549,22 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
               <td></td>
             </tr>
             <tr>
+              <td><i>Xenopus</i></td>
+              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A8353"><code>NCBITaxon:8353</code></a></td>
+              <td><code>XAO:</code></td>
+              <td>
+                No dedicated stage ontology exists;<br/>
+                XAO carries its own stage terms under<br/>
+                <code>XAO:1000000</code> for <i>Xenopus<br/>
+                developmental stage</i>, which the Uberon<br/>
+                bridge defines as <code>UBERON:0000105</code><br/>
+                restricted to <code>NCBITaxon:8353</code>.<br/>
+                The Nieuwkoop&ndash;Faber series sits under<br/>
+                <code>XAO:1000094</code> for <i>NF stage</i>,<br/>
+                e.g. <code>XAO:1000020</code> for <i>NF stage 10</i>.
+              </td>
+            </tr>
+            <tr>
               <td><i>Drosophila melanogaster</i></td>
               <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a></td>
               <td><code>FBdv:</code></td>
@@ -729,7 +745,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
 <table><tbody>
     <tr>
       <th>Key</th>
-      <td><code>strain_or_genetic_background</code></td>
+      <td><code>strain_or_genetic_background_term_id</code></td>
     </tr>
     <tr>
       <th>Requirement</th>
