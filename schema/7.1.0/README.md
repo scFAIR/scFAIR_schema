@@ -10,6 +10,8 @@
 
 **Note:** Terms in italic are auto-filled by the CZI CELLxGENE submission pipeline. scFAIR schema still consider them as required. They should match their ontology id paired field entries and/or requirements.
 
+**Note 2:** You can refer to this [Table](https://github.com/scFAIR/scFAIR_schema/blob/main/schema/7.1.0/schema.md#appendix-b-relevant-ontologies) to know which ontologies to use for annotating your tissues, cell-types, ... depending on your species.
+
 **AnnData.h5ad**
 * [`AnnData.raw.X`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#x-matrix-layers) [`scipy.sparse.csr_matrix`] - Main dataset. Raw counts (not normalized). Fix the dimension for all other metadata. Contains all genes and filtered cells.
 * [`AnnData.X`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#x-matrix-layers) - Main dataset. Normalized counts. Should be the same dimension than `AnnData.raw.X`. **Exception** (not recommended):  if `AnnData.raw.X` is NOT provided, it can be the raw count matrix.
@@ -53,7 +55,6 @@
 * [`Anndata.varp`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#varp) - Describe pairwise annotation of variables/features. Nothing is mandatory here.
 * [`Anndata.uns`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#uns-dataset-metadata) - Dataset metadata. Describe the dataset as a whole.
   * [`ensembl_release`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#ensembl_release) [`int`] - <b>Ensembl</b> release number of the assembly used for gene annotation, e.g. <code>115</code> for <a href="https://ftp.ensembl.org/pub/release-115/">Ensembl r.115</a>.
-  * [`ensembl_database`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#ensembl_database)  [`str`] - <b>Ensembl</b> database name of the assembly used for gene annotation. One of <code>"Ensembl"</code>, <code>"Ensembl Metazoa"</code>, or <code>"Ensembl COVID-19"</code>.
   * [`ensembl_assembly`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#ensembl_assembly)  [`str`] - <b>Ensembl</b> assembly name of the assembly used for gene annotation, e.g. <code>"GRCh38.p14"</code> for Homo Sapiens release 115.
   * [`organism_ontology_term_id`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#organism_ontology_term_id) [`str`] - NCBITaxon ontology term corresponding to the main organism of the study, e.g. `"NCBITaxon:7227"` for *Drosophila Melanogaster*/.
   * *[`organism`](https://github.com/scFAIR/scFAIR/blob/main/schema/7.1.0/schema.md#organism)* [`str`] (Paired with `organism_ontology_term_id`) - Human-readable name assigned to the value of `organism_ontology_term_id`.
