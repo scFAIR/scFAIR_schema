@@ -358,10 +358,8 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
           <li><code>"organoid"</code></li>
           <li><code>"primary cell culture"</code></li>
           <li><code>"tissue"</code></li>
-         </ul>
-        <br/>
+        </ul>
         For <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>: callus is <code>"tissue"</code> (annotated with <a href="http://browser.planteome.org/amigo/term/PO:0005052"><code>PO:0005052</code></a> for <i>plant callus</i> or its most accurate descendant); a cell suspension from a catalogued immortalised line such as BY-2 is <code>"cell line"</code>, one established for the experiment from primary explant is <code>"primary cell culture"</code>; protoplast isolation is a dissociation method rather than a <code>tissue_type</code>, so the value MUST describe the source material.
-        
       </td>
     </tr>
 </tbody></table>
@@ -384,13 +382,14 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
     <tr>
       <th>Value</th>
       <td>
-        Please refer to <a href="#appendix-b-relevant-ontologies">Appendix B</a> for relevant anatomical ontologies according to your species.<br/><br/>
-        
+        Please refer to <a href="#appendix-b-relevant-ontologies">Appendix B</a> for relevant anatomical ontologies according to your species.<br/><br/>      
         If <code>tissue_type</code> is <code>"cell line"</code>, this MUST be a Cellosaurus term.<br/><br/>
         If <code>tissue_type</code> is <code>"primary cell culture"</code>, this MUST follow the requirements for <code>cell_type_ontology_term_id</code>.<br/><br/>
         If <code>tissue_type</code> is <code>"organoid"</code>, this MUST NOT be <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000922"><code>UBERON:0000922</code></a> for <i>embryo</i>.<br/>
-        - If the organoid is an embryoid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0014374"><code>UBERON:0014374</code></a> for <i>embryoid body</i>.<br/>
-        - If the organoid is a gastruloid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0004734"><code>UBERON:0004734</code></a> for <i>gastrula</i>.<br/><br/>
+        <ul>
+          <li>If the organoid is an embryoid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0014374"><code>UBERON:0014374</code></a> for <i>embryoid body</i>.</li>
+          <li>If the organoid is a gastruloid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0004734"><code>UBERON:0004734</code></a> for <i>gastrula</i>.</li>
+        </ul>
         Otherwise, if <code>tissue_type</code> is <code>"organoid"</code> or <code>"tissue"</code> then MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/classes?obo_id=FBBT%3A10000000"><code>FBbt:10000000</code></a> for <i>anatomical entity</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>).<br/><br/>
        If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, the <code>"cell line"</code> and <code>"primary cell culture"</code> branches above are unchanged, but Uberon does not cover Viridiplantae: the final <code>"organoid"</code>/<code>"tissue"</code> branch is instead the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0025131"><code>PO:0025131</code></a> for <i>plant anatomical entity</i>, excluding <a href="http://browser.planteome.org/amigo/term/PO:0009002"><code>PO:0009002</code></a> for <i>plant cell</i> and its descendants, which belong in <code>cell_type_ontology_term_id</code>. There is no Uberon fallback for Viridiplantae, so Notes 1 and 2 below apply to Metazoa only.<br/><br/>
        <b>Note 1:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.<br/><br/>
