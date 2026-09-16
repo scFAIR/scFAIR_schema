@@ -178,7 +178,7 @@ Of note, for tissue, cell type, and stage terms, the collected-metazoan or compo
 - A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment.<br />
 - From the composite and collected versions of Uberon, any term descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i>, <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000000"><code>CL:0000000</code></a> for <i>cell</i>, <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0000105"><code>UBERON:0000105</code></a> for <i>life cycle stage</i>, or any term from an imported ontology cross-referenced to them, MUST be used.
 
-**Ontologies by clade.** The ontologies recognised by this schema fall into a **taxon-neutral core** (`UBERON:`, `CL:`, `MONDO:`, `PATO:`, `EFO:`, `CHEBI:`, `uniprot:`) and a set of **clade-specific extensions** (`EHDAA2:`, `EMAPA:`, `MA:`, `ZFA:`, `ZFS:`, `XAO:`, `FBbt:`, `FBdv:`, `WBbt:`, `WBls:`, `HsapDv:`, `MmusDv:`, `CEPH:`, `CTENO:`, `PORO:`, `HAO:` for Metazoa; `PO:`, `TO:`, `PECO:`, `PSO:` for <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>). Whenever a taxon-neutral term is an adequate description it SHOULD be preferred; a clade-specific term MUST be used where it is more precise, or where the core does not cover the clade at all.
+**Ontologies by clade.** The ontologies recognised by this schema fall into a **taxon-neutral core** (`UBERON:`, `CL:`, `MONDO:`, `PATO:`, `EFO:`, `CHEBI:`, `uniprot:`) and a set of **clade-specific extensions** (`ZFA:`, `ZFS:`, `XAO:`, `FBbt:`, `FBdv:`, `WBbt:`, `WBls:`, `HsapDv:`, `MmusDv:`, `CEPH:`, `CTENO:`, `PORO:`, `HAO:` for Metazoa; `PO:`, `TO:`, `PECO:`, `PSO:` for <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i>). Whenever a taxon-neutral term is an adequate description it SHOULD be preferred; a clade-specific term MUST be used where it is more precise, or where the core does not cover the clade at all.
 
 [Appendix B](#appendix-b-relevant-ontologies) is the authoritative index. For each ontology it gives the clade covered, the fields it applies to, the **validation root** its terms MUST descend from, and whether it is distributed inside a Uberon multi-species product. The field definitions below refer to Appendix B rather than restating it.
 
@@ -1822,7 +1822,7 @@ This is the first fork of CELLxGENE schema. So, here are recorded the difference
 * **Required ontologies**
   * Moved the ontology table from [General Requirements](#general-requirements) as [Appendix B. Relevant ontologies](#appendix-b-relevant-ontologies). Since we don't enforce a schema-specific version anymore
   * Recommended using the [Uberon collected metazoan ontology] or [Uberon composite metazoan ontology] version of [Uberon multi-species anatomy ontology], instead of taxon-specific ontologies, for anatomy, cell types, developemental and life stages
-  * Added plants and other invertebrate ontologies
+  * Added plants (PO, PSO, TO, PECO) and other invertebrate ontologies (HAO, CTENO, CEPH, PORO).
 * Moved the **Important note on types** section to the [General Requirements](#general-requirements) section. Expanding on the difference between reported Python types and HDF5 inner typing
 * **Required Gene Annotations**
   * This section was removed, but its content was moved to the [`index`](#index) subsection of [`var` and `raw.var`](#var-and-rawvar-gene-metadata) section where it immediately applies
@@ -1970,9 +1970,8 @@ Terms from a clade-specific ontology MUST NOT be used for an organism outside th
 | Taxon-neutral core | *any* | — | `CL:` | `cell_type_ontology_term_id` | `CL:0000000` | core |
 | Taxon-neutral core | *any* | — | `MONDO:`, `PATO:` | `disease_ontology_term_id`, `sex_ontology_term_id` | `MONDO:0000001` | n/a |
 | Taxon-neutral core | *any* | — | `EFO:`, `CHEBI:`, `uniprot:` | `experimental_condition_ontology_term_id` | see field | n/a |
-| Metazoa | *Homo sapiens* | `NCBITaxon:9606` | `EHDAA2:` | tissue | `UBERON:0001062` | yes |
 | Metazoa | *Homo sapiens* | `NCBITaxon:9606` | `HsapDv:` | development stage | `UBERON:0000105` | via `collected-lifestages` |
-| Metazoa | *Mus musculus* | `NCBITaxon:10090` | `EMAPA:`, `MA:`, `MmusDv:` | tissue, development stage | `UBERON:0001062`, `UBERON:0000105` | yes |
+| Metazoa | *Mus musculus* | `NCBITaxon:10090` |  `MmusDv:` | development stage | `UBERON:0000105` | yes |
 | Metazoa | *Danio rerio* | `NCBITaxon:7955` | `ZFA:` | tissue, cell type | `UBERON:0001062`, `CL:0000000` | yes |
 | Metazoa | *Danio rerio* | `NCBITaxon:7955` | `ZFS:` | development stage | `UBERON:0000105` | via `collected-lifestages` |
 | Metazoa | *Xenopus* | `NCBITaxon:8353` | `XAO:` | tissue, cell type, development stage | `UBERON:0001062`, `CL:0000000`, `UBERON:0000105` | yes |
