@@ -390,7 +390,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
           <li>If the organoid is an embryoid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0014374"><code>UBERON:0014374</code></a> for <i>embryoid body</i>.</li>
           <li>If the organoid is a gastruloid, it is STRONGLY RECOMMENDED that the value is <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0004734"><code>UBERON:0004734</code></a> for <i>gastrula</i>.</li>
         </ul>
-        Otherwise, if <code>tissue_type</code> is <code>"organoid"</code> or <code>"tissue"</code> then MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/classes?obo_id=FBBT%3A10000000"><code>FBbt:10000000</code></a> for <i>anatomical entity</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>).<br/><br/>
+        Otherwise, if <code>tissue_type</code> is <code>"organoid"</code> or <code>"tissue"</code> then MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/uberon/classes?obo_id=UBERON%3A0001062"><code>UBERON:0001062</code></a> for <i>anatomical entity</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/classes?obo_id=FBBT%3A10000000"><code>FBbt:10000000</code></a> for <i>anatomical entity</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7147"><code>NCBITaxon:7147</code></a> for <i>Diptera</i> and its descendants).<br/><br/>
        If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, the <code>"cell line"</code> and <code>"primary cell culture"</code> branches above are unchanged, but Uberon does not cover Viridiplantae: the final <code>"organoid"</code>/<code>"tissue"</code> branch is instead the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0025131"><code>PO:0025131</code></a> for <i>plant anatomical entity</i>, excluding <a href="http://browser.planteome.org/amigo/term/PO:0009002"><code>PO:0009002</code></a> for <i>plant cell</i> and its descendants, which belong in <code>cell_type_ontology_term_id</code>. There is no Uberon fallback for Viridiplantae, so Notes 1 and 2 below apply to Metazoa only.<br/><br/>
        If <code>organism_ontology_term_id</code> is a descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7399"><code>NCBITaxon:7399</code></a> for <i>Hymenoptera</i>, this MAY instead be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/hao/classes?obo_id=HAO%3A0000000"><code>HAO:0000000</code></a> for <i>anatomical entity</i>. <code>HAO:</code> is not merged into any Uberon multi-species product, so such a term satisfies this field by virtue of this clause rather than by a Uberon cross-reference.<br/><br/>
        <b>Note 1:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral Uberon term SHOULD be used.<br/><br/>
@@ -458,7 +458,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
         <li><a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000257"><code>"CL:0000257"</code></a> for <i>Eumycetozoan cell</i></li>
         <li><a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000548"><code>"CL:0000548"</code></a> for <i>animal cell</i></li>
       </ul>
-      Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000000"><code>CL:0000000</code></a> for <i>cell</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/terms?obo_id=FBbt:00007002"><code>FBbt:00007002</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/terms?obo_id=NCBITaxon:7227"><code>NCBITaxon:7227</code></a> for <i>Drosophila melanogaster</i>).<br/><br/>
+      Otherwise, this MUST be the most accurate descendant of <a href="https://www.ebi.ac.uk/ols4/ontologies/cl/terms?obo_id=CL:0000000"><code>CL:0000000</code></a> for <i>cell</i> (or any term from an imported ontology cross-referenced to it, e.g., <a href="https://www.ebi.ac.uk/ols4/ontologies/fbbt/terms?obo_id=FBbt:00007002"><code>FBbt:00007002</code></a> for <i>cell</i> in <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/terms?obo_id=NCBITaxon:7147"><code>NCBITaxon:7147</code></a> for <i>Diptera</i> and its descendants).<br/><br/>
        If <code>organism_ontology_term_id</code> is <a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A33090"><code>NCBITaxon:33090</code></a> for <i>Viridiplantae</i> or one of its descendants, the <code>"unknown"</code>, <code>"na"</code> and excluded-term rules above are unchanged, but CL contains no non-obsolete plant cell terms: the final branch is instead the most accurate descendant of <a href="http://browser.planteome.org/amigo/term/PO:0009002"><code>PO:0009002</code></a> for <i>plant cell</i>. There is no CL fallback for Viridiplantae, so Notes 1 and 2 below apply to Metazoa only.<br/><br/>
        <b>Note 1:</b> A taxon-specific term MUST be used if it is the most precise term available, and corresponds to the correct taxon for the experiment. Otherwise, a taxon-neutral CL term SHOULD be used.<br/><br/>
        <b>Note 2:</b> The value MAY be a combination of terms in ascending lexical order separated by the delimiter <code>" || "</code> with no duplication of terms. For example, for <i>Drosophila Melanogaster</i>, this entry could be <code>"FBbt:00003731 || FBbt:00003736"</code> for <code>"T4 neuron || T5 neuron"</code>. Even though, in this case, <code>"FBbt:00003726"</code> for <code>"T neuron"</code> could be used (as direct ascendant of both terms), this feature is meant to allow for more precise annotation of cell-types, preventing loss of information.
@@ -565,20 +565,16 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
               </td>
             </tr>
             <tr>
-              <td><i>Drosophila melanogaster</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7227"><code>NCBITaxon:7227</code></a></td>
-              <td><code>FBdv:</code></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><i>Aedes aegypti</i></td>
-              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7159"><code>NCBITaxon:7159</code></a></td>
+              <td><i>Diptera</i></td>
+              <td><a href="https://www.ebi.ac.uk/ols4/ontologies/ncbitaxon/classes?obo_id=NCBITaxon%3A7147"><code>NCBITaxon:7147</code></a></td>
               <td><code>FBdv:</code></td>
               <td>
-                No dedicated ontology exists;<br/>
-                <code>FBdv:</code> is used as a proxy<br/>
-                given the conservation of dipteran<br/>
-                developmental stages.
+                Built for <i>Drosophila melanogaster</i><br/>
+                (<code>NCBITaxon:7227</code>). For any other<br/>
+                dipteran, e.g. <i>Aedes aegypti</i><br/>
+                (<code>NCBITaxon:7159</code>), <code>FBdv:</code> is<br/>
+                used as a proxy given the conservation<br/>
+                of dipteran developmental stages.
               </td>
             </tr>
             <tr>
@@ -594,7 +590,7 @@ scFAIR's matrix layer requirements are tailored to optimize data reuse. Because 
               <td>Descendant of <code>PO:0009012</code> for<br/><i>plant structure development stage</i>.<br/>No taxon-neutral fallback exists.</td>
             </tr>
           </tbody></table>    
-          Terms from organism-specific ontologies MUST NOT be used for organisms not listed in the table above or in <a href="#appendix-b-relevant-ontologies">Appendix B</a> (please contact maintainer if you need to add one). For unlisted organisms, a taxon-neutral <code>UBERON:</code> term MUST be used. The clade-specific ontologies that cover anatomy only (<code>CEPH:</code>, <code>PORO:</code> and <code>HAO:</code>) provide no developmental stage terms.
+          Terms from organism-specific ontologies MUST NOT be used for organisms that are not listed, or do not descend from a clade listed, in the table above or in <a href="#appendix-b-relevant-ontologies">Appendix B</a> (please contact maintainer if you need to add one). For unlisted organisms, a taxon-neutral <code>UBERON:</code> term MUST be used. The clade-specific ontologies that cover anatomy only (<code>CEPH:</code>, <code>PORO:</code> and <code>HAO:</code>) provide no developmental stage terms.
       </td>
   </tr>
 </tbody></table>
@@ -1975,7 +1971,7 @@ Terms from a clade-specific ontology MUST NOT be used for an organism outside th
 | Metazoa | *Danio rerio* | `NCBITaxon:7955` | `ZFA:` | tissue, cell type | `UBERON:0001062`, `CL:0000000` | yes |
 | Metazoa | *Danio rerio* | `NCBITaxon:7955` | `ZFS:` | development stage | `UBERON:0000105` | via `collected-lifestages` |
 | Metazoa | *Xenopus* | `NCBITaxon:8353` | `XAO:` | tissue, cell type, development stage | `UBERON:0001062`, `CL:0000000`, `UBERON:0000105` | yes |
-| Metazoa | *Drosophila melanogaster* | `NCBITaxon:7227` | `FBbt:`, `FBdv:` | tissue, cell type, development stage | `UBERON:0001062`, `CL:0000000`, `UBERON:0000105` | yes |
+| Metazoa | *Diptera* (true flies) | `NCBITaxon:7147` | `FBbt:`, `FBdv:` | tissue, cell type, development stage | `UBERON:0001062`, `CL:0000000`, `UBERON:0000105` | yes |
 | Metazoa | *Caenorhabditis elegans* | `NCBITaxon:6239` | `WBbt:`, `WBls:` | tissue, cell type, life stage | `UBERON:0001062`, `CL:0000000`, `UBERON:0000105` | yes |
 | Metazoa | *Cephalopoda* | `NCBITaxon:6605` | `CEPH:` | tissue, cell type | `UBERON:0001062`, `CL:0000000` | yes |
 | Metazoa | *Ctenophora* (comb jellies) | `NCBITaxon:10197` | `CTENO:` | tissue, cell type, development stage | `UBERON:0001062`, `CL:0000000`, `UBERON:0000105` | yes |
@@ -1985,4 +1981,6 @@ Terms from a clade-specific ontology MUST NOT be used for an organism outside th
 | Viridiplantae | *Viridiplantae* | `NCBITaxon:33090` | `TO:` | plant trait (author-defined `obs` column, not validated) | `TO:0000387` | **standalone** |
 | Viridiplantae | *Viridiplantae* | `NCBITaxon:33090` | `PECO:` | experimental condition | `PECO:0007359` | **standalone** |
 | Viridiplantae | *Viridiplantae* | `NCBITaxon:33090` | `PSO:` | disease | `PSO:0000001` | **standalone** |
+
+**Diptera.** `FBbt:` and `FBdv:` are developed by FlyBase for *Drosophila melanogaster* (`NCBITaxon:7227`), but MAY be used for any descendant of `NCBITaxon:7147` for *Diptera* (e.g. *Aedes aegypti*, *Anopheles gambiae*). For these species they act as a proxy, given how well dipteran anatomy and developmental stages are conserved. For a dipteran other than *Drosophila*, a `FBbt:` or `FBdv:` term SHOULD only be used if the structure, cell type or stage it describes exists in the species under study. Otherwise, the closest taxon-neutral `UBERON:` or `CL:` term SHOULD be used.
 
